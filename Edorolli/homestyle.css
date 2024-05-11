@@ -1,0 +1,124 @@
+* {
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.wrapper {
+  width: 1100px;
+  margin: auto;
+  align-items: center;
+}
+
+.nama_website a {
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+  font-family: "Poppins";
+  color: #fff;
+}
+
+.logo img {
+  padding: 22px 10px 0px 0px;
+  vertical-align: center;
+  float: left;
+  max-width: 50px;
+  max-height: 30px;
+}
+
+.menu {
+  float: right;
+}
+
+nav {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  line-height: 80px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  background-color: #0c2240;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li a {
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  padding: 0px 16px 0px 16px;
+}
+
+nav ul li a:hover {
+  color: #bf4f26;
+}
+
+.login {
+  background-color: #bf4f26;
+  color: #ffffff;
+  padding: 5px 15px 5px 15px;
+}
+
+.login:hover {
+  color: white !important;
+}
+
+section {
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.homepage {
+  display: flex;
+}
+
+.landing img {
+  max-width: 300px;
+}
+.desc{
+  margin-left: 20px;
+}
+
+.desc h2 {
+  font-weight:800;
+  font-size: 45px;
+  margin-top: 40px;
+  margin-bottom: 5px;
+  color:#0c2240;
+  width: 100%;
+  line-height: 50px;
+}
+
+.desc h3 {
+
+  font-weight:800;
+  font-size: 20px;
+  color:#0c2240;
+  width: 100%;
+}
+
+.populer h2 {
+  font-weight:800;
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color:#0c2240;
+  width: 100%;
+  line-height: 50px;
+}
