@@ -16,7 +16,7 @@ session_start();
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="../Edorolli/css/signup.css" />
   </head>
 
   <body>
@@ -51,7 +51,7 @@ session_start();
         <?php unset($_SESSION['error_message']); // Clear the message after displaying ?>
     <?php endif; ?> -->
           <div class="login">
-            <p>Already have an account! <a href="login_user.php">Log In</a></p>
+            <p>Already have an account! <a href="../Edorolli/css/login_user.php">Log In</a></p>
           </div>
         </form>
       </div>

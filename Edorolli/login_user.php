@@ -19,7 +19,7 @@ if (!isset($_SESSION['error_message'])) {
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <link rel="stylesheet" href="login_user.css" />
+    <link rel="stylesheet" href="../Edorolli/css/login_user.css" />
   </head>
 
   <body>
@@ -50,7 +50,7 @@ if (!isset($_SESSION['error_message'])) {
                     <?php unset($_SESSION['error_message']); ?>
                 <?php endif; ?>
           <div class="register">
-            <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+            <p>Don't have an account? <a href="../Edorolli/css/signup.php">Sign Up</a></p>
           </div>
         </form>
       </div>
