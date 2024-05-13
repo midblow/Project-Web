@@ -25,7 +25,7 @@ if (!isset($_SESSION['error_message'])) {
   <body>
     <section>
       <div class="form-box">
-        <form action="login.php" method="post">
+        <form action="proses_login.php" method="post">
           <div class="gambar">
             <img src="../Edorolli/image/hallo_user.png" />
           </div>

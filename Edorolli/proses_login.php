@@ -2,7 +2,6 @@
 session_start();
 $koneksi = mysqli_connect('localhost', 'root', '', 'project_pweb');
 
-// Periksa koneksi
 if (!$koneksi) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
@@ -11,7 +10,6 @@ $gmail = $_POST['gmail'];
 $password = $_POST['password'];
 
 
-// Gunakan prepared statement untuk keamanan
 $stmt = $koneksi->prepare("SELECT password FROM user WHERE gmail = ?");
 $stmt->bind_param("s", $gmail);
 $stmt->execute();
@@ -26,7 +24,6 @@ if ($result->num_rows == 0) {
     $user = $result->fetch_assoc();
     if ($user['password'] === $password) {
         // Password cocok, redirect ke halaman home
-        // echo "Password cocok";
         header("Location: home_login.html");
         exit();
     } else {

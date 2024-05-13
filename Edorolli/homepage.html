@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -25,7 +29,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="role-selection.html" class="login">Login</a></li>
+            <li><a href="role-selection.html" class="login">Get Started</a></li>
           </ul>
         </div>
       </div>
@@ -34,26 +38,48 @@
     <div class="wrapper">
       <section id="home">
         <div class="homepage">
-          <div class="landing">
-            <img src="../Edorolli/image/banner.png" />
-          </div>
           <div class="desc">
             <h2>Edorolli</h2>
             <h3>Solusi reservasi veneu terlengkap se-Pulau Lombok</h3>
             <p>
-              Menyediakan akses ke informasi yang lengkap dan terperinci serta
-              memudahkan untuk membuat keputusan yang tepat dalam memilih venue
-              yang sesuai dengan kebutuhan yang diinginkan. Dapatkan pengalaman
-              reservasi yang efisien dan efektif dengan platform kami yang
-              didesain untuk memberikan kemudahan dan kecepatan dalam setiap
-              langkahnya.
+              Membuat reservasi menjadi lebih efisien dan efektif dengan
+              ketersediaan informasi yang lengkap dan sistem yang mudah dan
+              cepat
             </p>
+            <a href="role-selection.html" class="login">Get Started</a>
+          </div>
+          <div class="landing">
+            <img src="../Edorolli/image/banner.png" />
           </div>
         </div>
+
         <div class="populer">
-          <h2>Populer Venue</h2>
+          <h2>Popular Venue</h2>
+          <div class="gallery">
+            <div class="card">
+              <div class="image-container">
+                <img src="../Edorolli/image/Sangkareang.jpg" />
+                <span class="heart-icon"
+                  ><i class="far fa-heart" onclick="klikLike(this)"></i
+                ></span>
+              </div>
+              <div class="info">
+                <p class="name">Taman Sangkareang</p>
+                <span class="plus-icon">
+                  <i class="far fa-bookmark" onclick="klikBookmark(this)"></i>
+                </span>
+              </div>
+              <div class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Mataram</span>
+              </div>
+            </div>
+            <!-- Ulangi untuk kartu lainnya -->
+          </div>
         </div>
       </section>
     </div>
+
+    <script src="iconHomepage.js"></script>
   </body>
 </html>
