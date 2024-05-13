@@ -22,5 +22,6 @@ $cek = mysqli_num_rows($query);
 if ($cek == 0) {
     echo "Password atau Username Salah!";
 } else {
-    echo "Berhasil!";
+    header("Location: home_login.html");
+    exit();
 }
