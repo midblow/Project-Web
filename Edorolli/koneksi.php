@@ -5,8 +5,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'project-pweb');
 if (!$koneksi) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
-
-// Mendapatkan data dari form
+session_start();
 $gmail = $_POST['gmail'];
 $password = $_POST['password'];
 

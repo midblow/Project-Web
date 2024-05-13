@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0c2240;
+  /* Uncomment and set the background image as needed */
+  /* background: url("../image/background.jpg") no-repeat; */
+  background-position: center;
+  background-size: cover;
+}
+
+.form-box {
+  width: 400px;
+  height: 600px; /* Increased height to accommodate extra input fields */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust transparency for better visibility */
+  border-radius: 20px;
+  backdrop-filter: blur(15px) brightness(80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 2em;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.gambar img {
+  width: 100px; /* Increased size for better visibility */
+}
+
+.inputbox {
+  position: relative;
+  margin: 10px 0;
+  width: 90%; /* Responsive width */
+}
+
+.inputbox input {
+  color: #fff;
+}
+.inputbox ion-icon {
+  color: #fff;
+}
+
+.inputbox label {
+  color: #ffffff;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.register {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .form-box {
+    width: 90%; /* More responsive on smaller screens */
+    margin: 10px;
+    height: auto; /* Height adjusts to content */
+    padding-bottom: 30px;
+  }
+}
