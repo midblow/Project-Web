@@ -191,7 +191,7 @@ section {
   cursor: pointer;
 }
 
-.heart-icon .fas{
+.heart-icon .fas {
   color: #0c2240;
 }
 
@@ -213,7 +213,7 @@ section {
   cursor: pointer;
   font-size: 24px;
   color: #555;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .plus-icon .fa-solid {
