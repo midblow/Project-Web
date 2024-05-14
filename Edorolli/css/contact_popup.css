@@ -24,3 +24,6 @@
   border-color: red !important;
   color: red !important;
 }
+.popup.visible{
+    top: 150px;
+}
