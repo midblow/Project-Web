@@ -5,11 +5,11 @@ const popup = document.getElementById('popup');
 
 if (status === 'sukses') {
     popup.textContent = 'Terimakasih! Pesan anda telah terkirim^^';
-    popup.classList.add('sukses', 'visible');
+    popup.classList.add('sukses');
     popup.style.visibility = 'visible';
 } else if (status === 'gagal') {
     popup.textContent = 'Maaf, pesan anda tidak terkirim. Silahkan mengirimkan kembali';
-    popup.classList.add('gagal', 'visible');
+    popup.classList.add('gagal');
     popup.style.visibility = 'visible';
 }
 
@@ -17,6 +17,5 @@ if (status === 'sukses') {
 if (status) {
     setTimeout(() => {
         popup.style.visibility = 'hidden';
-        popup.classList.remove('visible');
     }, 5000);
 }

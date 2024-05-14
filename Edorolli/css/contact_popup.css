@@ -8,11 +8,9 @@
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 85px !important; /* Start position above the view */
-  transform: translateX(-50%);
+  top: 85px !important; 
   font-size: 17px;
   border: 2px solid;
-  transition: top 0.8s ease-in-out; /* Smooth transition */
 }
 
 .popup.sukses {
@@ -23,8 +21,4 @@
 .popup.gagal {
   border-color: red !important;
   color: red !important;
-}
-
-.pop.visible{
-    top: 100%;
 }
