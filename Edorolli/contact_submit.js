@@ -18,5 +18,6 @@ if (status === "sukses") {
 if (status) {
   setTimeout(() => {
     popup.style.visibility = "hidden";
+    popup.classList.remove('visible');
   }, 5000);
 }
