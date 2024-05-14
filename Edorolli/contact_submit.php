@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Menjalankan query dan memeriksa apakah berhasil
     if ($conn->query($sql) === TRUE) {
-        echo "Data kontak berhasil disimpan!";
+        header("Location: contact.html?status=success");
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        header("Location: contact.html?status=error");
     }
 }
 
