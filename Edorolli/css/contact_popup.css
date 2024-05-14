@@ -8,7 +8,7 @@
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 80px !important; /* Start position above the view */
+  top: 90px !important; /* Start position above the view */
   transform: translateX(-50%);
   font-size: 17px;
   border: 2px solid;
