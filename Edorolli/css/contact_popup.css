@@ -12,7 +12,6 @@
   transform: translateX(-50%);
   font-size: 17px;
   border: 2px solid;
-  transition: top 0.8s ease-in-out; /* Smooth transition */
 }
 
 .popup.sukses {
