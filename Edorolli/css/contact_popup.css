@@ -8,11 +8,11 @@
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 90px !important; /* Start position above the view */
+  top: 85px !important; /* Start position above the view */
   transform: translateX(-50%);
   font-size: 17px;
   border: 2px solid;
-  transition: top 0.5s ease-in-out; /* Smooth transition */
+  transition: top 5s ease-in-out; /* Smooth transition */
 }
 
 .popup.success {
@@ -26,5 +26,5 @@
 }
 
 .popup.visible {
-  top: 30px; /* End position */
+  top: 110px; /* End position */
 }
