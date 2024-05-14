@@ -3,13 +3,13 @@ const urlParams = new URLSearchParams(window.location.search);
 const status = urlParams.get('status');
 const popup = document.getElementById('popup');
 
-if (status === 'success') {
+if (status === 'sukses') {
     popup.textContent = 'Terimakasih! Pesan anda telah terkirim^^';
-    popup.classList.add('success', 'visible');
+    popup.classList.add('sukses', 'visible');
     popup.style.visibility = 'visible';
-} else if (status === 'error') {
+} else if (status === 'gagal') {
     popup.textContent = 'Maaf, pesan anda tidak terkirim. Silahkan mengirimkan kembali';
-    popup.classList.add('error', 'visible');
+    popup.classList.add('gagal', 'visible');
     popup.style.visibility = 'visible';
 }
 

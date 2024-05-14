@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Menjalankan query dan memeriksa apakah berhasil
     if ($conn->query($sql) === TRUE) {
-        header("Location: contact.html?status=success");
+        header("Location: contact.html?status=sukses");
     } else {
-        header("Location: contact.html?status=error");
+        header("Location: contact.html?status=gagal");
     }
 }
 
