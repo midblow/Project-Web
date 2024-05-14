@@ -44,13 +44,13 @@ if (!isset($_SESSION['error_message'])) {
             <label><input type="checkbox" />Remember Me</label>
             <a href="#">Forgot Password</a>
           </div>
-          <button>Log In</button>
+          <button type= 'submit' name='login'>Log In</button>
           <?php if (!empty($_SESSION['error_message'])): ?>
                     <div class="error-message"><?= $_SESSION['error_message']; ?></div>
                     <?php unset($_SESSION['error_message']); ?>
                 <?php endif; ?>
           <div class="register">
-            <p>Don't have an account? <a href="../Edorolli/css/signup.php">Sign Up</a></p>
+            <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
           </div>
         </form>
       </div>

@@ -20,7 +20,7 @@ section {
 .register {
   position: relative;
   width: 400px;
-  height: 550px;
+  height: 650px;
   background: transparent;
   border: none;
   border-radius: 20px;
@@ -124,7 +124,7 @@ button {
 }
 
 .error-message {
-  display: block; /* hanya tampilkan ketika ada error */
+  display: block; /* tampilkan ketika ada error */
   color: #d8000c;
   background-color: #ffd2d2;
   border: 1px solid #d8000c;

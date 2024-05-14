@@ -1,35 +1,45 @@
 <?php
+
+session_start();
 $name = $_POST['name'];
 $email = $_POST['gmail'];
 $password = $_POST['password'];
 
 $koneksi = mysqli_connect('localhost', 'root', '', 'project_pweb');
 
+function registrasi($data) {
+    global $koneksi;
+
+    $email = $data["gmail"];
+    $name = strtolower(stripslashes($data["name"]));
+    $password = mysqli_real_escape_string($koneksi, $data["password"]);
+
+    // Cek email
+    $result = mysqli_query($koneksi, "SELECT gmail FROM user WHERE gmail = '$email'");
+    if (mysqli_fetch_assoc($result)) {
+        $_SESSION['error_message'] = 'Email sudah tersedia, Gunakan email yang lain!';
+        header("Location: signup.php");
+        exit();
+    } 
+
+    // Tambah User
+    mysqli_query($koneksi, "INSERT INTO user (gmail, name, password) VALUES('$email', '$name', '$password')");
+
+    return mysqli_affected_rows($koneksi);
+}
+
 if ($koneksi->connect_error) {
-    die('Connection Failed : ' . $koneksi->connect_error);
-} else {
-    // Check if the email already exists
-    // $checkEmail = $koneksi->prepare('SELECT * FROM user WHERE gmail = ?');
-    // $checkEmail->bind_param('s', $email);
-    // $checkEmail->execute();
-    // $result = $checkEmail->get_result();
-    
-    // if ($result->num_rows > 0) {
-    //     // Set error message
-    //     $_SESSION['error_message'] = 'Email sudah tersedia, Gunakan email yang lain!';
-    //     header("Location: signup.php");
-    //     exit();
-    // } else {
-        // Email is not in the database, proceed with registration
-        $reg = $koneksi->prepare('insert into user(gmail, name, password) values(?, ?, ?)');
-        $reg->bind_param('sss', $email, $name, $password);
-        $reg->execute();
+    die('Connection Failed: ' . mysqli_connect_error());
+}
+
+if (isset($_POST['register'])) {
+    if (registrasi($_POST) > 0) {
         header("Location: login_user.php");
         exit();
-    // }
-
-    $checkEmail->close();
-    $reg->close();
-    $koneksi->close();
+    } else {
+        echo mysqli_connect_error();
+    }
 }
+
+$koneksi->close();
 ?>

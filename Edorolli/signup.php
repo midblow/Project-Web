@@ -34,7 +34,7 @@ session_start();
           </div>
           <div class="inputbox">
             <ion-icon name="person"></ion-icon>
-            <input type="nama" required name="name" />
+            <input type="text" required name="name" />
             <label>Nama</label>
           </div>
           <div class="inputbox">
@@ -45,13 +45,16 @@ session_start();
           <div class="forget">
             <label><input type="checkbox" />I Agree Terms & Conditions</label>
           </div>
-          <button>Sign In</button>
-          <!-- <?php if (!empty($_SESSION['error_message'])): ?>
-        <div class="error-message"><?= $_SESSION['error_message']; ?></div>
-        <?php unset($_SESSION['error_message']); // Clear the message after displaying ?>
-    <?php endif; ?> -->
+          <button type="submit" name="register">Sign In</button>
+          
+          
+          <?php if (!empty($_SESSION['error_message'])): ?>
+          <div class="error-message"><?= $_SESSION['error_message']; ?></div>
+          <?php unset($_SESSION['error_message']);?>
+          <?php endif; ?>
+
           <div class="login">
-            <p>Already have an account! <a href="../Edorolli/css/login_user.php">Log In</a></p>
+            <p>Already have an account! <a href="login_user.php">Log In</a></p>
           </div>
         </form>
       </div>

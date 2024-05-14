@@ -207,13 +207,15 @@ section {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #000;
+  font-weight: 600;
 }
 
 .plus-icon {
   cursor: pointer;
   font-size: 24px;
   color: #555;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .plus-icon .fa-solid {
@@ -225,6 +227,7 @@ section {
   align-items: center;
   font-size: 14px;
   padding: 0 10px 10px 10px;
+  font-weight: 600;
 }
 
 .location i {
