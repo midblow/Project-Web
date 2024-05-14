@@ -15,12 +15,12 @@
   transition: top 0.8s ease-in-out; /* Smooth transition */
 }
 
-.popup.success {
+.popup.sukses {
   border-color: green;
   color: green;
 }
 
-.popup.error {
+.popup.gagal {
   border-color: red !important;
   color: red !important;
 }
