@@ -12,7 +12,7 @@
   transform: translateX(-50%);
   font-size: 17px;
   border: 2px solid;
-  transition: top 5s ease-in-out; /* Smooth transition */
+  transition: top 0.8s ease-in-out; /* Smooth transition */
 }
 
 .popup.success {
@@ -21,10 +21,10 @@
 }
 
 .popup.error {
-  border-color: red;
-  color: red;
+  border-color: red !important;
+  color: red !important;
 }
 
-.popup.visible {
-  top: 110px; /* End position */
+.pop.visible{
+    top: 120px;
 }
