@@ -20,7 +20,7 @@ section {
 .register {
   position: relative;
   width: 400px;
-  height: 500px;
+  height: 650px !important;
   background: transparent;
   border: none;
   border-radius: 20px;
@@ -140,7 +140,7 @@ button {
   font-size: 0.9em;
   color: #fff;
   text-align: center;
-  margin: 15px 0 10px;
+  margin: 15px 0 0px;
 }
 
 .login p a {
