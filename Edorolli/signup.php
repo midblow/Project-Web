@@ -7,7 +7,8 @@ session_start();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign In</title>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../Edorolli/css/signup.css" />
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -16,24 +17,22 @@ session_start();
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <link rel="stylesheet" href="../Edorolli/css/signup.css" />
   </head>
-
   <body>
     <section>
       <div class="register">
         <form action="koneksiregister.php" method="post">
           <div class="gambar">
-            <img src="../Edorolli/image/hallo_user.png" />
+            <img src="../Edorolli/image/hallo_user.png"/>
           </div>
-          <h2>Signup</h2>
+          <h2>Sign Up</h2>
           <div class="inputbox">
             <ion-icon name="mail-outline"></ion-icon>
             <input type="email" required name="gmail" />
             <label>Email</label>
           </div>
           <div class="inputbox">
-            <ion-icon name="person"></ion-icon>
+            <ion-icon name="person-outline"></ion-icon>
             <input type="text" required name="name" />
             <label>Username</label>
           </div>
@@ -42,12 +41,32 @@ session_start();
             <input type="password" required name="password" />
             <label>Password</label>
           </div>
-          <div class="forget">
-            <label><input type="checkbox" />I Agree Terms & Conditions</label>
+          <div class="inputbox">
+            <ion-icon name="male-female-outline"></ion-icon>
+            <select required name="gender">
+              <option value="" disabled selected hidden>Jenis Kelamin</option>
+              <option value="male">Laki-laki</option>
+              <option value="female">Perempuan</option>
+            </select>
           </div>
-          <button type="submit" name="register">Sign In</button>
-          
-          
+          <div class="inputbox">
+            <ion-icon name="call-outline"></ion-icon>
+            <input type="tel" required name="phone" />
+            <label>Nomor Telepon</label>
+          </div>
+          <div class="inputbox">
+            <ion-icon name="location-outline"></ion-icon>
+            <input type="text" required name="address" />
+            <label>Alamat</label>
+          </div>
+          <div class="forget">
+            <label
+              ><input type="checkbox" required /> I Agree to the Terms &
+              Conditions</label
+            >
+          </div>
+          <button type="submit" name="register">Sign Up</button>
+
           <?php if (!empty($_SESSION['error_message'])): ?>
           <div class="error-message"><?= $_SESSION['error_message']; ?></div>
           <?php unset($_SESSION['error_message']);?>
