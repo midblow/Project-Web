@@ -34,7 +34,7 @@ session_start();
           <div class="inputbox">
             <ion-icon name="person-outline"></ion-icon>
             <input type="text" required name="name" />
-            <label>Username</label>
+            <label>Name</label>
           </div>
           <div class="inputbox">
             <ion-icon name="lock-closed-outline"></ion-icon>
