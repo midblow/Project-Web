@@ -166,7 +166,7 @@ section {
 
 .image-container {
   position: relative;
-  padding: 10px 10px 0 10px;
+  padding: 10px 10px 0 0px;
 }
 
 .image-container img {
@@ -240,6 +240,14 @@ section {
   margin: auto;
 }
 
+.events h2 {
+  font-weight: 800;
+  font-size: 35px;
+  color: #0c2240;
+  width: 100%;
+  line-height: 50px;
+}
+
 .owl-carousel .event-item {
   position: relative;
   text-align: center;
@@ -282,7 +290,6 @@ section {
 .event-card:hover .event-text {
   transform: scale(1.05);
 }
-
 footer {
   background-color: #0c2240; /* Warna latar belakang */
   color: white;
