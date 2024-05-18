@@ -281,7 +281,6 @@ section {
 .event-card:hover .event-text {
   transform: scale(1.05);
 }
-
 footer {
   background-color: #0c2240; /* Warna latar belakang */
   color: white;
