@@ -59,6 +59,5 @@ if (isset($_POST['register'])) {
     }
 }
 
-// Close the database connection
 mysqli_close($koneksi);
 ?>
