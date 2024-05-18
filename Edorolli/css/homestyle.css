@@ -243,7 +243,7 @@ section {
 .events h2 {
   font-weight: 800;
   font-size: 35px;
-  color: #0c2240;
+  color: #0c2240 !important;
   width: 100%;
   line-height: 50px;
 }
