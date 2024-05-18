@@ -21,7 +21,7 @@ session_start();
   <body>
     <section>
       <div class="register">
-        <form action="koneksiregister.php" method="post">
+        <form action="proses_register.php" method="post">
           <div class="gambar">
             <img src="../Edorolli/image/hallo_user.png"/>
           </div>

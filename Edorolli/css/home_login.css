@@ -5,9 +5,11 @@
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: white;
 }
 
 .wrapper {
@@ -34,9 +36,26 @@ body {
 
 .menu {
   float: right;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
-nav {
+.menu a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.menu a i {
+  margin-left: 7px;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+header {
   width: 100%;
   margin: auto;
   display: flex;
@@ -45,79 +64,329 @@ nav {
   position: -webkit-sticky;
   top: 0px;
   background-color: #0c2240;
+  z-index: 10;
+  justify-content: space-between; /* Ensure the elements are spread out */
+  align-items: center;
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-  overflow: hidden;
-}
-
-nav ul li {
-  float: left;
-}
-
-nav ul li a {
-  color: #ffffff;
-  font-weight: bold;
-  text-align: center;
-  padding: 0px 16px 0px 16px;
-}
-
-nav ul li a:hover {
-  color: #bf4f26;
-}
-
-.logout {
-  background-color: #bf4f26;
-  color: #ffffff;
-  padding: 5px 15px 5px 15px;
-}
-
-.logout:hover {
-  color: white !important;
-}
-
-section {
+main {
+  max-width: 1100px;
   margin: auto;
-  margin-bottom: 50px;
+  padding: 20px;
 }
 
-.homepage {
+.main-title {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.main-title h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.main-title nav a {
+  margin: 0 10px;
+  color: #bf4f26;
+  text-decoration: none;
+  font-size: 18px solid;
+  position: relative;
+  font-weight: 600;
+}
+
+.nav-item.active {
+  color: #0c2240; /* Blue color when active */
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  color: #0c2240; /* Hover color */
+}
+
+.nav-item:hover::after,
+.nav-item:focus::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+.popular-venue h2,
+.reservation-procedure h2,
+.events h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 2px solid #e4e4e4;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 270px; /* Adjusted width */
+  height: auto;
+}
+
+.venue-item .image-container {
+  position: relative;
+  padding: 10px 10px 0 10px;
+  height: 200px;
+}
+
+.venue-item .image-container img {
+  width: 100%;
+  height: 100%; /* Fixed height for consistency */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+}
+
+.heart-icon {
+  position: absolute;
+  top: 10px;
+  right: 17px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.heart-icon:hover {
+  color: #0c2240;
+}
+
+.heart-icon .fas {
+  color: #0c2240;
+}
+
+.info {
+  padding: 0 10px 0 10px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.landing img {
-  max-width: 300px;
-}
-.desc {
-  margin-left: 20px;
+.name {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #000;
+  font-weight: 600;
 }
 
-.desc h2 {
-  font-weight: 800;
-  font-size: 45px;
-  margin-top: 40px;
-  margin-bottom: 5px;
+.plus-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #555;
+  margin-left: 10px;
+}
+
+.plus-icon .fa-solid {
   color: #0c2240;
-  width: 100%;
-  line-height: 50px;
 }
 
-.desc h3 {
-  font-weight: 800;
-  font-size: 20px;
-  color: #0c2240;
+.location {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 0 10px 10px 10px;
+  font-weight: 600;
+}
+
+.location i {
+  margin-right: 5px;
+}
+
+.reservation-procedure {
+  background-color: transparent; /* Remove the box style */
+  box-shadow: none; /* Remove the box shadow */
+  padding: 0;
+  margin-top: 20px;
+}
+
+.procedure-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.step {
+  background-color: #ffe8d6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(50% - 10px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.step img {
+  width: 200px;
+  height: 200px;
+  margin-right: 10px;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 16px;
+  color: #666;
+}
+
+.events {
+  margin-top: 20px;
+}
+
+.owl-carousel .event-item {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
 }
 
-.populer h2 {
-  font-weight: 800;
-  font-size: 35px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  color: #0c2240;
+.event-item .event-card {
+  position: relative;
+}
+
+.event-card img {
   width: 100%;
-  line-height: 50px;
+  height: 200px; /* Fixed height for consistency */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+  transition: transform 0.3s ease;
+}
+
+.event-card .event-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.event-card:hover img {
+  transform: scale(1.05);
+}
+
+.event-card:hover .event-text {
+  transform: scale(1.05);
+}
+
+footer {
+  background-color: #0c2240; /* Warna latar belakang */
+  color: white;
+  padding: 40px 20px; /* Memberikan padding lebih besar untuk area footer */
+  font-family: "Poppins", sans-serif; /* Mengganti font */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: auto;
+  padding-bottom: 20px; /* Memberikan jarak bawah antara konten footer dan hak cipta */
+  border-bottom: 1px solid #fff; /* Optional: Menambahkan garis pemisah */
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-left img {
+  margin-right: 10px; /* Jarak antara logo dan nama */
+}
+
+.footer-left .nama_website a {
+  font-size: 30px; /* Ukuran font untuk nama website */
+  font-weight: bold;
+}
+
+.footer-center {
+  flex: 2;
+  margin-right: 15px;
+  margin-left: 30px;
+}
+
+.footer-center h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-center p {
+  margin-bottom: 20px; /* Memberikan jarak bawah */
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-right h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-right ul li {
+  margin-bottom: 10px; /* Memberikan jarak antar item */
+}
+
+.footer-right ul li a {
+  color: white; /* Warna link */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.footer-right ul li a i {
+  margin-right: 8px; /* Jarak antara ikon dan teks */
+}
+
+.footer-right ul li a:hover {
+  text-decoration: underline; /* Optional: Menambahkan underline saat hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px; /* Jarak atas antara konten footer dan teks hak cipta */
+  font-size: 14px;
 }
