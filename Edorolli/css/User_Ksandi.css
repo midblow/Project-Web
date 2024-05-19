@@ -1,0 +1,433 @@
+* {
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.wrapper {
+  width: 1100px;
+  margin: auto;
+  align-items: center;
+}
+
+.nama_website a {
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+  font-family: "Poppins";
+  color: #fff;
+}
+
+.logo img {
+  padding: 22px 10px 0px 0px;
+  vertical-align: center;
+  float: left;
+  max-width: 50px;
+  max-height: 30px;
+}
+
+.menu {
+  float: right;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.menu a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.menu a i {
+  margin-left: 7px;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+header {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  line-height: 80px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  background-color: #0c2240;
+  z-index: 10;
+  justify-content: space-between; /* Ensure the elements are spread out */
+  align-items: center;
+}
+
+section {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.main-title {
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.main-title h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.main-title nav a {
+  margin-right: 30px;
+  color: #bf4f26;
+  text-decoration: none;
+  font-size: 18px solid;
+  position: relative;
+  font-weight: 600;
+}
+
+.nav-item.active {
+  color: #0c2240; /* Blue color when active */
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  color: #0c2240; /* Hover color */
+}
+
+.nav-item:hover::after,
+.nav-item:focus::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+.container {
+  display: flex;
+  margin: 20px auto;
+  max-width: 1100px;
+  gap: 20px;
+}
+
+.sidebar {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px rgba(0.1, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.profile-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+.sidebar nav ul {
+  list-style: none; /* Menghilangkan tanda titik pada daftar */
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin: 15px 0; /* Menambahkan jarak antara elemen daftar */
+}
+
+.sidebar nav ul li a {
+  color: #0c2240;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar nav ul li a i {
+  font-size: 18px;
+}
+
+.sidebar nav ul li.active a {
+  color: #a62821;
+}
+
+.sidebar nav ul li.active a i {
+  color: #a62821;
+}
+
+.sidebar nav ul li a:hover {
+  text-decoration: underline;
+  color: #a62821;
+}
+
+.content {
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-header h1 {
+  font-size: 24px;
+  color: #0c2240;
+}
+
+.profile-header .tabs {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.profile-header .tabs li {
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+}
+
+.profile-header .tabs li.active {
+  color: #0c2240;
+  font-weight: bold;
+}
+
+.profile-details {
+  margin-bottom: 20px;
+  max-width: 100%; /* Atur batas lebar maksimum cardbox */
+  padding: 20px; /* Tambahkan padding untuk memberikan ruang di sekitar form */
+  box-sizing: border-box; /* Pastikan padding dihitung dalam lebar total */
+}
+
+.profile-details h2 {
+  font-size: 20px;
+  color: #0c2240;
+  margin-bottom: 20px;
+}
+
+.manage-account {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.manage-button {
+  background-color: #0c2240;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%; /* Pastikan tombol mengambil 100% lebar dari cardbox */
+}
+
+.manage-button:hover {
+  background-color: #bf4f26;
+}
+
+.change-password-form {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-password-form h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.change-password-form label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.change-password-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  opacity: 0.8;
+}
+
+.save-btn {
+  background-color: #a62821;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #bf4f26;
+}
+/* CSS untuk popup logout */
+.popup_logout {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content_logout {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content_logout i {
+  color: #a62821;
+  margin-bottom: 20px;
+}
+
+.popup-content_logout h2 {
+  color: #0c2240;
+  margin-bottom: 30px;
+}
+
+.popup-buttons_logout {
+  margin-top: 20px;
+}
+
+.popup-buttons_logout button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-buttons_logout .cancel-btnLO {
+  background-color: #0c2240;
+  color: #fff;
+}
+
+.popup-buttons_logout .confirm-btnLO {
+  background-color: #a62821;
+  color: #fff;
+}
+
+/* Tambahkan di akhir file CSS */
+
+.popup {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  position: relative;
+}
+
+.success-icon, .error-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.success-icon {
+  color: #28a745;
+}
+
+.error-icon {
+  color: #dc3545;
+  display: none;
+}
+
+.close-btn {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.close-btn:hover {
+  opacity: 0.8;
+}
