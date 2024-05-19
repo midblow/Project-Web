@@ -1,0 +1,319 @@
+* {
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Poppins", sans-serif;
+}
+.wrapper {
+    width: 1100px;
+    margin: auto;
+    align-items: center;
+}
+.login {
+    background-color: #bf4f26;
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 5px 15px;
+}
+.login:hover {
+    background-color: transparent;
+    border: 2px solid #bf4f26;
+    border-radius: 6px;
+    color: white;
+}
+.nama_website a {
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    font-family: "Poppins";
+    color: #fff;
+}
+.logo img {
+    padding: 22px 10px 0px 0px;
+    vertical-align: center;
+    float: left;
+    max-width: 50px;
+    max-height: 30px;
+}
+.menu {
+    float: right;
+}
+nav {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    line-height: 80px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0px;
+    background-color: #0c2240;
+    z-index: 10;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+nav ul li {
+    float: left;
+}
+nav ul li a {
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px 16px;
+}
+nav ul li a:hover {
+    color: #bf4f26;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+.image-container img {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    width: 25%;
+    margin: 5% 20px 15% 20px;
+}
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+    margin: auto;
+}
+header {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+header p {
+    margin: 10px 0;
+    color: #555;
+}
+.left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.permissions, .event-venue {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+}
+.permissions h2, .event-venue h2 {
+    margin-top: 0;
+}
+.permissions ul {
+    list-style: none;
+    padding: 0;
+}
+.permissions ul li {
+    margin: 5px 0;
+}
+.event-venue .images {
+    display: flex;
+    gap: 10px;
+}
+.event-venue .images img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.right-section {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.book-button {
+    background-color: #007bff;
+    color: white;
+}
+.whatsapp-button {
+    background-color: #25d366;
+    color: white;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #fff;
+}
+  
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+  
+.footer-left img {
+    margin-right: 10px;
+}
+  
+.footer-left .nama_website a {
+    font-size: 30px;
+    font-weight: bold;
+}
+  
+.footer-center {
+    flex: 2;
+    margin-right: 15px;
+    margin-left: 30px;
+}
+  
+.footer-center h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+  
+.footer-center p {
+    margin-bottom: 20px;
+}
+  
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+  
+.footer-right h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+  
+.footer-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.footer-right ul li {
+    margin-bottom: 10px;
+}
+  
+.footer-right ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+  
+.footer-right ul li a i {
+    margin-right: 8px;
+}
+  
+.footer-right ul li a:hover {
+    text-decoration: underline;
+}
+  
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.book-button, .whatsapp-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0c2240;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.book-button:hover, .whatsapp-button:hover {
+    background-color: #bf4f26;
+}
+
+/* Pop-up styling */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.payment-method {
+    margin: 10px;
+    padding: 10px;
+    background-color: #0c2240;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.payment-method:hover {
+    background-color: #bf4f26;
+}

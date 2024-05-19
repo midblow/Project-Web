@@ -20,7 +20,7 @@ if ( isset($_POST['login'])){
     if ($result->num_rows == 0) {
         // Tidak ada user yang ditemukan dengan email tersebut
         $_SESSION['error_message'] = "Akun Anda belum terdaftar!";
-        header("Location: login_user.php");
+        header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
         exit();
     } else {
         $stmt = $koneksi->prepare("SELECT password FROM user WHERE gmail = ?");
@@ -31,12 +31,12 @@ if ( isset($_POST['login'])){
         $user = $result->fetch_assoc();
         if ($user['password'] === $password) {
             // Password cocok, redirect ke halaman home
-            header("Location: home_login.html");
+            header("Location:  http://localhost/Project-Web/Edorolli/home_login.html");
             exit();
         } else {
             // Password tidak cocok
             $_SESSION['error_message'] = "Email atau password salah!";
-            header("Location: login_user.php");
+            header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
             exit();
         }
     }

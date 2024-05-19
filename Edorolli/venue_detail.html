@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Detail</title>
+    <link rel="stylesheet" href="../Edorolli/css/venue_detail.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    >
+    <script src="venue_popup.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+          <div class="logo">
+            <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
+          </div>
+          <div class="nama_website">
+            <a>Edoroli</a>
+          </div>
+          <div class="menu">
+            <ul>
+              <li><a href="homepage.html">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="role-selection.html" class="login">Get Started</a></li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="image-container"> 
+        <img src="../Edorolli/image/Gelanggang_Pemuda.png" alt="Edoroli Logo" />
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Taman Sangkareang</h1>
+            <p>Jl. Pendidikan, Dasan Agung Baru, Kec. Selaparang, Kota Mataram, Nusa Tenggara Barat</p>
+        </header>
+        
+        <section class="left-section">
+            <div class="permissions">
+                <h2>Perizinan</h2>
+                <ul>
+                    <li>Izin Operasional</li>
+                    <li>Izin Lingkungan</li>
+                    <li>Izin Acara</li>
+                </ul>
+            </div>
+            <div class="event-venue">
+                <h2>About event venue</h2>
+                <div class="images">
+                    <img src="../Edorolli/image/event1.jpg" alt="Event 1">
+                    <img src="../Edorolli/image/event2.jpg" alt="Event 2">
+                    <img src="../Edorolli/image/event3.jpg" alt="Event 3">
+                </div>
+            </div>
+        </section>
+        <section class="right-section">
+            <form>
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date">
+                
+                <label for="rooms">Rooms</label>
+                <input type="text" id="rooms" name="rooms">
+                
+                <button type="button" class="book-button" id="bookButton">Book</button>
+                <button type="button" class="whatsapp-button">whatsApp</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Payment Method Popup -->
+    <div id="paymentPopup" class="popup">
+      <div class="popup-content">
+          <span class="close" id="closePopup">&times;</span>
+          <h2>Select Payment Method</h2>
+          <button class="payment-method">Credit Card</button>
+          <button class="payment-method">PayPal</button>
+          <button class="payment-method">Bank Transfer</button>
+      </div>
+  </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
+          <div class="nama_website">
+            <a>Edoroli</a>
+          </div>
+        </div>
+        <div class="footer-center">
+          <h3>TENTANG EDOROLI</h3>
+          <p>
+            Edoroli adalah portal reservasi veneu pertama di Indonesia, yang
+            menyediakan akses informasi yang lengkap dan sistem yang mudah,
+            cepat, dan efisien.
+          </p>
+        </div>
+        <div class="footer-right">
+          <h3>SOSIAL MEDIA</h3>
+          <ul>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
+      </div>
+    </footer>
+</body>
+</html>
