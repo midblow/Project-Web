@@ -1,7 +1,7 @@
 document.getElementById("editBtn").addEventListener("click", function () {
-  document
-    .getElementById("profileForm")
-    .querySelectorAll("input, textarea")
+  // Mengaktifkan semua input dan textarea kecuali input gender
+  document.getElementById("profileForm")
+    .querySelectorAll("input:not(#gender), textarea")
     .forEach(function (element) {
       element.disabled = false;
     });
@@ -11,8 +11,8 @@ document.getElementById("editBtn").addEventListener("click", function () {
 });
 
 document.getElementById("cancelBtn").addEventListener("click", function () {
-  document
-    .getElementById("profileForm")
+  // Menonaktifkan semua input dan textarea
+  document.getElementById("profileForm")
     .querySelectorAll("input, textarea")
     .forEach(function (element) {
       element.disabled = true;
@@ -21,4 +21,3 @@ document.getElementById("cancelBtn").addEventListener("click", function () {
   document.getElementById("cancelBtn").style.display = "none";
   document.getElementById("saveBtn").style.display = "none";
 });
-

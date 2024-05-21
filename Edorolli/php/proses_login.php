@@ -6,32 +6,40 @@ if (!$koneksi) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
 
-if ( isset($_POST['login'])){
-    
+if (isset($_POST['login'])) {
     $gmail = $_POST['gmail'];
     $password = $_POST['password'];
-
-
-    $stmt = $koneksi->prepare("SELECT gmail FROM user WHERE gmail = ?");
+    
+    // Mencari user berdasarkan email
+    $stmt = $koneksi->prepare("SELECT id, name, password, gender, nomorhp, alamat, gmail FROM user WHERE gmail = ?");
     $stmt->bind_param("s", $gmail);
     $stmt->execute();
     $result = $stmt->get_result();
-
+    
     if ($result->num_rows == 0) {
         // Tidak ada user yang ditemukan dengan email tersebut
         $_SESSION['error_message'] = "Akun Anda belum terdaftar!";
         header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
         exit();
     } else {
-        $stmt = $koneksi->prepare("SELECT password FROM user WHERE gmail = ?");
-        $stmt->bind_param("s", $gmail);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
+        // Ambil data user
         $user = $result->fetch_assoc();
         if ($user['password'] === $password) {
-            // Password cocok, redirect ke halaman home
-            header("Location:  http://localhost/Project-Web/Edorolli/home_login.html");
+            // Password cocok, set sesi dengan data user
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['name'] = $user['name'];
+            $_SESSION['gender'] = $user['gender'];
+            $_SESSION['nomorhp'] = $user['nomorhp'];
+            $_SESSION['alamat'] = $user['alamat'];
+            $_SESSION['gmail'] = $user['gmail'];
+            
+            // Debugging: Cetak sesi untuk memastikan nilai yang benar
+            // echo "Sesi diatur dengan data baru: ";
+            // print_r($_SESSION);
+            // exit();
+            
+            // Redirect ke halaman home_login.php
+            header("Location: http://localhost/Project-Web/Edorolli/home_login.php");
             exit();
         } else {
             // Password tidak cocok

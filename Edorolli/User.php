@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION['name'])) {
+  // Jika sesi nama tidak diatur, redirect ke halaman login
+  header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
+  exit();
+}
+
+$nicknameArray = explode(' ', $_SESSION['name']);
+$nickname = $nicknameArray[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +35,7 @@
           <a>Edoroli</a>
         </div>
         <div class="menu">
-          <a href=""> Hallo User<i class="far fa-user"></i></a>
+          <a href=""> Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
         </div>
       </div>
     </header>
@@ -32,9 +43,9 @@
     <section class="main-title">
       <h1>Kelola Akun Anda</h1>
       <nav>
-        <a href="User.html" class="nav-item active">Profile</a>
+        <a href="User.php" class="nav-item active">Profile</a>
         <a href="Riwayat Reservasi" class="nav-item">Riwayat Reservasi</a>
-        <a href="User_KSandi.html" class="nav-item">Kelola Akun</a>
+        <a href="User_KSandi.php" class="nav-item">Kelola Akun</a>
       </nav>
     </section>
 
@@ -43,13 +54,13 @@
         <div class="sidebar">
           <div class="profile-info">
             <img src="../Edorolli/image/MLBB.jpg" alt="Profile Picture" />
-            <h3>Alfin Nashirul</h3>
-            <p>alfin@gmail.com</p>
+            <h3><?php echo $_SESSION['name']; ?></h3>
+            <p><?php echo $_SESSION['gmail']; ?></p>
           </div>
           <nav>
             <ul>
               <li class="active">
-                <a href="User.html"><i class="far fa-user"></i> Profile</a>
+                <a href="User.php"><i class="far fa-user"></i> Profile</a>
               </li>
               <li>
                 <a href="#"
@@ -57,7 +68,7 @@
                 >
               </li>
               <li>
-                <a href="User_KSandi.html"
+                <a href="User_KSandi.php"
                   ><i class="fas fa-cogs"></i> Kelola Akun</a
                 >
               </li>
@@ -73,13 +84,13 @@
         <div class="content">
           <div class="profile-details">
             <h2>Profile</h2>
-            <form id="profileForm" action="update_profile.php" method="POST">
+            <form id="profileForm" action="php/update_profile.php" method="POST">
               <label for="name">Nama</label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                value="Alfin Nashirul"
+                value="<?php echo $_SESSION['name']; ?>"
                 disabled
               />
               <label for="email">Email</label>
@@ -87,7 +98,7 @@
                 type="email"
                 id="email"
                 name="email"
-                value="alfin@gmail.com"
+                value="<?php echo $_SESSION['gmail']; ?>"
                 disabled
               />
               <label for="gender">Jenis Kelamin</label>
@@ -95,7 +106,8 @@
                 type="text"
                 id="gender"
                 name="gender"
-                value="Laki-Laki"
+                value="<?php echo $_SESSION['gender']; 
+                ?>"
                 disabled
               />
               <label for="phone">Nomor Telepon</label>
@@ -103,12 +115,11 @@
                 type="text"
                 id="phone"
                 name="phone"
-                value="08786444152"
+                value="<?php echo $_SESSION['phone']; ?>"
                 disabled
               />
               <label for="address">Alamat</label>
-              <textarea id="address" name="address" rows="4" disabled>
-JL asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</textarea
+              <textarea id="address" name="address" rows="4" disabled><?php echo $_SESSION['address']; ?></textarea
               >
               <div class="button-group">
                 <button type="button" id="editBtn" class="edit-btn">

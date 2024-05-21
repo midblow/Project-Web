@@ -45,8 +45,8 @@ session_start();
             <ion-icon name="male-female-outline"></ion-icon>
             <select required name="gender">
               <option value="" disabled selected hidden>Jenis Kelamin</option>
-              <option value="male">Laki-laki</option>
-              <option value="female">Perempuan</option>
+              <option value="Laki-laki">Laki-laki</option>
+              <option value="Perempuan">Perempuan</option>
             </select>
           </div>
           <div class="inputbox">

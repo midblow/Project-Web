@@ -1,22 +1,31 @@
-// Mengecek URL parameter untuk status
-const urlParams = new URLSearchParams(window.location.search);
-const status = urlParams.get("status");
-const popup = document.getElementById("popup");
+document.addEventListener('DOMContentLoaded', function() {
+    var popup = document.getElementById('popup');
+    var popupMessage = document.getElementById('popup-message');
+    var close = document.querySelector('.close');
 
-if (status === "sukses") {
-  popup.textContent = "Terimakasih! Pesan anda telah terkirim^^";
-  popup.classList.add("sukses");
-  popup.style.visibility = "visible";
-} else if (status === "gagal") {
-  popup.textContent =
-    "Maaf, pesan anda tidak terkirim. Silahkan mengirimkan kembali";
-  popup.classList.add("gagal");
-  popup.style.visibility = "visible";
-}
+    // Menutup popup ketika tombol 'close' diklik
+    close.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
 
-// Menghilangkan popup setelah 5 detik
-if (status) {
-  setTimeout(() => {
-    popup.style.visibility = "hidden";
-  }, 5000);
-}
+    // Menutup popup ketika area luar popup diklik
+    window.addEventListener('click', function(event) {
+        if (event.target == popup) {
+            popup.style.display = 'none';
+        }
+    });
+
+    // Mendapatkan parameter dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+
+    // Menampilkan pesan popup berdasarkan status
+    if (status) {
+        if (status === 'success') {
+            popupMessage.textContent = 'Thank you for contacting us. We will get back to you soon.';
+        } else if (status === 'error') {
+            popupMessage.textContent = 'There was an error sending your message. Please try again later.';
+        }
+        popup.style.display = 'block';
+    }
+});

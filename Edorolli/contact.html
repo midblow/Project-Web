@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edoroli - About Us</title>
@@ -14,102 +14,96 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-  </head>
-  <body>
-    <nav>
-      <div class="wrapper">
+    <script src="js/contact_submit.js"></script>
+</head>
+<body>
+<nav>
+    <div class="wrapper">
         <div class="logo">
-          <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
+            <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
         </div>
         <div class="nama_website">
-          <a>Edoroli</a>
+            <a>Edoroli</a>
         </div>
         <div class="menu">
-          <ul>
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="role-selection.html" class="login">Get Started</a></li>
-          </ul>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="role-selection.html" class="login">Get Started</a></li>
+            </ul>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="wrapper">
-      <section id="contact">
+<div class="wrapper">
+    <section id="contact">
         <h1>Contact us</h1>
         <h2>Questions, concerns, feedback?</h2>
         <div class="contact-container">
-          <div class="contact-form">
-            <p>Fill in the form below :</p>
-            <form action="../Edorolli/php/contact_submit.php" method="post">
-              <label for="name">Nama*</label>
-              <input type="text" id="name" name="name" required />
+            <div class="contact-form">
+                <p>Fill in the form below :</p>
+                <form action="../Edorolli/php/contact_submit.php" method="post">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" required />
 
-              <label for="email">Email*</label>
-              <input type="email" id="email" name="email" required />
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required />
 
-              <label for="phone">Phone Number*</label>
-              <input type="telp" id="phone" name="phone" required />
+                    <label for="phone">Phone Number*</label>
+                    <input type="tel" id="phone" name="phone" required />
 
-              <label for="message">Message*</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                required
-              ></textarea>
+                    <label for="message">Message*</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
 
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-          <div class="contact-info">
-            <h2>Our address</h2>
-            <img src="../Edorolli/image/map.jpg" />
-            <p>
-              Address: Jl. Bypass No 28, Desa Kurangi Dalang, Lombok Barat, NTB
-            </p>
-            <p>Phone: +62 823-4012-6503</p>
-            <p>Email: edoroli@gmail.com</p>
-          </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h2>Our address</h2>
+                <img src="../Edorolli/image/map.jpg" />
+                <p>Address: Jl. Bypass No 28, Desa Kurangi Dalang, Lombok Barat, NTB</p>
+                <p>Phone: +62 823-4012-6503</p>
+                <p>Email: edoroli@gmail.com</p>
+            </div>
         </div>
-      </section>
-    </div>
+    </section>
+</div>
 
-    <footer>
-      <div class="footer-container">
+<!-- Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <p id="popup-message"></p>
+    </div>
+</div>
+
+
+<footer>
+    <div class="footer-container">
         <div class="footer-left">
-          <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
-          <div class="nama_website">
-            <a>Edoroli</a>
-          </div>
+            <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
+            <div class="nama_website">
+                <a>Edoroli</a>
+            </div>
         </div>
         <div class="footer-center">
-          <h3>TENTANG EDOROLI</h3>
-          <p>
-            Edoroli adalah portal reservasi veneu pertama di Indonesia, yang
-            menyediakan akses informasi yang lengkap dan sistem yang mudah,
-            cepat, dan efisien.
-          </p>
+            <h3>TENTANG EDOROLI</h3>
+            <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
         </div>
         <div class="footer-right">
-          <h3>SOSIAL MEDIA</h3>
-          <ul>
-            <li>
-              <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a>
-            </li>
-          </ul>
+            <h3>SOSIAL MEDIA</h3>
+            <ul>
+                <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+            </ul>
         </div>
-      </div>
-      <div class="footer-bottom">
+    </div>
+    <div class="footer-bottom">
         <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
-      </div>
-    </footer>
-    <div id="popup" class="popup"></div>
+    </div>
+</footer>
 
-    <script src="../Edorolli/js/contact_submit.js"></script>
-  </body>
+<script src="../Edorolli/js/contact_submit.js"></script>
+</body>
 </html>

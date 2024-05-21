@@ -1,30 +1,24 @@
 <?php
 session_start();
 
-// Konfigurasi database
-$servername = "localhost";
-$username = "username"; // ganti dengan username database Anda
-$password = "password"; // ganti dengan password database Anda
-$dbname = "database_name"; // ganti dengan nama database Anda
-
 // Membuat koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect('localhost', 'root', '', 'project_pweb');
 
 // Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
 
 // Periksa apakah form sudah disubmit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Ambil email pengguna dari sesi atau form (disesuaikan dengan implementasi Anda)
-    if (!isset($_SESSION['email'])) {
+    if (!isset($_SESSION['id'])) {
         echo "<script>showPopup(false, 'Akses tidak sah.');</script>";
         exit;
     }
 
-    $email = $_SESSION['email'];
-    
+    $email = $_SESSION['gmail'];
+
     // Ambil kata sandi baru dari form
     $newPassword = $_POST['newPassword'];
     $confirmPassword = $_POST['confirmPassword'];
@@ -35,13 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Hash kata sandi baru
-    $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
 
     // Perbarui kata sandi di database
-    $sql = "UPDATE users SET password = ? WHERE email = ?";
+    $sql = "UPDATE user SET password = ? WHERE gmail = ?";
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param('ss', $hashedPassword, $email);
+        $stmt->bind_param('ss', $newPassword, $email);
         if ($stmt->execute()) {
             echo "<script>showPopup(true, 'Kata Sandi Berhasil Disimpan');</script>";
         } else {
@@ -49,11 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $stmt->close();
     } else {
-        echo "<script>showPopup(false, 'Terjadi kesalahan, silakan coba lagi.');</script>";
+        echo "<script>showPopup(false, 'Terjadi kesalahan dalam persiapan statement.');</script>";
     }
-    
+
     $conn->close();
 } else {
     echo "<script>showPopup(false, 'Akses tidak sah.');</script>";
 }
-?>

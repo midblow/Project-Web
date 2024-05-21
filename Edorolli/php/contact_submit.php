@@ -1,36 +1,34 @@
 <?php
-$servername = "localhost";
-$username = "root";       
-$password = "";           
-$dbname = "project_pweb";
 
-// Membuat koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
+$koneksi = mysqli_connect('localhost', 'root', '', 'project_pweb');
 
 // Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+if ($koneksi->connect_error) {
+    die("Koneksi gagal: " . $koneksi->connect_error);
 }
 
 // Memeriksa apakah form telah disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Mengambil data dari form
-    $name = $conn->real_escape_string($_POST['name']);
-    $email = $conn->real_escape_string($_POST['email']);
-    $phone = $conn->real_escape_string($_POST['phone']);
-    $message = $conn->real_escape_string($_POST['message']);
+    $name = $koneksi->real_escape_string($_POST['name']);
+    $email = $koneksi->real_escape_string($_POST['email']);
+    $phone = $koneksi->real_escape_string($_POST['phone']);
+    $message = $koneksi->real_escape_string($_POST['message']);
 
     // Menyusun query untuk memasukkan data ke dalam tabel contact
     $sql = "INSERT INTO contact (name, email, phone, message) VALUES ('$name', '$email', '$phone', '$message')";
 
+    // Set cookie dengan status
+    // setcookie("status", "success", time() + (86400 * 30), "/"); // status success, berlaku selama 30 hari
+
     // Menjalankan query dan memeriksa apakah berhasil
-    if ($conn->query($sql) === TRUE) {
-        header("Location: contact.html?status=sukses");
+    if ($koneksi->query($sql) === TRUE) {
+        header("Location: http://localhost/Project-Web/Edorolli/contact.html?status=success");
     } else {
-        header("Location: contact.html?status=gagal");
+        header("Location: http://localhost/Project-Web/Edorolli/contact.html?status=error");
     }
 }
 
 // Menutup koneksi
-$conn->close();
+$koneksi->close();
 ?>

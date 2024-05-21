@@ -1,6 +1,18 @@
+<?php
+session_start();
+if (!isset($_SESSION['name'])) {
+  // Jika sesi nama tidak diatur, redirect ke halaman login
+  header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
+  exit();
+}
+
+$nicknameArray = explode(' ', $_SESSION['name']);
+$nickname = $nicknameArray[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edoroli - Reservasi Venue Online</title>
@@ -28,7 +40,7 @@
           <a>Edoroli</a>
         </div>
         <div class="menu">
-          <a href="User.html"> Hallo User<i class="far fa-user"></i></a>
+          <a href="User.php"> Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
         </div>
       </div>
     </header>
