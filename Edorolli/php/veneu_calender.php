@@ -1,15 +1,14 @@
 <?php
 header('Content-Type: application/json');
 
-$conn = new mysqli('localhost', 'root', '', 'project_pweb');
 
-// Check connection
+$conn = mysqli_connect('localhost', 'root', '', 'project_pweb');
+
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die(json_encode(['error' => 'Database connection failed']));
 }
 
-// Fetch bookings
-$sql = "SELECT start_date, end_date, status FROM bookings";
+$sql = "SELECT start_date, end_date, status FROM booking";
 $result = $conn->query($sql);
 
 $bookings = array();

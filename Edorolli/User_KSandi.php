@@ -150,15 +150,5 @@ $nickname = $nicknameArray[0];
 
     <script src="../Edorolli/js/logoutUser.js"></script>
     <script src="../Edorolli/js/ChangePass.js" defer></script>
-    <script>
-      // Menampilkan popup berdasarkan URL parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      const status = urlParams.get('status');
-      const message = urlParams.get('message');
-
-      if (status && message) {
-          showPopup(status === 'success', decodeURIComponent(message));
-      }
-    </script>
   </body>
 </html>
