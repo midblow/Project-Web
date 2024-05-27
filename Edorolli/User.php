@@ -32,7 +32,7 @@ $nickname = $nicknameArray[0];
           <img src="../Edorolli/image/logo.png" />
         </div>
         <div class="nama_website">
-          <a>Edoroli</a>
+          <a href="home_login.php">Edoroli</a>
         </div>
         <div class="menu">
           <a href=""> Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
@@ -119,7 +119,7 @@ $nickname = $nicknameArray[0];
                 disabled
               />
               <label for="address">Alamat</label>
-              <textarea id="address" name="address" rows="4" disabled><?php echo $_SESSION['address']; ?></textarea
+              <textarea id="address" name="address" rows="4" disabled><?php echo $_SESSION['alamat']; ?></textarea
               >
               <div class="button-group">
                 <button type="button" id="editBtn" class="edit-btn">

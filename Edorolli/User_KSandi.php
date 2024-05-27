@@ -24,7 +24,6 @@ $nickname = $nicknameArray[0];
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="stylesheet" href="../Edorolli/css/User_Ksandi.css" />
-    <script src="js/ChangePass.js"></script>
   </head>
   <body>
     <header>
@@ -149,5 +148,17 @@ $nickname = $nicknameArray[0];
       </div>
     </div>
 
+    <script src="../Edorolli/js/logoutUser.js"></script>
+    <script src="../Edorolli/js/ChangePass.js" defer></script>
+    <script>
+      // Menampilkan popup berdasarkan URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const status = urlParams.get('status');
+      const message = urlParams.get('message');
+
+      if (status && message) {
+          showPopup(status === 'success', decodeURIComponent(message));
+      }
+    </script>
   </body>
 </html>

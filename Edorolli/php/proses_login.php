@@ -29,9 +29,11 @@ if (isset($_POST['login'])) {
             $_SESSION['id'] = $user['id'];
             $_SESSION['name'] = $user['name'];
             $_SESSION['gender'] = $user['gender'];
-            $_SESSION['nomorhp'] = $user['nomorhp'];
-            $_SESSION['alamat'] = $user['alamat'];
             $_SESSION['gmail'] = $user['gmail'];
+            $_SESSION['phone'] = $user['nomorhp'];
+            $_SESSION['alamat'] = $user['alamat'];
+            // $hp = $_SESSION['nomorhp'];
+            // var_dump($hp); die;
             
             // Debugging: Cetak sesi untuk memastikan nilai yang benar
             // echo "Sesi diatur dengan data baru: ";
