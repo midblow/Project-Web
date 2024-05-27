@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edoroli - Reservasi Venue Online</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/Edorolli/css/home_prov.css" />
+  </head>
+  <body>
+    <header>
+      <div class="wrapper">
+        <div class="logo">
+          <img src="/Edorolli/image/logo.png" />
+        </div>
+        <div class="nama_website">
+          <a>Edoroli</a>
+        </div>
+        <div class="menu">
+          <a href="User.php"> Hallo Provider<i class="far fa-user"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="main-title">
+        <nav>
+          <a href="../Provider/home_prov.html" class="nav-item active" id="all-stay">All Stay</a>
+          <a href="veneu_prov.html" class="nav-item" id="venue">My Venue</a>
+          <a href="events1.html" class="nav-item" id="booking">Booking Confirmation</a>
+        </nav>
+      </section>
+
+      <section class="popular-venue">
+        <h2>Populer Venue (Best Venue)</h2>
+        <div id="venue-carousel">
+          <div class="venue-item">
+            <div class="card">
+              <div class="image-container">
+                <img src="/Edorolli/image/Sangkareang.jpg" alt="Taman Sangkareang" />
+                <span class="heart-icon"
+                  ><i class="far fa-heart" onclick="klikLike(this)"></i
+                ></span>
+              </div>
+              <div class="info">
+                <p class="name">Taman Sangkareang</p>
+                <span class="plus-icon"
+                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
+                ></span>
+              </div>
+              <div class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Mataram</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reservation-procedure">
+        <h2>List Veneu As Kontol</h2>
+          <div class="venue-item">
+            <div class="card">
+              <div class="image-container">
+                <img src="/Edorolli/image/Sangkareang.jpg" alt="Taman Sangkareang" />
+                <span class="heart-icon"
+                  ><i class="far fa-heart" onclick="klikLike(this)"></i
+                ></span>
+              </div>
+              <div class="info">
+                <p class="name">Taman Sangkareang</p>
+                <span class="plus-icon"
+                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
+                ></span>
+              </div>
+              <div class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Mataram</span>
+              </div>
+            </div>
+          </div>
+          <div class="venue-item">
+            <div class="card">
+              <div class="image-container">
+                <img src="/Edorolli/image/Pantai_Senggigi.jpg" alt="Pantai Senggigi" />
+                <span class="heart-icon"
+                  ><i class="far fa-heart" onclick="klikLike(this)"></i
+                ></span>
+              </div>
+              <div class="info">
+                <p class="name">Pantai Senggigi</p>
+                <span class="plus-icon"
+                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
+                ></span>
+              </div>
+              <div class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Senggigi</span>
+              </div>
+            </div>
+          </div>
+          <div class="venue-item">
+            <div class="card">
+              <div class="image-container">
+                <img
+                  src="/Edorolli/image/Narmada_Convention_Hall.jpg"
+                  alt="Narmada Convention Hall"
+                />
+                <span class="heart-icon"
+                  ><i class="far fa-heart" onclick="klikLike(this)"></i
+                ></span>
+              </div>
+              <div class="info">
+                <p class="name">Narmada Convention Hall</p>
+                <span class="plus-icon"
+                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
+                ></span>
+              </div>
+              <div class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Mataram</span>
+              </div>
+            </div>
+          </div>
+          <div class="venue-item">
+            <div class="card">
+              <div class="image-container">
+                <img src="/Edorolli/image/Grand_Imperial.jpg" alt="Grand Imperial Ballroom" />
+                <span class="heart-icon"
+                  ><i class="far fa-heart" onclick="klikLike(this)"></i
+                ></span>
+              </div>
+              <div class="info">
+                <p class="name">Grand Imperial Ballroom</p>
+                <span class="plus-icon"
+                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
+                ></span>
+              </div>
+              <div class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Mataram</span>
+              </div>
+            </div>
+          </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="/Edorolli/image/logo.png" alt="Edoroli Logo" />
+          <div class="nama_website">
+            <a>Edoroli</a>
+          </div>
+        </div>
+        <div class="footer-center">
+          <h3>TENTANG EDOROLI</h3>
+          <p>
+            Edoroli adalah portal reservasi veneu pertama di Indonesia, yang
+            menyediakan akses informasi yang lengkap dan sistem yang mudah,
+            cepat, dan efisien.
+          </p>
+        </div>
+        <div class="footer-right">
+          <h3>SOSIAL MEDIA</h3>
+          <ul>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script src="/Edorolli/js/home_login.js"></script>
+    <script src="/Edorolli/js/iconHomepage.js"></script>
+  </body>
+</html>
