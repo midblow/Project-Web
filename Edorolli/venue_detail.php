@@ -148,5 +148,6 @@ $nickname = $nicknameArray[0];
     
     <script src="../Edorolli/js/veneu_calender.js"></script>
     <script src="../Edorolli/js/venue_popup.js"></script>
+    <!-- <script src="../Edorolli/js/ConfirmPayment.js"></script> -->
   </body>
 </html>

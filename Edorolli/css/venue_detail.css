@@ -293,30 +293,35 @@ form button {
 }
 
 #calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px; /* Atur gap antar elemen */
+    padding: 10px; /* Sesuaikan padding */
+    background-color: white; /* Warna latar belakang kalender */
+    box-sizing: border-box;
 }
 
-#calendar div {
-  text-align: center;
-  padding: 10px;
-  background-color: #ffffff;
-  border-radius: 5px;
+#calendar .day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Sesuaikan tinggi elemen */
+    border: 1px solid #ddd; /* Border untuk setiap elemen */
+    box-sizing: border-box;
 }
 
-#calendar, .waiting {
-  background-color: yellow;
+#calendar .waiting {
+    background-color: yellow;
 }
 
 #calendar .confirmed {
-  background-color: green;
-  color: white;
+    background-color: green;
+    color: white;
 }
 
 #calendar .reserved {
-  background-color: red;
-  color: white;
+    background-color: red;
+    color: white;
 }
 
 /* Pop-up styling */
