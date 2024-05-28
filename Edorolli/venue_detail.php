@@ -95,9 +95,7 @@ $nickname = $nicknameArray[0];
             <label for="end_date">End Date</label>
             <input type="date" id="end_date" name="end_date" />
 
-            <button type="button" class="book-button" id="bookButton" disabled>
-              Book
-            </button>
+            <button type="button" class="book-button" id="bookButton" disabled> Book</button>
             <button type="button" class="whatsapp-button">WhatsApp</button>
           </form>
         </div>
@@ -148,6 +146,6 @@ $nickname = $nicknameArray[0];
     
     <script src="../Edorolli/js/veneu_calender.js"></script>
     <script src="../Edorolli/js/venue_popup.js"></script>
-    <!-- <script src="../Edorolli/js/ConfirmPayment.js"></script> -->
+    <script src="../Edorolli/js/ConfirmPayment.js"></script>
   </body>
 </html>

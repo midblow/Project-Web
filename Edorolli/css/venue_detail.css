@@ -299,6 +299,7 @@ form button {
     padding: 10px; /* Sesuaikan padding */
     background-color: white; /* Warna latar belakang kalender */
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 #calendar .day {
@@ -308,6 +309,7 @@ form button {
     height: 50px; /* Sesuaikan tinggi elemen */
     border: 1px solid #ddd; /* Border untuk setiap elemen */
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 #calendar .waiting {

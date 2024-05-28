@@ -10,14 +10,15 @@ if ($conn->connect_error) {
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-if (isset($data['start_date']) && isset($data['end_date']) && isset($data['status'])) {
+if (isset($data['start_date']) && isset($data['end_date']) && isset($data['status']) && isset($data['payment_method'])) {
     $start_date = $data['start_date'];
     $end_date = $data['end_date'];
     $status = $data['status'];
+    $payment_method = $data['payment_method'];
     $user_id = $_SESSION['id']; // Example user ID
 
-    $stmt = $conn->prepare("INSERT INTO booking (user_id, start_date, end_date, status) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("isss", $user_id, $start_date, $end_date, $status);
+    $stmt = $conn->prepare("INSERT INTO booking (user_id, start_date, end_date, status, metode_pembayaran) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("issss", $user_id, $start_date, $end_date, $status, $payment_method);
 
     if ($stmt->execute()) {
         echo json_encode(['success' => true]);
@@ -29,3 +30,4 @@ if (isset($data['start_date']) && isset($data['end_date']) && isset($data['statu
 }
 
 $conn->close();
+?>
