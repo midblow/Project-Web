@@ -14,15 +14,15 @@ if (!isset($_SESSION['error_message'])) {
   <title>Log In!!</title>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <link rel="stylesheet" href="../Edorolli/css/login_user.css" />
+  <link rel="stylesheet" href="../css/prov_login.css" />
 </head>
 
 <body>
   <section>
     <div class="form-box">
-      <form id='login' action="../Edorolli/php/GAWEK_SUDAH.php" method="post">
+      <form id='login' action="../php/prov_masuk.php" method="post">
         <div class="gambar">
-          <img src="../Edorolli/image/hallo_user.png" />
+          <img src="../image/hallo_user.png" />
         </div>
         <h2>Login</h2>
         <div class="inputbox">

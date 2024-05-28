@@ -1,0 +1,367 @@
+* {
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+  }
+  
+  .wrapper {
+    width: 1100px;
+    margin: auto;
+    align-items: center;
+  }
+  
+  .nama_website a {
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    font-family: "Poppins";
+    color: #fff;
+  }
+  
+  .logo img {
+    padding: 22px 10px 0px 0px;
+    vertical-align: center;
+    float: left;
+    max-width: 50px;
+    max-height: 30px;
+  }
+  
+  .menu {
+    float: right;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .menu a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu a i {
+    margin-left: 7px;
+  }
+  
+  .menu a:hover {
+    text-decoration: underline;
+  }
+  
+  header {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    line-height: 80px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0px;
+    background-color: #0c2240;
+    z-index: 10;
+    justify-content: space-between; /* Ensure the elements are spread out */
+    align-items: center;
+  }
+  
+  main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .main-title {
+    text-align: left;
+    padding-bottom: 10px;
+  }
+  
+  .main-title h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .main-title nav a {
+    margin: 0 10px;
+    color: #bf4f26;
+    text-decoration: none;
+    font-size: 18px solid;
+    position: relative;
+    font-weight: 600;
+  }
+  
+  .nav-item.active {
+    color: #0c2240; /* Blue color when active */
+  }
+  
+  .nav-item.active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #0c2240;
+    left: 0;
+    bottom: -4px;
+  }
+  
+  .nav-item:hover,
+  .nav-item:focus {
+    color: #0c2240; /* Hover color */
+  }
+  
+  .nav-item:hover::after,
+  .nav-item:focus::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #0c2240;
+    left: 0;
+    bottom: -4px;
+  }
+  
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .card {
+    border: 2px solid #e4e4e4;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    width: 245px;
+  }
+  
+  .image-container {
+    position: relative;
+    padding: 10px 10px 0 10px;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 17px;
+    font-size: 24px;
+    color: #fff; /* Warna putih untuk visibilitas lebih baik */
+    cursor: pointer;
+  }
+  
+  .heart-icon:hover {
+    position: absolute;
+    top: 10px;
+    right: 17px;
+    font-size: 24px;
+    color: #0c2240;
+    cursor: pointer;
+  }
+  
+  .heart-icon .fas {
+    color: #0c2240;
+  }
+  
+  .info {
+    padding: 0 10px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .name {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #000;
+    font-weight: 600;
+  }
+  
+  .plus-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: #555;
+    margin-left: 10px;
+  }
+  
+  .plus-icon .fa-solid {
+    color: #0c2240;
+  }
+  
+  .location {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 0 10px 10px 10px;
+    font-weight: 600;
+  }
+  
+  .location i {
+    margin-right: 5px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center; /* Align items vertically center */
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .add-venue {
+    display: flex;
+  }
+  
+  .add-venue-btn {
+    background-color: #C3232B; /* Red background color */
+    color: white; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 150px; /* Set a fixed width */
+    height: 35px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .add-venue-btn:hover {
+    background-color: transparent;
+    color: #C3232B; 
+    border: 2px solid #C3232B;
+  }
+  
+  .add-venue-btn h3 {
+    margin: 0; /* Remove default margin for h3 */
+  }
+  
+  .pagination {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pagination-button {
+    background-color: #0c2240;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .pagination-button:hover {
+    background-color: #bf4f26;
+  }
+  
+  .page-number {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  
+  footer {
+    background-color: #0c2240; /* Warna latar belakang */
+    color: white;
+    padding: 40px 20px; /* Memberikan padding lebih besar untuk area footer */
+    font-family: "Poppins", sans-serif; /* Mengganti font */
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 20px; /* Memberikan jarak bawah antara konten footer dan hak cipta */
+    border-bottom: 1px solid #fff; /* Optional: Menambahkan garis pemisah */
+  }
+  
+  .footer-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-left img {
+    margin-right: 10px; /* Jarak antara logo dan nama */
+  }
+  
+  .footer-left .nama_website a {
+    font-size: 30px; /* Ukuran font untuk nama website */
+    font-weight: bold;
+  }
+  
+  .footer-center {
+    flex: 2;
+    margin-right: 15px;
+    margin-left: 30px;
+  }
+  
+  .footer-center h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-center p {
+    margin-bottom: 20px; /* Memberikan jarak bawah */
+  }
+  
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footer-right h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-right ul li {
+    margin-bottom: 10px; /* Memberikan jarak antar item */
+  }
+  
+  .footer-right ul li a {
+    color: white; /* Warna link */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-right ul li a i {
+    margin-right: 8px; /* Jarak antara ikon dan teks */
+  }
+  
+  .footer-right ul li a:hover {
+    text-decoration: underline; /* Optional: Menambahkan underline saat hover */
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px; /* Jarak atas antara konten footer dan teks hak cipta */
+    font-size: 14px;
+  }
+  

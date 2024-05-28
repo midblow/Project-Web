@@ -1,14 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['name'])) {
-  // If session name is not set, redirect to login page
-  header("Location: ../Provider/prov_login.php");
-  exit();
-}
-
-$nicknameArray = explode(' ', $_SESSION['name']);
-$nickname = $nicknameArray[0];
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +12,7 @@ $nickname = $nicknameArray[0];
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="../css/home_prov.css" />
+    <link rel="stylesheet" href="../css/venue_prov.css" />
   </head>
   <body>
     <header>
@@ -35,7 +24,7 @@ $nickname = $nicknameArray[0];
           <a>Edoroli</a>
         </div>
         <div class="menu">
-          <a href="User.php"> Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
+          <a href="User.php"> Hallo User<i class="far fa-user"></i></a>
         </div>
       </div>
     </header>
@@ -43,28 +32,19 @@ $nickname = $nicknameArray[0];
     <main>
       <section class="main-title">
         <nav>
-          <a href="../Provider/home_prov.php" class="nav-item active" id="all-stay">All Stay</a>
-          <a href="../Provider/venue_prov.html" class="nav-item" id="venue">My Venue</a>
-          <a href="events1.php" class="nav-item" id="booking">Booking Confirmation</a>
+          <a href="../Provider/home_prov.html" class="nav-item" id="all-stay">All Stay</a>
+          <a href="../Provider/veneu_prov.html" class="nav-item active" id="venue">My Venue</a>
+          <a href="events1.html" class="nav-item" id="booking">Booking Confirmation</a>
         </nav>
       </section>
 
-      <div class="image-cardB">
-        <h1 class="title">Populer Venue</h1>
-        <div class="image-containerB">
-          <img src="../image/Gelanggang_Pemuda.jpg" alt="Gelanggang Pemuda" />
-          <div class="overlay">
-            <h1 class="overlay-title">GELANGGANG PEMUDA</h1>
-          </div>
-        </div>
-      </div>
-
-      <div class="populer">
-        <h2>List Venue As Udah Cape Bang</h2>
+      <section class="veneu">
         <div class="gallery">
           <div class="card">
             <div class="image-container">
-              <img src="../image/Sangkareang.jpg" />
+              <a href="venue_detail.html">
+                <img src="../image/Sangkareang.jpg" />
+              </a>
               <span class="heart-icon"
                 ><i class="far fa-heart" onclick="klikLike(this)"></i
               ></span>
@@ -137,7 +117,101 @@ $nickname = $nicknameArray[0];
               <span>Mataram</span>
             </div>
           </div>
+
+          <div class="card">
+            <div class="image-container">
+              <img src="../image/Grand_Imperial.jpg" />
+              <span class="heart-icon"
+                ><i class="far fa-heart" onclick="klikLike(this)"></i
+              ></span>
+            </div>
+            <div class="info">
+              <p class="name">Grand Imperial Ballroom</p>
+              <span class="plus-icon">
+                <i class="far fa-bookmark" onclick="klikBookmark(this)"></i>
+              </span>
+            </div>
+            <div class="location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Mataram</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-container">
+              <img src="../image/Islamic_Center.jpg" />
+              <span class="heart-icon"
+                ><i class="far fa-heart" onclick="klikLike(this)"></i
+              ></span>
+            </div>
+            <div class="info">
+              <p class="name">Islamic Center NTB</p>
+              <span class="plus-icon">
+                <i class="far fa-bookmark" onclick="klikBookmark(this)"></i>
+              </span>
+            </div>
+            <div class="location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Mataram</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-container">
+              <img src="../image/Gelanggang_Pemuda.jpg" />
+              <span class="heart-icon"
+                ><i class="far fa-heart" onclick="klikLike(this)"></i
+              ></span>
+            </div>
+            <div class="info">
+              <p class="name">Gelanggang Pemuda Mataram</p>
+              <span class="plus-icon">
+                <i class="far fa-bookmark" onclick="klikBookmark(this)"></i>
+              </span>
+            </div>
+            <div class="location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Mataram</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image-container">
+              <img src="../image/Senggigi_Hotel.jpg" />
+              <span class="heart-icon"
+                ><i class="far fa-heart" onclick="klikLike(this)"></i
+              ></span>
+            </div>
+            <div class="info">
+              <p class="name">Aruna Senggigi Resort & Convention</p>
+              <span class="plus-icon">
+                <i class="far fa-bookmark" onclick="klikBookmark(this)"></i>
+              </span>
+            </div>
+            <div class="location">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Senggigi</span>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <div class="add-venue">
+              <a href="add_venue.html">
+                <button class="card add-venue-btn">
+                  <h3>+Add Venue</h3>
+                </button>
+              </a>
+            </div>
+            <div class="pagination">
+              <button class="pagination-button" id="prev-button">Previous</button>
+              <span class="page-number">1</span>
+              <button class="pagination-button" id="next-button">Next</button>
+            </div>
+          </div>
+          
+      </section>
     </main>
+    
 
     <footer>
       <div class="footer-container">
@@ -172,9 +246,6 @@ $nickname = $nicknameArray[0];
       </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
-    <script src="../js/home_login.js"></script>
-    <script src="../js/iconHomepage.js"></script>
+    <!-- <script src="../js/iconHomepage.js"></script> -->
   </body>
 </html>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 04:08 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: May 28, 2024 at 08:29 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_pweb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `status` enum('waiting','confirmed','reserved') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `user_id`, `start_date`, `end_date`, `status`) VALUES
+(23, 3, '2024-05-16', '2024-05-17', 'reserved'),
+(25, 3, '2024-05-13', '2024-05-15', 'waiting'),
+(26, 3, '2024-05-30', '2024-05-31', 'waiting');
 
 -- --------------------------------------------------------
 
@@ -56,6 +79,29 @@ INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `message`, `created_at`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `provider`
+--
+
+CREATE TABLE `provider` (
+  `id_provider` int(10) NOT NULL,
+  `gmail` varchar(30) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `gender` enum('Laki-laki','Perempuan') DEFAULT NULL,
+  `nomorhp` bigint(18) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `provider`
+--
+
+INSERT INTO `provider` (`id_provider`, `gmail`, `name`, `password`, `gender`, `nomorhp`, `alamat`) VALUES
+(1, 'gusbram@gmail.com', 'Gusbram ', 'gus321', 'Laki-laki', 87722454570, 'Jl. Gelatik');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -74,16 +120,51 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `gmail`, `name`, `password`, `gender`, `nomorhp`, `alamat`) VALUES
-(2, 'erwin@gmail.com', 'erwin ', '1ee', 'Laki-laki', 8786444152, 'rembigan'),
+(2, 'erwin@gmail.com', 'Hasil', 'oke321', 'Laki-laki', 99999, 'rembigan'),
 (3, 'alfinlol@gmail.com', 'rifky anto', 'heriawati', 'Laki-laki', 8786444152, 'rembigan '),
 (4, 'rifky@gmail.com', 'rifky', 'a', 'Laki-laki', 8786444156, 'her'),
 (5, 'mahal@gmail.com', 'mahal', 'oke', 'Laki-laki', 85512336565, 'Jl. Makanan'),
 (6, 'human@gmail.com', 'cewe', 'cewe', 'Perempuan', 8786444156, 'Jj'),
-(7, 'iyas@gmail.com', 'iyas', 'iyasgacor11', 'Laki-laki', 8786444156, 'rembiga');
+(7, 'iyas@gmail.com', 'iyas', 'iyasgacor11', 'Laki-laki', 8786444156, 'rembiga'),
+(8, 'jankrik@gmail.com', 'jang', 'jang', 'Perempuan', 0, 'kota'),
+(9, 'tai@gmail.com', 'tai', '123', 'Laki-laki', 123, 'jerangkik');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `venue`
+--
+
+CREATE TABLE `venue` (
+  `id_venue` int(10) NOT NULL,
+  `nama_venue` varchar(30) DEFAULT NULL,
+  `deskripsi_fasilitas` varchar(255) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
+  `penanggung_jawab` varchar(30) DEFAULT NULL,
+  `kapasitas` int(30) DEFAULT NULL,
+  `harga` int(255) DEFAULT NULL,
+  `jenis_event` enum('Olahraga','Esport','Wedding','Festival') DEFAULT NULL,
+  `jenis_instansi` enum('Pemerintah','Swasta') DEFAULT NULL,
+  `tanggal_pesan` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `venue`
+--
+
+INSERT INTO `venue` (`id_venue`, `nama_venue`, `deskripsi_fasilitas`, `alamat`, `penanggung_jawab`, `kapasitas`, `harga`, `jenis_event`, `jenis_instansi`, `tanggal_pesan`) VALUES
+(1, 'Kedai Kupi', 'Kupi doang ne\r\n\r\n-Kursi\r\n-Meja', 'Gemeng', 'Herman', 20, 1250000, 'Festival', 'Pemerintah', '2024-05-30 09:51:52');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `contact`
@@ -92,14 +173,32 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `provider`
+--
+ALTER TABLE `provider`
+  ADD PRIMARY KEY (`id_provider`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `venue`
+--
+ALTER TABLE `venue`
+  ADD PRIMARY KEY (`id_venue`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -108,10 +207,32 @@ ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
+-- AUTO_INCREMENT for table `provider`
+--
+ALTER TABLE `provider`
+  MODIFY `id_provider` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `venue`
+--
+ALTER TABLE `venue`
+  MODIFY `id_venue` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
