@@ -7,6 +7,6 @@ document.getElementById("cancelBtnLO").addEventListener("click", function () {
 });
 
 document.getElementById("confirmBtnLO").addEventListener("click", function () {
-  window.location.href = "homepage.html";
+  window.location.href = "index.html";
 });
   

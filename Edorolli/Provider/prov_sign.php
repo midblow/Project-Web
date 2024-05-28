@@ -42,10 +42,6 @@ session_start();
             <label>Password</label>
           </div>
           <div class="inputbox">
-            <input type="inst" required name="instansi" />
-            <label>Instansi</label>
-          </div>
-          <div class="inputbox">
             <ion-icon name="call-outline"></ion-icon>
             <input type="tel" required name="phone" />
             <label>Nomor Telepon</label>

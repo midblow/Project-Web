@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION['name'])) {
+  // Jika sesi nama tidak diatur, redirect ke halaman login
+  header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
+  exit();
+}
+
+$nicknameArray = explode(' ', $_SESSION['name']);
+$nickname = $nicknameArray[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +35,7 @@
           <a>Edoroli</a>
         </div>
         <div class="menu">
-          <a href="User.php"> Hallo User<i class="far fa-user"></i></a>
+          <a href="User.php"> Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
         </div>
       </div>
     </header>
@@ -32,8 +43,8 @@
     <section class="main-title">
       <h1>Temukan venue terbaik untuk event anda</h1>
       <nav>
-        <a href="home_login.html" class="nav-item" id="all-stay">All Stay</a>
-        <a href="veneu.html" class="nav-item active" id="venue">Venue</a>
+        <a href="home_login.php" class="nav-item" id="all-stay">All Stay</a>
+        <a href="veneu.php" class="nav-item active" id="venue">Venue</a>
         <a href="events1.html" class="nav-item" id="event">Event</a>
       </nav>
     </section>
@@ -41,7 +52,7 @@
       <div class="gallery">
         <div class="card">
           <div class="image-container">
-            <a href="venue_detail.html">
+            <a href="venue_detail.php">
               <img src="../Edorolli/image/Sangkareang.jpg" />
             </a>
             <span class="heart-icon"

@@ -35,7 +35,7 @@ $nickname = $nicknameArray[0];
           <a>Edoroli</a>
         </div>
         <div class="menu">
-          <a href=""> Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
+          <a href=""> Hallo <?php echo htmlspecialchars($nickname);?><i class="far fa-user"></i></a>
         </div>
       </div>
     </header>

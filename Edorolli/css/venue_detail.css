@@ -305,7 +305,7 @@ form button {
   border-radius: 5px;
 }
 
-#calendar .waiting {
+#calendar, .waiting {
   background-color: yellow;
 }
 

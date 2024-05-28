@@ -49,10 +49,10 @@ $nickname = $nicknameArray[0];
       <section class="main-title">
         <h1>Temukan venue terbaik untuk event anda</h1>
         <nav>
-          <a href="home_login.html" class="nav-item active" id="all-stay"
+          <a href="home_login.php" class="nav-item active" id="all-stay"
             >All Stay</a
           >
-          <a href="veneu.html" class="nav-item" id="venue">Venue</a>
+          <a href="veneu.php" class="nav-item" id="venue">Venue</a>
           <a href="events1.html" class="nav-item" id="event">Event</a>
         </nav>
       </section>

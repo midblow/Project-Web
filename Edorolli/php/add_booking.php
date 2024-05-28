@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 
 $conn = mysqli_connect('localhost', 'root', '', 'project_pweb');
@@ -13,9 +14,9 @@ if (isset($data['start_date']) && isset($data['end_date']) && isset($data['statu
     $start_date = $data['start_date'];
     $end_date = $data['end_date'];
     $status = $data['status'];
-    $user_id = 2; // Example user ID
+    $user_id = $_SESSION['id']; // Example user ID
 
-    $stmt = $conn->prepare("INSERT INTO bookings (user_id, start_date, end_date, status) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO booking (user_id, start_date, end_date, status) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("isss", $user_id, $start_date, $end_date, $status);
 
     if ($stmt->execute()) {
@@ -28,4 +29,3 @@ if (isset($data['start_date']) && isset($data['end_date']) && isset($data['statu
 }
 
 $conn->close();
-?>

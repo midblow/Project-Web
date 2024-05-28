@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION['name'])) {
+  // Jika sesi nama tidak diatur, redirect ke halaman login
+  header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
+  exit();
+}
+
+$nicknameArray = explode(' ', $_SESSION['name']);
+$nickname = $nicknameArray[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +36,7 @@
           <a>Edoroli</a>
         </div>
         <div class="menu">
-          <a href="User.php"> Hallo User<i class="far fa-user"></i></a>
+          <a href="User.php"> Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
         </div>
       </div>
     </nav>
