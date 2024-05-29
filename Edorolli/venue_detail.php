@@ -95,9 +95,7 @@ $nickname = $nicknameArray[0];
             <label for="end_date">End Date</label>
             <input type="date" id="end_date" name="end_date" />
 
-            <button type="button" class="book-button" id="bookButton" disabled>
-              Book
-            </button>
+            <button type="button" class="book-button" id="bookButton" disabled> Book</button>
             <button type="button" class="whatsapp-button">WhatsApp</button>
           </form>
         </div>
@@ -117,37 +115,36 @@ $nickname = $nicknameArray[0];
     </div>
 
     <!-- Payment Method Popup -->
-    <div id="paymentPopup" class="popup">
-      <div class="popup-content">
-          <span class="close" id="closePopup">&times;</span>
-          <h2>Pilih Metode Transaksi</h2>
-          <div class="dropdown-container">
-              <div class="dropdown">
-                  <button class="dropbtn">
-                      Bank <i class="fas fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content" id="bankMethods"></div>
-              </div>
-              <div class="dropdown">
-                  <button class="dropbtn">
-                      Gerai <i class="fas fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content" id="geraiMethods"></div>
-              </div>
-              <div class="dropdown">
-                  <button class="dropbtn">
-                      E-Wallet <i class="fas fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content" id="ewalletMethods"></div>
-              </div>
-          </div>
-          <button id="pilihButton" class="confirm-payment">Pilih</button>
-      </div>
-  </div>
+    <div id="paymentPopup"  style="display: none;" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopup">&times;</span>
+            <h2>Pilih Metode Transaksi</h2>
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Bank <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="bankMethods"></div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Gerai <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="geraiMethods"></div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        E-Wallet <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="ewalletMethods"></div>
+                </div>
+            </div>
+            <button id="pilihButton" class="confirm-payment">Pilih</button>
+        </div>
+    </div>
 
     
     <script src="../Edorolli/js/veneu_calender.js"></script>
     <script src="../Edorolli/js/venue_popup.js"></script>
-    <!-- <script src="../Edorolli/js/ConfirmPayment.js"></script> -->
   </body>
 </html>

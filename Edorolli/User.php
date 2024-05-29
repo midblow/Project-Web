@@ -59,24 +59,10 @@ $nickname = $nicknameArray[0];
           </div>
           <nav>
             <ul>
-              <li class="active">
-                <a href="User.php"><i class="far fa-user"></i> Profile</a>
-              </li>
-              <li>
-                <a href="#"
-                  ><i class="far fa-file-alt"></i> Riwayat Reservasi</a
-                >
-              </li>
-              <li>
-                <a href="User_KSandi.php"
-                  ><i class="fas fa-cogs"></i> Kelola Akun</a
-                >
-              </li>
-              <li>
-                <a href="#" id="logoutBtn"
-                  ><i class="fas fa-sign-out-alt"></i> Keluar</a
-                >
-              </li>
+              <li class="active"><a href="User.php"><i class="far fa-user"></i> Profile</a></li>
+              <li><a href="#"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
+              <li><a href="User_KSandi.php"><i class="fas fa-cogs"></i> Kelola Akun</a></li>
+              <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
             </ul>
           </nav>
         </div>
@@ -85,62 +71,26 @@ $nickname = $nicknameArray[0];
           <div class="profile-details">
             <h2>Profile</h2>
             <form id="profileForm" action="php/update_profile.php" method="POST">
+
               <label for="name">Nama</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value="<?php echo $_SESSION['name']; ?>"
-                disabled
-              />
+              <input type="text" id="name" name="name" value="<?php echo $_SESSION['name']; ?>" disabled/>
+
               <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value="<?php echo $_SESSION['gmail']; ?>"
-                disabled
-              />
+              <input type="email" id="email" name="email" value="<?php echo $_SESSION['gmail']; ?>" disabled/>
+
               <label for="gender">Jenis Kelamin</label>
-              <input
-                type="text"
-                id="gender"
-                name="gender"
-                value="<?php echo $_SESSION['gender']; 
-                ?>"
-                disabled
-              />
+              <input type="text" id="gender" name="gender" value="<?php echo $_SESSION['gender']; ?>" disabled/>
+              
               <label for="phone">Nomor Telepon</label>
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                value="<?php echo $_SESSION['phone']; ?>"
-                disabled
-              />
+              <input type="text" id="phone" name="phone" value="<?php echo $_SESSION['phone']; ?>" disabled/>
+
               <label for="address">Alamat</label>
-              <textarea id="address" name="address" rows="4" disabled><?php echo $_SESSION['alamat']; ?></textarea
-              >
+              <textarea id="address" name="address" rows="4" disabled><?php echo $_SESSION['alamat']; ?></textarea>
+              
               <div class="button-group">
-                <button type="button" id="editBtn" class="edit-btn">
-                  Edit
-                </button>
-                <button
-                  type="button"
-                  id="cancelBtn"
-                  class="cancel-btn"
-                  style="display: none"
-                >
-                  Batal
-                </button>
-                <button
-                  type="submit"
-                  id="saveBtn"
-                  class="save-btn"
-                  style="display: none"
-                >
-                  Simpan
-                </button>
+                <button type="button" id="editBtn" class="edit-btn">Edit</button>
+                <button type="button" id="cancelBtn" class="cancel-btn" style="display: none"> Batal </button>
+                <button type="submit" id="saveBtn" class="save-btn" style="display: none"> Simpan</button>
               </div>
             </form>
           </div>

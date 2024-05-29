@@ -9,21 +9,17 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   document.getElementById("changePasswordBtn").addEventListener("click", function () {
-      console.log("Ganti Kata Sandi button clicked");
       document.getElementById("manageAccountButtons").style.display = "none";
       document.getElementById("changePasswordForm").style.display = "block";
   });
 
   document.getElementById("cancelChangePasswordBtn").addEventListener("click", function () {
-      console.log("Batal button clicked");
       document.getElementById("manageAccountButtons").style.display = "flex";
       document.getElementById("changePasswordForm").style.display = "none";
   });
 
   document.getElementById("passwordForm").addEventListener("submit", function (event) {
       event.preventDefault();
-      console.log("Form submitted");
-
       const newPassword = document.getElementById("newPassword").value;
       const confirmPassword = document.getElementById("confirmPassword").value;
 

@@ -1,5 +1,5 @@
 let currentPage = 1;
-const totalPages = 5; // Ganti dengan jumlah halaman total yang kamu miliki
+const totalPages = 5; // jumlah halaman total 
 
 document.getElementById("prev-button").addEventListener("click", function () {
   if (currentPage > 1) {
@@ -22,6 +22,6 @@ function updatePageNumber() {
 }
 
 function loadPage(page) {
-  // Logika untuk memuat halaman yang sesuai
+  // untuk memuat halaman
   window.location.href = `events${page}.html`;
 }

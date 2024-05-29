@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2024 at 08:29 AM
+-- Generation Time: May 29, 2024 at 12:41 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -32,17 +32,21 @@ CREATE TABLE `booking` (
   `user_id` int(11) DEFAULT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
-  `status` enum('waiting','confirmed','reserved') NOT NULL
+  `status` enum('waiting','confirmed','reserved') NOT NULL,
+  `metode_pembayaran` enum('bri','bca','mandiri','bni','alfamart','indomart','dana','ovo','shopeepay','linkaja') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `user_id`, `start_date`, `end_date`, `status`) VALUES
-(23, 3, '2024-05-16', '2024-05-17', 'reserved'),
-(25, 3, '2024-05-13', '2024-05-15', 'waiting'),
-(26, 3, '2024-05-30', '2024-05-31', 'waiting');
+INSERT INTO `booking` (`id`, `user_id`, `start_date`, `end_date`, `status`, `metode_pembayaran`) VALUES
+(23, 3, '2024-05-16', '2024-05-17', 'reserved', 'bri'),
+(25, 3, '2024-05-13', '2024-05-15', 'waiting', 'bri'),
+(26, 3, '2024-05-30', '2024-05-31', 'waiting', 'bri'),
+(27, 2, '2024-05-01', '2024-05-02', 'waiting', 'bri'),
+(28, 2, '2024-05-03', '2024-05-04', 'confirmed', 'mandiri'),
+(29, 2, '2024-05-05', '2024-05-06', 'waiting', 'linkaja');
 
 -- --------------------------------------------------------
 
@@ -85,9 +89,9 @@ INSERT INTO `contact` (`id`, `name`, `email`, `phone`, `message`, `created_at`) 
 CREATE TABLE `provider` (
   `id_provider` int(10) NOT NULL,
   `gmail` varchar(30) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
+  `username` varchar(30) DEFAULT NULL,
+  `lembaga` varchar(200) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `gender` enum('Laki-laki','Perempuan') DEFAULT NULL,
   `nomorhp` bigint(18) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -96,8 +100,9 @@ CREATE TABLE `provider` (
 -- Dumping data for table `provider`
 --
 
-INSERT INTO `provider` (`id_provider`, `gmail`, `name`, `password`, `gender`, `nomorhp`, `alamat`) VALUES
-(1, 'gusbram@gmail.com', 'Gusbram ', 'gus321', 'Laki-laki', 87722454570, 'Jl. Gelatik');
+INSERT INTO `provider` (`id_provider`, `gmail`, `username`, `lembaga`, `password`, `nomorhp`, `alamat`) VALUES
+(1, 'gusbram@gmail.com', 'Gusbram ', '', 'gus321', 87722454570, 'Jl. Gelatik'),
+(3, 'erwin@gmail.com', 'rewindd', 'PT. Makmur Jaya Sentosa', 'okeoke', 83212345678, 'Jl. Kuranji, Gusbram');
 
 -- --------------------------------------------------------
 
@@ -198,7 +203,7 @@ ALTER TABLE `venue`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -210,7 +215,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `provider`
 --
 ALTER TABLE `provider`
-  MODIFY `id_provider` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_provider` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
