@@ -4,27 +4,27 @@ document.addEventListener("DOMContentLoaded", function () {
     var closePopup = document.getElementById("closePopup");
     var confirmPaymentButton = document.getElementById("pilihButton");
     var dropdowns = document.getElementsByClassName("dropdown");
-
+  
     var startDateInput = document.getElementById("start_date");
     var endDateInput = document.getElementById("end_date");
   
     const paymentOptions = {
-      bank: [
-        { id: "bri", name: "BANK BRI", logo: "bank BRI.png" },
-        { id: "bca", name: "BCA", logo: "bank BCA.png" },
-        { id: "mandiri", name: "mandiri", logo: "bank Mandiri.jpeg" },
-        { id: "bni", name: "BNI", logo: "bank BNI.png" },
-      ],
-      gerai: [
-        { id: "alfamart", name: "Alfamart", detail: "", fee: "", logo: "Alfamart.webp" },
-        { id: "indomaret", name: "Indomaret", detail: "", fee: "", logo: "Indomaret.png" },
-      ],
-      ewallet: [
-        { id: "dana", name: "DANA", detail: "", fee: "", logo: "dana.png" },
-        { id: "ovo", name: "OVO", detail: "", fee: "", logo: "ovo.png" },
-        { id: "shopeepay", name: "ShopeePay", detail: "", fee: "", logo: "shopeepay.png" },
-        { id: "linkaja", name: "LinkAja", detail: "", fee: "", logo: "linkaja.png" },
-      ],
+        bank: [
+            { id: "bri", name: "BANK BRI", detail: "transfer ke (ATM, BRI Mobile, Internet Banking)", fee: "Rp. 0", logo: "bank BRI.png" },
+            { id: "bca", name: "BCA", detail: "transfer ke (ATM, m_BCA, Internet Banking)", fee: "Rp. 2.500", logo: "bank BCA.png" },
+            { id: "mandiri", name: "mandiri", detail: "transfer ke (ATM, mandiri Mobile, Internet Banking)", fee: "Rp. 1.000", logo: "bank Mandiri.jpeg" },
+            { id: "bni", name: "BNI", detail: "transfer ke (ATM, BNI Mobile, Internet Banking)", fee: "Rp. 2.500", logo: "bank BNI.png" },
+        ],
+        gerai: [
+            { id: "alfamart", name: "Alfamart", detail: "", fee: "", logo: "Alfamart.webp" },
+            { id: "indomaret", name: "Indomaret", detail: "", fee: "", logo: "Indomaret.png" },
+        ],
+        ewallet: [
+            { id: "dana", name: "DANA", detail: "", fee: "", logo: "dana.png" },
+            { id: "ovo", name: "OVO", detail: "", fee: "", logo: "ovo.png" },
+            { id: "shopeepay", name: "ShopeePay", detail: "", fee: "", logo: "shopeepay.png" },
+            { id: "linkaja", name: "LinkAja", detail: "", fee: "", logo: "linkaja.png" },
+        ],
     };
   
     function createPaymentOptions(options, containerId) {
@@ -84,41 +84,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     confirmPaymentButton.addEventListener("click", function () {
-      const startDate = startDateInput.value;
-      const endDate = endDateInput.value;
-      const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-  
-      if (startDate && endDate && paymentMethod) {
-        fetch("php/add_booking.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                start_date: startDate,
-                end_date: endDate,
-                status: "waiting",
-                payment_method: paymentMethod,
-            }),
-        })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then((bookings) => {
-          paymentPopup.style.display = "none"; 
+        console.log("Confirm button clicked");  // Debugging line
+        const startDate = startDateInput.value;
+        const endDate = endDateInput.value;
+
+        if (startDate && endDate) {
+            fetch("php/add_booking.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    start_date: startDate,
+                    end_date: endDate,
+                    status: "waiting",
+                }),
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((bookings) => {
+                window.updateCalendar(bookings, currentYear, currentMonth);
+                paymentPopup.style.display = "none";
           window.updateCalendar(bookings);
-        })
-        .catch((error) => {
-            console.error("Fetch error:", error);
-        });
-      } else {
-        alert("Please select valid dates and payment method.");
-      }
-  });
-  
+            })
+            .catch((error) => {
+                console.error("Fetch error:", error);
+            });
+        } else {
+            alert("Please select valid dates.");
+        }
+    });
+
     function validateDates() {
       const startDate = new Date(startDateInput.value);
       const endDate = new Date(endDateInput.value);
