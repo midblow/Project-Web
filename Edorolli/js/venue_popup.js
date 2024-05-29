@@ -178,6 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+
   function validateDates() {
     const startDate = new Date(startDateInput.value);
     const endDate = new Date(endDateInput.value);
@@ -192,3 +193,4 @@ document.addEventListener("DOMContentLoaded", function () {
   startDateInput.addEventListener("input", validateDates);
   endDateInput.addEventListener("input", validateDates);
 });
+
