@@ -361,7 +361,7 @@ section {
   margin-top: 20px;
 }
 
-.popup-buttons_logout button {
+.popup-buttons_logout a {
   padding: 10px 20px;
   margin: 0 10px;
   border: none;

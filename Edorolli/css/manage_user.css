@@ -1,0 +1,213 @@
+/* Reset CSS */
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: white;
+  }
+  
+  .wrapper {
+    width: 1100px;
+    margin: auto;
+    align-items: center;
+  }
+  
+  header {
+    width: 100%;
+    background-color: #0c2240;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  
+  header .logo img {
+    max-width: 50px;
+    max-height: 30px;
+  }
+  
+  header .nama_website a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  header .menu a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  
+  header .menu a i {
+    margin-left: 7px;
+  }
+  
+  header .menu a:hover {
+    text-decoration: underline;
+  }
+  
+  .main-title {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .main-title h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .main-title nav {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .main-title .nav-item {
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #0c2240;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .main-title .nav-item.active {
+    border-bottom: 2px solid #a62821;
+    color: #a62821;
+  }
+  
+  .user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .user-card {
+    background-color: #a62821;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .user-card-content {
+    margin-bottom: 20px;
+  }
+  
+  .detail-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .next-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #0c2240;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  footer {
+    background-color: #0c2240;
+    color: white;
+    padding: 40px 20px;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #fff;
+  }
+  
+  .footer-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-left img {
+    margin-right: 10px;
+  }
+  
+  .footer-left .nama_website a {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .footer-center {
+    flex: 2;
+    margin-right: 15px;
+    margin-left: 30px;
+  }
+  
+  .footer-center h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-center p {
+    margin-bottom: 20px;
+  }
+  
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footer-right h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-right ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-right ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-right ul li a i {
+    margin-right: 8px;
+  }
+  
+  .footer-right ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  

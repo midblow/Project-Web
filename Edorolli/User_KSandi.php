@@ -1,14 +1,6 @@
 <?php
 session_start();
 
-if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-  session_unset();
-  session_destroy();
-  header("Location: ../index.html");
-  exit();
-}
-
-
 if (!isset($_SESSION['name'])) {
   // Jika sesi nama tidak diatur, redirect ke halaman login
   header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
@@ -33,6 +25,8 @@ $nickname = $nicknameArray[0];
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="stylesheet" href="../Edorolli/css/User_Ksandi.css" />
+    <script src="../Edorolli/js/ChangePass.js" ></script>
+    <script src="../Edorolli/js/logout_user.js" ></script>
   </head>
   <body>
     <header>
@@ -170,26 +164,12 @@ $nickname = $nicknameArray[0];
         <i class="fas fa-exclamation-triangle fa-3x warning-icon"></i>
         <h2>Apakah anda yakin ingin keluar?</h2>
         <div class="popup-buttons_logout">
-          <button id="cancelBtnLO" class="cancel-btnLO">Tidak</button>
-          <button id="confirmBtnLO" class="confirm-btnLO">Ya</button>
+          <a id="cancelBtnLO" class="cancel-btnLO">Tidak</a>
+          <a href="../Edorolli/php/logout.php" id="confirmBtnLO" class="confirm-btnLO">Ya</a>
         </div>
       </div>
     </div>
 
-    <script>
-        document.getElementById('logoutBtn').addEventListener('click', function(event) {
-            event.preventDefault();
-            document.getElementById('logoutPopup').style.display = 'flex';
-        });
-
-        document.getElementById('cancelBtnLO').addEventListener('click', function() {
-            document.getElementById('logoutPopup').style.display = 'none';
-        });
-
-        document.getElementById('confirmBtnLO').addEventListener('click', function() {
-            window.location.href = 'User_KSandi.php?action=logout';
-        });
-    </script>
-    <script src="../Edorolli/js/ChangePass.js" ></script>
+    
   </body>
 </html>

@@ -13,9 +13,9 @@
             <div class="wrapper">
                 <div class="logo-nama">
                     <div class="logo"><img src="../image/logo.png" alt="Logo"></div>
-                    <div class="nama_website"><a href="#">Edoroli</a></div>
+                    <div class="nama_website"><a href="../index.html">Edoroli</a></div>
                 </div>
-                <div class="menu"><a href="User.php">Hallo rewindd<i class="far fa-user"></i></a></div>
+                <div class="menu"><a href="Provider.php">Hallo rewindd<i class="far fa-user"></i></a></div>
             </div>
         </header>
         <main>

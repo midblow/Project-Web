@@ -1,14 +1,6 @@
 <?php
 session_start();
 
-if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-  session_unset();
-  session_destroy();
-  header("Location: ../index.html");
-  exit();
-}
-
-
 if (!isset($_SESSION['name'])) {
   // Jika sesi nama tidak diatur, redirect ke halaman login
   header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
@@ -71,7 +63,7 @@ $nickname = $nicknameArray[0];
               <li class="active"><a href="User.php"><i class="far fa-user"></i> Profile</a></li>
               <li><a href="#"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
               <li><a href="User_KSandi.php"><i class="fas fa-cogs"></i> Kelola Akun</a></li>
-              <li><a href="User.php?action=logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+              <li><a href="User.php" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
             </ul>
           </nav>
         </div>
@@ -128,7 +120,7 @@ $nickname = $nicknameArray[0];
             <div class="footer-bottom">
                 <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
             </div>
-        </footer>
+     </footer>
         
     <!-- Popup Logout -->
     <div id="logoutPopup" class="popup_logout">
@@ -136,26 +128,13 @@ $nickname = $nicknameArray[0];
         <i class="fas fa-exclamation-triangle fa-3x warning-icon"></i>
         <h2>Apakah anda yakin ingin keluar?</h2>
         <div class="popup-buttons_logout">
-          <button id="cancelBtnLO" class="cancel-btnLO">Tidak</button>
-          <button id="confirmBtnLO" class="confirm-btnLO">Ya</button>
+          <a id="cancelBtnLO" class="cancel-btnLO">Tidak</a>
+          <a href="../Edorolli/php/logout.php" id="confirmBtnLO" class="confirm-btnLO">Ya</a>
         </div>
       </div>
     </div>
 
-    <script>
-        document.getElementById('logoutBtn').addEventListener('click', function(event) {
-            event.preventDefault();
-            document.getElementById('logoutPopup').style.display = 'flex';
-        });
-
-        document.getElementById('cancelBtnLO').addEventListener('click', function() {
-            document.getElementById('logoutPopup').style.display = 'none';
-        });
-
-        document.getElementById('confirmBtnLO').addEventListener('click', function() {
-            window.location.href = 'User.php?action=logout';
-        });
-    </script>
     <script src="../Edorolli/js/editUser.js"></script>
+    <script src="../Edorolli/js/logout_user.js"></script>
   </body>
 </html>
