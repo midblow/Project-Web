@@ -1,265 +1,375 @@
 * {
-    text-decoration: none;
-    margin: 0px;
-    padding: 0px;
-  }
-  
-  body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: white;
-  }
-  
-  .wrapper {
-    width: 1100px;
-    margin: auto;
-    align-items: center;
-  }
-  
-  .nama_website a {
-    font-size: 20px;
-    font-weight: bold;
-    float: left;
-    font-family: "Poppins";
-    color: #fff;
-  }
-  
-  .logo img {
-    padding: 22px 10px 0px 0px;
-    vertical-align: center;
-    float: left;
-    max-width: 50px;
-    max-height: 30px;
-  }
-  
-  .menu {
-    float: right;
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-  }
-  
-  .menu a {
-    color: #fff;
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu a i {
-    margin-left: 7px;
-  }
-  
-  .menu a:hover {
-    text-decoration: underline;
-  }
-  
-  header {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    line-height: 80px;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0px;
-    background-color: #0c2240;
-    z-index: 10;
-    justify-content: space-between; /* Ensure the elements are spread out */
-    align-items: center;
-  }
-  
-  main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .main-title {
-    text-align: left;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .main-title h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .main-title nav a {
-    margin: 0 10px;
-    color: #bf4f26;
-    text-decoration: none;
-    font-size: 18px solid;
-    position: relative;
-    font-weight: 600;
-  }
-  
-  .nav-item.active {
-    color: #0c2240; /* Blue color when active */
-  }
-  
-  .nav-item.active::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #0c2240;
-    left: 0;
-    bottom: -4px;
-  }
-  
-  .nav-item:hover,
-  .nav-item:focus {
-    color: #0c2240; /* Hover color */
-  }
-  
-  .nav-item:hover::after,
-  .nav-item:focus::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #0c2240;
-    left: 0;
-    bottom: -4px;
-  }
-
-  .venue-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
-  .venue-form {
-    flex: 1;
-  }
-  
-  
-  .venue-form form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .venue-form label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #0c2240;
-  }
-  
-  .venue-form input,
-  .venue-form textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .venue-form textarea {
-    resize: none; /* Mencegah textarea diubah ukurannya */
-  }
-  
-  .venue-info button {
-    background-color: #bf4f26;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 650;
-    cursor: pointer;
-  }
-  
-  .kapasitas-harga {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Menentukan 2 kolom dengan lebar yang sama */
-    gap: 20px; /* Jarak antar kolom */
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: white;
 }
 
-.input-group label {
-    font-size: 14px;
-    color: #0c2240;
-    margin-bottom: 5px;
+.wrapper {
+  width: 1100px;
+  margin: auto;
+  align-items: center;
 }
 
-.input-group input {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%; /* Lebar input */
+.nama_website a {
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+  font-family: "Poppins";
+  color: #fff;
 }
 
-  
-  .venue-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+.logo img {
+  padding: 22px 10px 0px 0px;
+  vertical-align: center;
+  float: left;
+  max-width: 50px;
+  max-height: 30px;
+}
+
+.menu {
+  float: right;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.menu a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.menu a i {
+  margin-left: 7px;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+header {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  line-height: 80px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  background-color: #0c2240;
+  z-index: 10;
+  justify-content: space-between; /* Ensure the elements are spread out */
+  align-items: center;
+}
+
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.main-title {
+  text-align: left;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.main-title h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.main-title nav a {
+  margin: 0 10px;
+  color: #bf4f26;
+  text-decoration: none;
+  font-size: 18px solid;
+  position: relative;
+  font-weight: 600;
+}
+
+.nav-item.active {
+  color: #0c2240; /* Blue color when active */
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  color: #0c2240; /* Hover color */
+}
+
+.nav-item:hover::after,
+.nav-item:focus::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+.venue-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.venue-form {
+  flex: 1;
+}
+
+.venue-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.venue-form label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #0c2240;
+}
+
+.venue-form input,
+.venue-form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.venue-form textarea {
+  resize: none;
+}
+
+.venue-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .image-upload-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  width: auto;
+  height: 100%;
+  justify-content: center;
 }
 
 .image-upload-container img {
-    margin-top: 20px;
-    width: 500px;
-    height: 300px; /* Mengatur tinggi gambar sesuai kebutuhan */
-    border-radius: 5px;
-    margin-bottom: 5px; /* Menghapus jarak bawah */
+  margin-bottom: 10px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.image-upload-container p {
+  margin: 0;
+  font-size: 16px;
+  color: #0c2240;
+}
+
+.image-upload-container input[type="file"] {
+  display: none;
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.kapasitas-harga {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.input-group label {
+  font-size: 14px;
+  color: #0c2240;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .jenis-instansi {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.jenis-instansi p{
-    margin-bottom: 10px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.checkbox-container {
-    display: flex;
-    align-items: center;
+.jenis-instansi p {
+  margin-bottom: 10px;
+  align-items: center;
 }
 
-.checkbox-container input[type="checkbox"] {
-    margin-right: 5px; /* Atur jarak antara checkbox */
+.radio-container {
+  display: flex;
+  align-items: center;
 }
 
-.checkbox-container label {
-    align-items: center;
-    margin-right: 20px; /* Atur jarak antara teks dan checkbox */
+.radio-container input[type="radio"] {
+  margin-right: 5px;
+}
+
+.radio-container label {
+  align-items: center;
+  margin-right: 20px;
+}
+
+.submit-group {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .submit-button {
-    background-color: #bf4f26;
-    color: #ffffff;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 650;
-    cursor: pointer;
+  background-color: #bf4f26;
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 650;
+  cursor: pointer;
+  align-self: flex-end;
 }
 
 .submit-button:hover {
-    background-color: transparent;
-    color: #0c2240;
-    border: #bf4f26 solid;
+  background-color: transparent;
+  color: #0c2240;
+  border: #bf4f26 solid;
+}
+
+footer {
+  background-color: #0c2240; /* Warna latar belakang */
+  color: white;
+  padding: 40px 20px; /* Memberikan padding lebih besar untuk area footer */
+  font-family: "Poppins", sans-serif; /* Mengganti font */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: auto;
+  padding-bottom: 20px; /* Memberikan jarak bawah antara konten footer dan hak cipta */
+  border-bottom: 1px solid #fff; /* Optional: Menambahkan garis pemisah */
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-left img {
+  margin-right: 10px; /* Jarak antara logo dan nama */
+}
+
+.footer-left .nama_website a {
+  font-size: 30px; /* Ukuran font untuk nama website */
+  font-weight: bold;
+}
+
+.footer-center {
+  flex: 2;
+  margin-right: 15px;
+  margin-left: 30px;
+}
+
+.footer-center h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-center p {
+  margin-bottom: 20px; /* Memberikan jarak bawah */
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-right h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-right ul li {
+  margin-bottom: 10px; /* Memberikan jarak antar item */
+}
+
+.footer-right ul li a {
+  color: white; /* Warna link */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.footer-right ul li a i {
+  margin-right: 8px; /* Jarak antara ikon dan teks */
+}
+
+.footer-right ul li a:hover {
+  text-decoration: underline; /* Optional: Menambahkan underline saat hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px; /* Jarak atas antara konten footer dan teks hak cipta */
+  font-size: 14px;
 }

@@ -1,5 +1,14 @@
 <?php
 session_start();
+
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+  session_unset();
+  session_destroy();
+  header("Location: ../index.html");
+  exit();
+}
+
+
 if (!isset($_SESSION['name'])) {
   // Jika sesi nama tidak diatur, redirect ke halaman login
   header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
@@ -70,11 +79,7 @@ $nickname = $nicknameArray[0];
               <li class="active">
                 <a href="#"><i class="fas fa-cogs"></i> Kelola Akun</a>
               </li>
-              <li>
-                <a href="#" id="logoutBtn"
-                  ><i class="fas fa-sign-out-alt"></i> Keluar</a
-                >
-              </li>
+              <li><a href="User_KSandi.php?action=logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
             </ul>
           </nav>
         </div>
@@ -126,6 +131,29 @@ $nickname = $nicknameArray[0];
         </div>
       </div>
     </main>
+    
+    <footer>
+            <div class="footer-container">
+                <div class="footer-left">
+                    <img src="../image/logo.png" alt="Edoroli Logo">
+                    <div class="nama_website"><a href="#">Edoroli</a></div>
+                </div>
+                <div class="footer-center">
+                    <h3>TENTANG EDOROLI</h3>
+                    <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
+                </div>
+                <div class="footer-right">
+                    <h3>SOSIAL MEDIA</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </footer>
 
     <!-- Popup -->
     <div id="popup" class="popup" style="display: none">
@@ -148,7 +176,20 @@ $nickname = $nicknameArray[0];
       </div>
     </div>
 
-    <script src="../Edorolli/js/logoutUser.js"></script>
-    <script src="../Edorolli/js/ChangePass.js" defer></script>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('logoutPopup').style.display = 'flex';
+        });
+
+        document.getElementById('cancelBtnLO').addEventListener('click', function() {
+            document.getElementById('logoutPopup').style.display = 'none';
+        });
+
+        document.getElementById('confirmBtnLO').addEventListener('click', function() {
+            window.location.href = 'User_KSandi.php?action=logout';
+        });
+    </script>
+    <script src="../Edorolli/js/ChangePass.js" ></script>
   </body>
 </html>

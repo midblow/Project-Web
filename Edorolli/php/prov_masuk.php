@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
             $_SESSION['alamat'] = $user['alamat'];
             
             // Redirect ke halaman home_prov.html
-            header("Location: ../Provider/home_prov.html");
+            header("Location: ../Provider/home_prov.php");
             exit();
         } else {
             // Password tidak cocok

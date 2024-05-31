@@ -2,7 +2,8 @@
 session_start();
 if (!isset($_SESSION['error_message'])) {
     $_SESSION['error_message'] = ''; 
-}
+  
+  }
 ?>
 
 <!DOCTYPE html>

@@ -52,7 +52,7 @@ $nickname = $nicknameArray[0];
       <div class="gallery">
         <div class="card">
           <div class="image-container">
-            <a href="venue_detail.php">
+            <a href="venue_book.php">
               <img src="../Edorolli/image/Sangkareang.jpg" />
             </a>
             <span class="heart-icon"
@@ -168,7 +168,7 @@ $nickname = $nicknameArray[0];
 
         <div class="card">
           <div class="image-container">
-            <img src="../Edorolli/image/Gelanggang_Pemuda.png" />
+            <img src="../Edorolli/image/Gelanggang_Pemuda.jpg" />
             <span class="heart-icon"
               ><i class="far fa-heart" onclick="klikLike(this)"></i
             ></span>

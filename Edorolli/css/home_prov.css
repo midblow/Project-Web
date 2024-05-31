@@ -77,7 +77,8 @@ main {
 
 .main-title {
   text-align: left;
-  margin-bottom: 30px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .main-title h1 {
@@ -132,7 +133,7 @@ main {
 }
 
 .title {
-  color: #0c2240; /* Blue color for "Populer Venue" */
+  color: #0c2240; 
   margin-bottom: 20px; /* Space between the title and image */
 }
 
@@ -145,6 +146,7 @@ main {
   overflow: hidden;
   width: 100%;
   max-width: 1285px; /* Ensure the container doesn't exceed the image width */
+  margin-bottom: 20px;
 }
 
 .image-containerB img {
@@ -166,15 +168,9 @@ main {
   color: white; /* White color for "GELANGGANG PEMUDA" */
 }
 
-
-.populer h2 {
-  font-weight: 800;
-  font-size: 35px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  color: #0c2240;
-  width: 100%;
-  line-height: 50px;
+.venue .title {
+  color: #0c2240; 
+  margin-bottom: 20px; /* Space between the title and image */
 }
 
 .gallery {
@@ -182,7 +178,7 @@ main {
   flex-wrap: wrap;
   gap: 16px;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .card {
@@ -191,6 +187,7 @@ main {
   overflow: hidden;
   position: relative;
   width: 245px;
+  margin-bottom: 20px;
 }
 
 .image-container {
@@ -199,7 +196,7 @@ main {
 }
 
 .image-container img {
-  width: 100%;
+  width: 100%; /* Adjust width to account for padding */
   height: auto;
 }
 

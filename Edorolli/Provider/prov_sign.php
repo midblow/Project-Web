@@ -23,7 +23,7 @@ session_start();
       <div class="register">
         <form action="../php/prov_register.php" method="post">
           <div class="gambar">
-            <img src="../image/hallo_user.png"/>
+            <img src="../image/hallo_provider.png"/>
           </div>
           <h2>Sign Up</h2>
           <div class="inputbox">
