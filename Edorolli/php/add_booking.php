@@ -1,13 +1,8 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-
-$conn = mysqli_connect('localhost', 'root', '', 'project_pweb');
-
-if ($conn->connect_error) {
-    die(json_encode(['error' => 'Database connection failed']));
-}
-
+require_once 'functions.php';
+$conn = connectDatabase();
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (isset($data['start_date']) && isset($data['end_date']) && isset($data['status']) && isset($data['payment_method'])) {

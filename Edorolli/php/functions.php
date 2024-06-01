@@ -1,18 +1,4 @@
 <?php
-function start_session_if_not_started() {
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-}
-
-function Logged() {
-    start_session_if_not_started();
-    if (!isset($_SESSION['username']) || !isset($_SESSION['name'])) {
-        header("Location: http://localhost/Project-Web/Edorolli/role-selection.html");
-        exit();
-    }
-}
-
 function connectDatabase() {
     $servername = 'localhost';
     $username = 'root';

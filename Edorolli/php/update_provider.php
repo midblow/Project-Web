@@ -1,6 +1,6 @@
 <?php
+session_start();
 require_once 'functions.php';
-start_session_if_not_started();
 $conn = connectDatabase();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
