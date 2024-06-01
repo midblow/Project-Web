@@ -1,17 +1,14 @@
 <?php
-session_start();
-$koneksi = mysqli_connect('localhost', 'root', '', 'project_pweb');
-
-if (!$koneksi) {
-    die("Koneksi database gagal: " . mysqli_connect_error());
-}
+require_once 'functions.php';
+start_session_if_not_started();
+$conn = connectDatabase();
 
 if (isset($_POST['login'])) {
     $gmail = $_POST['gmail'];
     $password = $_POST['password'];
     
     // Mencari user berdasarkan email
-    $stmt = $koneksi->prepare("SELECT id_provider, username, lembaga, password, nomorhp, alamat, gmail FROM provider WHERE gmail = ?");
+    $stmt = $conn->prepare("SELECT id_provider, username, lembaga, password, nomorhp, alamat, gmail FROM provider WHERE gmail = ?");
     $stmt->bind_param("s", $gmail);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -35,7 +32,8 @@ if (isset($_POST['login'])) {
             $_SESSION['phone'] = $user['nomorhp'];
             $_SESSION['alamat'] = $user['alamat'];
             
-            // Redirect ke halaman home_prov.html
+            // echo "Login berhasil, mengarahkan ke home_prov.php"; // Debug message
+            // die();
             header("Location: ../Provider/home_prov.php");
             exit();
         } else {
@@ -48,5 +46,5 @@ if (isset($_POST['login'])) {
     $stmt->close();
 }
 
-$koneksi->close();
+$conn->close();
 ?>

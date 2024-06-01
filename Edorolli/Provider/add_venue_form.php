@@ -1,10 +1,12 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['username'])) {
-    // Jika sesi nama tidak diatur, redirect ke halaman login
-    header("Location: http://localhost/Project-Web/Edorolli/Provider/prov_login.php");
-    exit();
+  // Jika sesi nama tidak diatur, redirect ke halaman login
+  header("Location: http://localhost/Project-Web/Edorolli/Provider/prov_login.php");
+  exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +17,7 @@ if (!isset($_SESSION['username'])) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/add_venue.css">
+    <link rel="stylesheet" href="../css/footer.css" />
 </head>
 <body>
     <header>
@@ -23,7 +26,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="logo"><img src="../image/logo.png" alt="Logo"></div>
                 <div class="nama_website"><a href="#">Edoroli</a></div>
             </div>
-            <div class="menu"><a href="User.php">Hallo <?php echo $_SESSION['username']; ?><i class="far fa-user"></i></a></div>
+            <div class="menu"><a href="Provider.php">Hallo <?php echo $_SESSION['username']; ?><i class="far fa-user"></i></a></div>
         </div>
     </header>
     <main>
@@ -84,72 +87,7 @@ if (!isset($_SESSION['username'])) {
             </div>
         </section>
     </main>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-left">
-                <img src="../image/logo.png" alt="Edoroli Logo">
-                <div class="nama_website"><a href="#">Edoroli</a></div>
-            </div>
-            <div class="footer-center">
-                <h3>TENTANG EDOROLI</h3>
-                <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
-            </div>
-            <div class="footer-right">
-                <h3>SOSIAL MEDIA</h3>
-                <ul>
-                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
-        </div>
-    </footer>
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('preview-image');
-                output.src = reader.result;
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-
-        function validateForm() {
-            let kapasitas = document.getElementById('kapasitas').value;
-            let harga = document.getElementById('harga').value;
-            let pemerintah = document.getElementById('pemerintah').checked;
-            let swasta = document.getElementById('swasta').checked;
-            let file = document.getElementById('file').files[0];
-            
-            // Validate kapasitas and harga to be numbers
-            kapasitas = kapasitas.replace(/\./g, '');
-            harga = harga.replace(/\./g, '');
-
-            if (isNaN(kapasitas) || isNaN(harga)) {
-                alert('Kapasitas dan Harga harus berupa angka.');
-                return false;
-            }
-
-            // Ensure at least one radio button is checked
-            if (!pemerintah && !swasta) {
-                alert('Pilih salah satu jenis instansi.');
-                return false;
-            }
-
-            // Ensure an image is uploaded
-            if (!file) {
-                alert('Unggah gambar venue.');
-                return false;
-            }
-
-            // Update form values with cleaned numbers
-            document.getElementById('kapasitas').value = kapasitas;
-            document.getElementById('harga').value = harga;
-
-            return true;
-        }
-    </script>
+    <?php require_once '../php/footer.php'; ?>
+    <script src="../js/venue_detail_edit.js"></script>
 </body>
 </html>

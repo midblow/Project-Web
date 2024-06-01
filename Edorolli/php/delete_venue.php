@@ -1,12 +1,9 @@
 <?php
-session_start();
-require_once 'functions.php';  
+require_once 'functions.php';
+start_session_if_not_started();  
+$conn = connectDatabase();
 
 if (isset($_GET['id']) && isset($_SESSION['id_provider'])) {
-    $conn = new mysqli('localhost', 'root', '', 'project_pweb');
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     $venue_id = $_GET['id'];
     $id_provider = $_SESSION['id_provider'];

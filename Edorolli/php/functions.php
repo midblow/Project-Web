@@ -1,4 +1,112 @@
 <?php
+function start_session_if_not_started() {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+}
+
+function Logged() {
+    start_session_if_not_started();
+    if (!isset($_SESSION['username']) || !isset($_SESSION['name'])) {
+        header("Location: http://localhost/Project-Web/Edorolli/role-selection.html");
+        exit();
+    }
+}
+
+function connectDatabase() {
+    $servername = 'localhost';
+    $username = 'root';
+    $password = '';
+    $dbname = 'project_pweb';
+
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    // Check connection
+    if (!$conn) {
+        die("Koneksi database gagal: " . mysqli_connect_error());
+    }
+
+    return $conn;
+}
+
+function registrasi($data) {
+    global $conn;
+
+    // Sanitize and validate input data
+    $email = filter_var($data["gmail"], FILTER_SANITIZE_EMAIL);
+    $name = strtolower(trim($data["name"]));
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $gender = $data["gender"];
+    $phone = filter_var($data["phone"], FILTER_SANITIZE_NUMBER_INT);
+    $address = mysqli_real_escape_string($conn, $data["address"]);
+
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error_message'] = 'Email tidak valid!';
+        header("Location: http://localhost/Project-Web/Edorolli/signup.php");
+        exit();
+    }
+
+    // Check email
+    $result = mysqli_query($conn, "SELECT gmail FROM user WHERE gmail = '$email'");
+    if (mysqli_fetch_assoc($result)) {
+        $_SESSION['error_message'] = 'Email sudah tersedia, gunakan email yang lain!';
+        header("Location: http://localhost/Project-Web/Edorolli/signup.php");
+        exit();
+    }
+
+    // Hash the password
+    // $password_hashed = password_hash($password, PASSWORD_DEFAULT);
+
+    // Add user
+    $query = "INSERT INTO user (gmail, name, password, gender, nomorhp, alamat) VALUES('$email', '$name', '$password', '$gender', '$phone', '$address')";
+    if (mysqli_query($conn, $query)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function regProv($data) {
+    global $conn;
+
+    // Sanitize and validate input data
+    $email = filter_var($data["gmail"], FILTER_SANITIZE_EMAIL);
+    $username = strtolower(trim($data["username"]));
+    $lembaga = mysqli_real_escape_string($conn, $data["lembaga"]);
+    $password = mysqli_real_escape_string($conn, $data["password"]);
+    $phone = filter_var($data["nomorhp"], FILTER_SANITIZE_NUMBER_INT);
+    $address = mysqli_real_escape_string($conn, $data["alamat"]);
+
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error_message'] = 'Email tidak valid!';
+        header("Location: ../Provider/prov_sign.php");
+        exit();
+    }
+
+    // Check email
+    $result = mysqli_query($conn, "SELECT gmail FROM provider WHERE gmail = '$email'");
+    if (mysqli_fetch_assoc($result)) {
+        $_SESSION['error_message'] = 'Email sudah tersedia, gunakan email yang lain!';
+        header("Location: ../Provider/prov_sign.php");
+        exit();
+    }
+
+    // Hash the password
+    // $password_hashed = password_hash($password, PASSWORD_DEFAULT);
+
+    // Add user (without hashing)
+    $query = "INSERT INTO provider (gmail, username, lembaga, password, nomorhp, alamat) VALUES('$email', '$username', '$lembaga', '$password', '$phone', '$address')";
+    if (mysqli_query($conn, $query)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 function generate_pagination_files($id_provider, $total_pages, $items_per_page, $conn) {
     $directory = '../Provider';
     if (!is_dir($directory)) {
@@ -254,69 +362,7 @@ function generate_venue_detail_file($venue) {
                 <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
             </div>
         </footer>
-        <script>
-            function previewImage(event) {
-                var reader = new FileReader();
-                reader.onload = function(){
-                    var output = document.getElementById('preview-image');
-                    output.src = reader.result;
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            }
-
-            function validateForm() {
-                let kapasitas = document.getElementById('kapasitas').value;
-                let harga = document.getElementById('harga').value;
-                let pemerintah = document.getElementById('pemerintah').checked;
-                let swasta = document.getElementById('swasta').checked;
-                
-                // Validate kapasitas and harga to be numbers
-                kapasitas = kapasitas.replace(/\./g, '');
-                harga = harga.replace(/\./g, '');
-
-                if (isNaN(kapasitas) || isNaN(harga)) {
-                    alert('Kapasitas dan Harga harus berupa angka.');
-                    return false;
-                }
-
-                // Ensure at least one radio button is checked
-                if (!pemerintah && !swasta) {
-                    alert('Pilih salah satu jenis instansi.');
-                    return false;
-                }
-
-                // Update form values with cleaned numbers
-                document.getElementById('kapasitas').value = kapasitas;
-                document.getElementById('harga').value = harga;
-
-                return true;
-            }
-
-            function enableEditing() {
-                var elements = document.querySelectorAll('#venue-form input, #venue-form textarea, #venue-form input[type="file"]');
-                elements.forEach(function(element) {
-                    element.disabled = false;
-                });
-                document.querySelector('.save-cancel-buttons').style.display = 'flex';
-                document.querySelector('.action-buttons').style.display = 'none';
-            }
-
-            function cancelEditing() {
-                var elements = document.querySelectorAll('#venue-form input, #venue-form textarea, #venue-form input[type="file"]');
-                elements.forEach(function(element) {
-                    element.disabled = true;
-                });
-                document.querySelector('.save-cancel-buttons').style.display = 'none';
-                document.querySelector('.action-buttons').style.display = 'flex';
-            }
-
-            function deleteVenue() {
-                if (confirm("Are you sure you want to delete this venue?")) {
-                    var venueId = document.getElementById('venue_id').value;
-                    window.location.href = "../php/delete_venue.php?id=" + venueId;
-                }
-            }
-        </script>
+        <script src="../js/venue_detail_edit.js"></script>
         <script src="../js/iconHomepage.js"></script>
     </body>
     </html>

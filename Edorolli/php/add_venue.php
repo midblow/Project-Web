@@ -1,13 +1,9 @@
 <?php
-session_start();
-
-require_once 'functions.php';  
+require_once 'functions.php';
+start_session_if_not_started();  
+$conn = connectDatabase();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $conn = new mysqli('localhost', 'root', '', 'project_pweb');
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     $name_venue = $_POST['name_venue'];
     $deskripsi_fasilitas = $_POST['deskripsi_fasilitas'];

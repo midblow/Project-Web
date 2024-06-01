@@ -1,4 +1,3 @@
-
 * {
   text-decoration: none;
   margin: 0px;
@@ -64,20 +63,20 @@ header {
   top: 0px;
   background-color: #0c2240;
   z-index: 10;
-  justify-content: space-between; /* Ensure the elements are spread out */
+  justify-content: space-between;
   align-items: center;
 }
 
 .main-nav {
   width: 100%;
   background-color: white;
-  padding: 10px 0; /* Mengubah padding menjadi 10px 0 */
-  display: flex; /* Menambahkan flexbox untuk mengatur item */
-  justify-content: center; /* Menambahkan justify-content untuk mengatur posisi item */
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .main-nav .nav-item {
-  margin: 0 10px; /* Menambahkan margin untuk mengatur jarak antar item */
+  margin: 0 10px;
   color: #bf4f26;
   text-decoration: none;
   font-size: 18px;
@@ -90,14 +89,13 @@ header {
   align-items: center;
 }
 
-
 .main-nav .nav-item#all-stay {
-  margin-left: 0; /* No margin on the left for the first item */
+  margin-left: 0;
 }
 
 .main-nav .nav-item#venue,
 .main-nav .nav-item#event {
-  margin-left: 10px; /* Margin for the other items */
+  margin-left: 10px;
 }
 
 .main-nav .nav-item.active {
@@ -129,7 +127,6 @@ header {
   left: 0;
   bottom: -4px;
 }
-
 
 .image-card {
   display: flex;
@@ -202,61 +199,39 @@ header {
   gap: 10px;
 }
 
+.content-container h3 {
+  margin-bottom: 10px;
+}
+
 .header-section h2 {
   margin-bottom: 0;
 }
 
-.address-box,
-.permissions-box {
+.desc-box,
+.alamat-box,
+.kapasitas-box,
+.harga-box {
   background-color: #ffffff;
-  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   text-align: center;
 }
 
-.permissions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.permissions h3 {
-  margin-bottom: 10px;
-}
-
-.permissions ul {
+.desc-box ul li{
   list-style: none;
-  padding: 0;
 }
 
-.permissions ul li {
-  margin: 5px 0;
-}
-
-.event-venue {
+.kapasitas-harga-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  gap: 20px; /* Added to increase the gap between harga and kapasitas */
 }
 
-.event-venue h3 {
-  margin-bottom: 10px;
+.kapasitas-box,
+.harga-box {
+  width: 50%;
 }
-
-.event-venue .images {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-
-/* .image-card img {
-  width: 100px;
-  height: 150px;
-  object-fit: cover;
-} */
 
 .right-section {
   flex: 1;
@@ -352,9 +327,9 @@ form button {
 #calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px; /* Atur gap antar elemen */
-  padding: 10px; /* Sesuaikan padding */
-  background-color: white; /* Warna latar belakang kalender */
+  gap: 2px;
+  padding: 10px;
+  background-color: white;
   box-sizing: border-box;
   border-radius: 10px;
 }
@@ -363,8 +338,8 @@ form button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px; /* Sesuaikan tinggi elemen */
-  border: 1px solid #ddd; /* Border untuk setiap elemen */
+  height: 50px;
+  border: 1px solid #ddd;
   box-sizing: border-box;
   border-radius: 5px;
 }

@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION['name'])) {
   // Jika sesi nama tidak diatur, redirect ke halaman login
-  header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
+  header("Location: ../User/login_user.php");
   exit();
 }
 
@@ -24,13 +24,14 @@ $nickname = $nicknameArray[0];
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="../Edorolli/css/User.css" />
+    <link rel="stylesheet" href="../css/User.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
   </head>
   <body>
     <header>
       <div class="wrapper">
         <div class="logo">
-          <img src="../Edorolli/image/logo.png" />
+          <img src="../image/logo.png" />
         </div>
         <div class="nama_website">
           <a href="home_login.php">Edoroli</a>
@@ -54,7 +55,7 @@ $nickname = $nicknameArray[0];
       <div class="container">
         <div class="sidebar">
           <div class="profile-info">
-            <img src="../Edorolli/image/MLBB.jpg" alt="Profile Picture" />
+            <img src="../image/MLBB.jpg" alt="Profile Picture" />
             <h3><?php echo $_SESSION['name']; ?></h3>
             <p><?php echo $_SESSION['gmail']; ?></p>
           </div>
@@ -98,29 +99,7 @@ $nickname = $nicknameArray[0];
         </div>
       </div>
     </main>
-
-    <footer>
-            <div class="footer-container">
-                <div class="footer-left">
-                    <img src="../image/logo.png" alt="Edoroli Logo">
-                    <div class="nama_website"><a href="#">Edoroli</a></div>
-                </div>
-                <div class="footer-center">
-                    <h3>TENTANG EDOROLI</h3>
-                    <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
-                </div>
-                <div class="footer-right">
-                    <h3>SOSIAL MEDIA</h3>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
-            </div>
-     </footer>
+    <?php require_once '../php/footer.php'; ?>
         
     <!-- Popup Logout -->
     <div id="logoutPopup" class="popup_logout">
@@ -129,12 +108,12 @@ $nickname = $nicknameArray[0];
         <h2>Apakah anda yakin ingin keluar?</h2>
         <div class="popup-buttons_logout">
           <a id="cancelBtnLO" class="cancel-btnLO">Tidak</a>
-          <a href="../Edorolli/php/logout.php" id="confirmBtnLO" class="confirm-btnLO">Ya</a>
+          <a href="../php/logout.php" id="confirmBtnLO" class="confirm-btnLO">Ya</a>
         </div>
       </div>
     </div>
 
-    <script src="../Edorolli/js/editUser.js"></script>
-    <script src="../Edorolli/js/logout_user.js"></script>
+    <script src="../js/editUser.js"></script>
+    <script src="../js/logout.js"></script>
   </body>
 </html>

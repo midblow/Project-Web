@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             calendar.appendChild(dayElement);
         }
 
-        fetch("php/veneu_calender.php")
+        fetch("../php/venue_calendar.php")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");

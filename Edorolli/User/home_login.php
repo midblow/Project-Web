@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['name'])) {
   // Jika sesi nama tidak diatur, redirect ke halaman login
-  header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
+  header("Location: ../User/login_user.php");
   exit();
 }
 
@@ -28,13 +28,14 @@ $nickname = $nicknameArray[0];
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="../Edorolli/css/home_login.css" />
+    <link rel="stylesheet" href="../css/home_login.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
   </head>
   <body>
     <header>
       <div class="wrapper">
         <div class="logo">
-          <img src="../Edorolli/image/logo.png" />
+          <img src="../image/logo.png" />
         </div>
         <div class="nama_website">
           <a>Edoroli</a>
@@ -63,7 +64,7 @@ $nickname = $nicknameArray[0];
           <div class="venue-item">
             <div class="card">
               <div class="image-container">
-                <img src="../Edorolli/image/Sangkareang.jpg" alt="Taman Sangkareang" />
+                <img src="../image/Sangkareang.jpg" alt="Taman Sangkareang" />
                 <span class="heart-icon"
                   ><i class="far fa-heart" onclick="klikLike(this)"></i
                 ></span>
@@ -83,7 +84,7 @@ $nickname = $nicknameArray[0];
           <div class="venue-item">
             <div class="card">
               <div class="image-container">
-                <img src="../Edorolli/image/Pantai_Senggigi.jpg" alt="Pantai Senggigi" />
+                <img src="../image/Pantai_Senggigi.jpg" alt="Pantai Senggigi" />
                 <span class="heart-icon"
                   ><i class="far fa-heart" onclick="klikLike(this)"></i
                 ></span>
@@ -104,7 +105,7 @@ $nickname = $nicknameArray[0];
             <div class="card">
               <div class="image-container">
                 <img
-                  src="../Edorolli/image/Narmada_Convention_Hall.jpg"
+                  src="../image/Narmada_Convention_Hall.jpg"
                   alt="Narmada Convention Hall"
                 />
                 <span class="heart-icon"
@@ -126,7 +127,7 @@ $nickname = $nicknameArray[0];
           <div class="venue-item">
             <div class="card">
               <div class="image-container">
-                <img src="../Edorolli/image/Hotel_Lombok_Raya.jpg" alt="Hotel Lombok Raya" />
+                <img src="../image/Hotel_Lombok_Raya.jpg" alt="Hotel Lombok Raya" />
                 <span class="heart-icon"
                   ><i class="far fa-heart" onclick="klikLike(this)"></i
                 ></span>
@@ -146,7 +147,7 @@ $nickname = $nicknameArray[0];
           <div class="venue-item">
             <div class="card">
               <div class="image-container">
-                <img src="../Edorolli/image/Grand_Imperial.jpg" alt="Grand Imperial Ballroom" />
+                <img src="../image/Grand_Imperial.jpg" alt="Grand Imperial Ballroom" />
                 <span class="heart-icon"
                   ><i class="far fa-heart" onclick="klikLike(this)"></i
                 ></span>
@@ -170,7 +171,7 @@ $nickname = $nicknameArray[0];
         <h2>Tata cara reservasi venue</h2>
         <div class="procedure-steps">
           <div class="step">
-            <img src="../Edorolli/image/1cara.jpg" alt="Step 1" />
+            <img src="../image/1cara.jpg" alt="Step 1" />
             <div class="step-content">
               <h3>1. Pilih Venue/Event</h3>
               <p>
@@ -180,7 +181,7 @@ $nickname = $nicknameArray[0];
             </div>
           </div>
           <div class="step">
-            <img src="../Edorolli/image/2cara.jpg" alt="Step 2" />
+            <img src="../image/2cara.jpg" alt="Step 2" />
             <div class="step-content">
               <h3>2. Mengisi identitas</h3>
               <p>
@@ -191,7 +192,7 @@ $nickname = $nicknameArray[0];
             </div>
           </div>
           <div class="step">
-            <img src="../Edorolli/image/3cara.jpg" alt="Step 3" />
+            <img src="../image/3cara.jpg" alt="Step 3" />
             <div class="step-content">
               <h3>3. Melengkapi form SOP</h3>
               <p>
@@ -201,7 +202,7 @@ $nickname = $nicknameArray[0];
             </div>
           </div>
           <div class="step">
-            <img src="../Edorolli/image/4cara.jpg" alt="Step 4" />
+            <img src="../image/4cara.jpg" alt="Step 4" />
             <div class="step-content">
               <h3>4. Melakukan pembayaran</h3>
               <p>
@@ -219,31 +220,31 @@ $nickname = $nicknameArray[0];
         <div id="event-carousel" class="owl-carousel owl-theme">
           <div class="event-item">
             <div class="event-card">
-              <img src="../Edorolli/image/Dewa 19.jpg" alt="Dewa 19 Concert" />
+              <img src="../image/Dewa 19.jpg" alt="Dewa 19 Concert" />
               <div class="event-text">Dewa 19 Concert</div>
             </div>
           </div>
           <div class="event-item">
             <div class="event-card">
-              <img src="../Edorolli/image/MLBB.jpg" alt="MLBB Tournament" />
+              <img src="../image/MLBB.jpg" alt="MLBB Tournament" />
               <div class="event-text">MLBB Tournament</div>
             </div>
           </div>
           <div class="event-item">
             <div class="event-card">
-              <img src="../Edorolli/image/Futsal.jpg" alt="Futsal Championship" />
+              <img src="../image/Futsal.jpg" alt="Futsal Championship" />
               <div class="event-text">Futsal Championship</div>
             </div>
           </div>
           <div class="event-item">
             <div class="event-card">
-              <img src="../Edorolli/image/Senggigi_Sunset_Jazz.jpg" alt="Senggigi Sunset Jazz" />
+              <img src="../image/Senggigi_Sunset_Jazz.jpg" alt="Senggigi Sunset Jazz" />
               <div class="event-text">Senggigi Sunset Jazz</div>
             </div>
           </div>
           <div class="event-item">
             <div class="event-card">
-              <img src="../Edorolli/image/Wedding.jpg" alt="Wedding Ceremony" />
+              <img src="../image/Wedding.jpg" alt="Wedding Ceremony" />
               <div class="event-text">Wedding Ceremony</div>
             </div>
           </div>
@@ -251,42 +252,11 @@ $nickname = $nicknameArray[0];
       </section>
     </main>
 
-    <footer>
-      <div class="footer-container">
-        <div class="footer-left">
-          <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
-          <div class="nama_website">
-            <a>Edoroli</a>
-          </div>
-        </div>
-        <div class="footer-center">
-          <h3>TENTANG EDOROLI</h3>
-          <p>
-            Edoroli adalah portal reservasi veneu pertama di Indonesia, yang
-            menyediakan akses informasi yang lengkap dan sistem yang mudah,
-            cepat, dan efisien.
-          </p>
-        </div>
-        <div class="footer-right">
-          <h3>SOSIAL MEDIA</h3>
-          <ul>
-            <li>
-              <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
-      </div>
-    </footer>
+    <?php require_once '../php/footer.php'; ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
-    <script src="../Edorolli/js/home_login.js"></script>
-    <script src="../Edorolli/js/iconHomepage.js"></script>
+    <script src="../js/home_login.js"></script>
+    <script src="../js/iconHomepage.js"></script>
   </body>
 </html>

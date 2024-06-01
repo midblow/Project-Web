@@ -1,16 +1,13 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['username'])) {
-    // Jika sesi nama tidak diatur, redirect ke halaman login
-    header("Location: http://localhost/Project-Web/Edorolli/Provider/prov_login.php");
-    exit();
+  // Jika sesi nama tidak diatur, redirect ke halaman login
+  header("Location: http://localhost/Project-Web/Edorolli/Provider/prov_login.php");
+  exit();
 }
-
-$conn = new mysqli('localhost', 'root', '', 'project_pweb');
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once '../php/functions.php';
+$conn = connectDatabase();
 
 $id_provider = $_SESSION['id_provider'];
 $items_per_page = 8;
@@ -32,6 +29,7 @@ $result = $stmt->get_result();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/home_prov.css">
+    <link rel="stylesheet" href="../css/footer.css" />
 </head>
 <body>
     <header>
@@ -40,7 +38,7 @@ $result = $stmt->get_result();
                 <div class="logo"><img src="../image/logo.png" alt="Logo"></div>
                 <div class="nama_website"><a href="#">Edoroli</a></div>
             </div>
-            <div class="menu"><a href="User.php">Hallo <?php echo $_SESSION['username']; ?><i class="far fa-user"></i></a></div>
+            <div class="menu"><a href="Provider.php">Hallo <?php echo $_SESSION['username']; ?><i class="far fa-user"></i></a></div>
         </div>
     </header>
     <main>
@@ -96,28 +94,7 @@ $result = $stmt->get_result();
             </div>
         </section>
     </main>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-left">
-                <img src="../image/logo.png" alt="Edoroli Logo">
-                <div class="nama_website"><a href="#">Edoroli</a></div>
-            </div>
-            <div class="footer-center">
-                <h3>TENTANG EDOROLI</h3>
-                <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
-            </div>
-            <div class="footer-right">
-                <h3>SOSIAL MEDIA</h3>
-                <ul>
-                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <?php require_once '../php/footer.php'; ?>
     <script src="../js/iconHomepage.js"></script>
 </body>
 </html>

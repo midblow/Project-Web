@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../Edorolli/css/signup.css" />
+    <link rel="stylesheet" href="../css/sign.css" />
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -21,9 +21,9 @@ session_start();
   <body>
     <section>
       <div class="register">
-        <form action="../Edorolli/php/proses_register.php" method="post">
+        <form action="../php/proses_register.php" method="post">
           <div class="gambar">
-            <img src="../Edorolli/image/hallo_user.png"/>
+            <img src="../image/hallo_user.png"/>
           </div>
           <h2>Sign Up</h2>
           <div class="inputbox">

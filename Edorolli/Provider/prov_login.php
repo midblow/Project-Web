@@ -14,7 +14,7 @@ if (!isset($_SESSION['error_message'])) {
   <title>Log In!!</title>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <link rel="stylesheet" href="../css/prov_login.css" />
+  <link rel="stylesheet" href="../css/login.css" />
 </head>
 
 <body>

@@ -20,15 +20,15 @@ if (!isset($_SESSION['error_message'])) {
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <link rel="stylesheet" href="../Edorolli/css/login_user.css" />
+    <link rel="stylesheet" href="../css/login.css" />
   </head>
 
   <body>
     <section>
       <div class="form-box">
-        <form id='login' action="../Edorolli/php/proses_login.php" method="post">
+        <form id='login' action="../php/proses_login.php" method="post">
           <div class="gambar">
-            <img src="../Edorolli/image/hallo_user.png" />
+            <img src="../image/hallo_user.png" />
           </div>
           <h2>Login</h2>
           <div class="inputbox">

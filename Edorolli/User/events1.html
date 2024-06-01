@@ -12,19 +12,19 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="../Edorolli/css/events.css" />
+    <link rel="stylesheet" href="../css/events.css" />
   </head>
   <body>
     <header>
       <div class="wrapper">
         <div class="logo">
-          <img src="../Edorolli/image/logo.png" />
+          <img src="../image/logo.png" />
         </div>
         <div class="nama_website">
           <a>Edoroli</a>
         </div>
         <div class="menu">
-          <a href="User.html"> Hallo User<i class="far fa-user"></i></a>
+          <a href="User.php"> Hallo User<i class="far fa-user"></i></a>
         </div>
       </div>
     </header>
@@ -32,17 +32,19 @@
     <section class="main-title">
       <h1>Temukan venue terbaik untuk event anda</h1>
       <nav>
-        <a href="home_login.html" class="nav-item" id="all-stay">All Stay</a>
-        <a href="veneu.html" class="nav-item" id="venue">Venue</a>
-        <a href="events.html" class="nav-item active" id="event">Event</a>
+        <a href="home_login.php" class="nav-item" id="all-stay">All Stay</a>
+        <a href="veneu.php" class="nav-item" id="venue">Venue</a>
+        <a href="events1.html" class="nav-item active" id="event">Event</a>
       </nav>
     </section>
 
     <section class="events">
       <div class="event-card">
-        <img src="../Edorolli/image/Memofest.jpg" alt="Memofest Konser" />
+        <a href="detail_futsal.html">
+          <img src="../image/Futsal.jpg" />
+        </a>
         <div class="event-info">
-          <h2>Memofest Konser</h2>
+          <a href="detail_futsal.html"><h2>Futsal Smala</h2></a>
           <p>
             Selamat datang di Turnamen Futsala Smala 2024, sebuah perhelatan
             akbar yang menggabungkan semangat kompetisi dan persahabatan dalam
@@ -53,7 +55,7 @@
       </div>
 
       <div class="event-card">
-        <img src="../Edorolli/image/MLBB.jpg" alt="MLBB Mataram Tournament" />
+        <a href="detail_MLBB.html"><img src="../image/MLBB.jpg" /></a>
         <div class="event-info">
           <h2>MLBB Mataram Tournament</h2>
           <p>
@@ -67,12 +69,11 @@
       </div>
 
       <div class="event-card">
-        <img
-          src="../Edorolli/image/Lombok_Urban.jpg"
-          alt="Lombok Urban VOL.1"
-        />
+        <a href="detail_SSJ.html"
+          ><img src="../image/Senggigi_Sunset_Jazz.jpg"
+        /></a>
         <div class="event-info">
-          <h2>Lombok Urban VOL.1</h2>
+          <h2>Konser SSJ (Senggigi Sunset Jazz)</h2>
           <p>
             Nikmati senja yang indah di Pantai Senggigi dengan alunan musik jazz
             yang menenangkan dalam acara Senggigi Sunset Jazz 2024. Konser ini
@@ -84,7 +85,9 @@
       </div>
 
       <div class="event-card">
-        <img src="../Edorolli/image/Dewa 19.jpg" alt="Konser Dewa 19" />
+        <a href="detail_wedding.html">
+          <img src="../image/Wedding.jpg" />
+        </a>
         <div class="event-info">
           <h2>Konser Dewa 19</h2>
           <p>
@@ -98,7 +101,7 @@
       </div>
       <div class="pagination">
         <button class="pagination-button" id="prev-button">Previous</button>
-        <span class="page-number">2</span>
+        <span class="page-number">1</span>
         <button class="pagination-button" id="next-button">Next</button>
       </div>
     </section>
@@ -106,7 +109,7 @@
     <footer>
       <div class="footer-container">
         <div class="footer-left">
-          <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
+          <img src="../image/logo.png" alt="Edoroli Logo" />
           <div class="nama_website">
             <a>Edoroli</a>
           </div>
@@ -136,8 +139,7 @@
       </div>
     </footer>
 
-    <script src="../Edorolli/js/pageEvent.js"></script>
-    
-    <script> currentPage = 2; updatePageNumber(); </script>
+    <script src="../js/pageEvent.js"></script>
+    <script>currentPage = 1; updatePageNumber();</script>
   </body>
 </html>

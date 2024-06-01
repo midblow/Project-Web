@@ -7,6 +7,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="../css/venue_detail.css">
+        <link rel="stylesheet" href="../css/footer.css" />
     </head>
     <body>
         <header>
@@ -91,91 +92,8 @@ sekali</textarea>
                 </div>
             </section>
         </main>
-        <footer>
-            <div class="footer-container">
-                <div class="footer-left">
-                    <img src="../image/logo.png" alt="Edoroli Logo">
-                    <div class="nama_website"><a href="#">Edoroli</a></div>
-                </div>
-                <div class="footer-center">
-                    <h3>TENTANG EDOROLI</h3>
-                    <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
-                </div>
-                <div class="footer-right">
-                    <h3>SOSIAL MEDIA</h3>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
-            </div>
-        </footer>
-        <script>
-            function previewImage(event) {
-                var reader = new FileReader();
-                reader.onload = function(){
-                    var output = document.getElementById('preview-image');
-                    output.src = reader.result;
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            }
-
-            function validateForm() {
-                let kapasitas = document.getElementById('kapasitas').value;
-                let harga = document.getElementById('harga').value;
-                let pemerintah = document.getElementById('pemerintah').checked;
-                let swasta = document.getElementById('swasta').checked;
-                
-                // Validate kapasitas and harga to be numbers
-                kapasitas = kapasitas.replace(/\./g, '');
-                harga = harga.replace(/\./g, '');
-
-                if (isNaN(kapasitas) || isNaN(harga)) {
-                    alert('Kapasitas dan Harga harus berupa angka.');
-                    return false;
-                }
-
-                // Ensure at least one radio button is checked
-                if (!pemerintah && !swasta) {
-                    alert('Pilih salah satu jenis instansi.');
-                    return false;
-                }
-
-                // Update form values with cleaned numbers
-                document.getElementById('kapasitas').value = kapasitas;
-                document.getElementById('harga').value = harga;
-
-                return true;
-            }
-
-            function enableEditing() {
-                var elements = document.querySelectorAll('#venue-form input, #venue-form textarea, #venue-form input[type="file"]');
-                elements.forEach(function(element) {
-                    element.disabled = false;
-                });
-                document.querySelector('.save-cancel-buttons').style.display = 'flex';
-                document.querySelector('.action-buttons').style.display = 'none';
-            }
-
-            function cancelEditing() {
-                var elements = document.querySelectorAll('#venue-form input, #venue-form textarea, #venue-form input[type="file"]');
-                elements.forEach(function(element) {
-                    element.disabled = true;
-                });
-                document.querySelector('.save-cancel-buttons').style.display = 'none';
-                document.querySelector('.action-buttons').style.display = 'flex';
-            }
-
-            function deleteVenue() {
-                if (confirm("Are you sure you want to delete this venue?")) {
-                    var venueId = document.getElementById('venue_id').value;
-                    window.location.href = "../php/delete_venue.php?id=" + venueId;
-                }
-            }
-        </script>
+        <?php require_once '../php/footer.php'; ?>
+        <script src="../js/venue_detail_edit.js"></script>
         <script src="../js/iconHomepage.js"></script>
     </body>
     </html>

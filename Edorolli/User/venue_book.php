@@ -1,10 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['name'])) {
-  // Jika sesi nama tidak diatur, redirect ke halaman login
-  header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
-  exit();
-}
+    // Jika sesi nama tidak diatur, redirect ke halaman login
+    header("Location: ../User/login_user.php");
+    exit();
+  }
+  
 
 $nicknameArray = explode(' ', $_SESSION['name']);
 $nickname = $nicknameArray[0];
@@ -17,13 +18,16 @@ $nickname = $nicknameArray[0];
     <title>Edoroli - Reservasi Venue Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../Edorolli/css/venue_book.css">
+    <link rel="stylesheet" href="../css/venue_book.css">
+    <link rel="stylesheet" href="../css/footer.css" />
+    <script src="../js/venue_calendar.js"></script>
+    <script src="../js/venue_popup.js"></script>
 </head>
 <body>
     <header>
       <div class="wrapper">
         <div class="logo">
-          <img src="../Edorolli/image/logo.png" alt="Logo" />
+          <img src="../image/logo.png" alt="Logo" />
         </div>
         <div class="nama_website">
           <a href="#">Edoroli</a>
@@ -44,7 +48,7 @@ $nickname = $nicknameArray[0];
 
     <section class="image-card">
       <div class="image-container">
-        <img src="../Edorolli/image/Sangkareang.jpg" alt="Image">
+        <img src="../image/Sangkareang.jpg" alt="Image">
         <div class="overlay">
           <h1>TAMAN SANGKAREANG</h1>
         </div>
@@ -56,32 +60,28 @@ $nickname = $nicknameArray[0];
             <div class="left-section">
                 <div class="header-section">
                     <h2>Taman Sangkareang</h2>
-                    <div class="address-box">
-                        <p>Jl. Pendidikan, Dasan Agung Baru, Kec. Selaparang, Kota Mataram, Nusa Tenggara Barat</p>
-                    </div>
                 </div>
-                <div class="permissions">
-                    <h3>Perizinan</h3>
-                    <div class="permissions-box">
-                        <ul>
-                            <li>Izin Operasional</li>
-                            <li>Izin Lingkungan</li>
-                            <li>Izin Acara</li>
-                        </ul>
-                    </div>
+                <div class="desc-box">
+                    <h3>Deskripsi & Fasilitas:</h3>
+                    <p>Description of the venue goes here.</p>
+                    <ul>
+                        <li>Facility 1</li>
+                        <li>Facility 2</li>
+                        <li>Facility 3</li>
+                    </ul>
                 </div>
-                <div class="event-venue">
-                    <h3>About event venue</h3>
-                    <div class="images">
-                        <div class="image-card">
-                            <img src="../Edorolli/image/ven_1.jpg" alt="Event 1">
-                        </div>
-                        <div class="image-card">
-                            <img src="../Edorolli/image/ven_2.jpg" alt="Event 2">
-                        </div>
-                        <div class="image-card">
-                            <img src="../Edorolli/image/ven_3.jpg" alt="Event 3">
-                        </div>
+                <div class="alamat-box">
+                    <h3>Alamat:</h3>
+                    <p>Jl. Pendidikan, Dasan Agung Baru, Kec. Selaparang, Kota Mataram, Nusa Tenggara Barat</p>
+                </div>
+                <div class="kapasitas-harga-container">
+                    <div class="kapasitas-box">
+                        <h3>Kapasitas:</h3>
+                        <p>100 People</p>
+                    </div>
+                    <div class="harga-box">
+                        <h3>Harga:</h3>
+                        <p>Rp 1.000.000</p>
                     </div>
                 </div>
             </div>
@@ -136,9 +136,7 @@ $nickname = $nicknameArray[0];
             <button id="pilihButton" class="confirm-payment">Pilih</button>
         </div>
     </div>
-
-    <script src="../Edorolli/js/veneu_calender.js"></script>
-    <script src="../Edorolli/js/venue_popup.js"></script>
+    <?php require_once '../php/footer.php'; ?>
 </body>
 </html>
 

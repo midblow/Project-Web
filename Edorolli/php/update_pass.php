@@ -1,13 +1,7 @@
 <?php
-session_start();
-
-// Membuat koneksi
-$conn = mysqli_connect('localhost', 'root', '', 'project_pweb');
-
-// Memeriksa koneksi
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+require_once 'functions.php';
+start_session_if_not_started();
+$conn = connectDatabase();
 
 // Periksa apakah form sudah disubmit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION['name'])) {
   // Jika sesi nama tidak diatur, redirect ke halaman login
-  header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
+  header("Location: ../User/login_user.php");
   exit();
 }
 
@@ -24,15 +24,16 @@ $nickname = $nicknameArray[0];
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="stylesheet" href="../Edorolli/css/User_Ksandi.css" />
-    <script src="../Edorolli/js/ChangePass.js" ></script>
-    <script src="../Edorolli/js/logout_user.js" ></script>
+    <link rel="stylesheet" href="../css/User_Ksandi.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <script src="../js/ChangePass.js" ></script>
+    <script src="../js/logout_user.js" ></script>
   </head>
   <body>
     <header>
       <div class="wrapper">
         <div class="logo">
-          <img src="../Edorolli/image/logo.png" alt="Logo" />
+          <img src="../image/logo.png" alt="Logo" />
         </div>
         <div class="nama_website">
           <a>Edoroli</a>
@@ -48,7 +49,7 @@ $nickname = $nicknameArray[0];
       <nav>
         <a href="User.php" class="nav-item">Profile</a>
         <a href="Riwayat Reservasi" class="nav-item">Riwayat Reservasi</a>
-        <a href="Kelola Akun" class="nav-item active">Kelola Akun</a>
+        <a href="User_KSandi.php" class="nav-item active">Kelola Akun</a>
       </nav>
     </section>
 
@@ -56,7 +57,7 @@ $nickname = $nicknameArray[0];
       <div class="container">
         <div class="sidebar">
           <div class="profile-info">
-            <img src="../Edorolli/image/MLBB.jpg" alt="Profile Picture" />
+            <img src="../image/MLBB.jpg" alt="Profile Picture" />
             <h3><?php echo $_SESSION['name']; ?></h3>
             <p><?php echo $_SESSION['gmail']; ?></p>
           </div>
@@ -125,29 +126,7 @@ $nickname = $nicknameArray[0];
         </div>
       </div>
     </main>
-    
-    <footer>
-            <div class="footer-container">
-                <div class="footer-left">
-                    <img src="../image/logo.png" alt="Edoroli Logo">
-                    <div class="nama_website"><a href="#">Edoroli</a></div>
-                </div>
-                <div class="footer-center">
-                    <h3>TENTANG EDOROLI</h3>
-                    <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
-                </div>
-                <div class="footer-right">
-                    <h3>SOSIAL MEDIA</h3>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
-            </div>
-        </footer>
+    <?php require_once '../php/footer.php'; ?>
 
     <!-- Popup -->
     <div id="popup" class="popup" style="display: none">
@@ -170,6 +149,7 @@ $nickname = $nicknameArray[0];
       </div>
     </div>
 
-    
+    <script src="../js/ChangePass.js"></script>
+    <script src="../js/logout.js"></script>
   </body>
 </html>

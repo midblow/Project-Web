@@ -1,11 +1,7 @@
 <?php
-session_start();
-$conn = mysqli_connect('localhost', 'root', '', 'project_pweb');
-
-// Check connection
-if ($conn->connect_error) {
-    die('Connection Failed: ' . mysqli_connect_error());
-}
+require_once 'functions.php';
+start_session_if_not_started();
+$conn = connectDatabase();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_provider = $_SESSION['id_provider'];
