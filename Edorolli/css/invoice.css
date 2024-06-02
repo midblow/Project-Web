@@ -1,0 +1,84 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.invoice-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.invoice-header {
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.invoice-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.invoice-header h2 {
+    margin: 5px 0 10px;
+    font-size: 20px;
+    color: green;
+}
+.invoice-content {
+    margin-bottom: 20px;
+}
+.invoice-details, .payment-details {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+.invoice-details th, .invoice-details td, .payment-details th, .payment-details td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.invoice-details th, .payment-details th {
+    background-color: #f2f2f2;
+}
+.total-row {
+    font-weight: bold;
+}
+.payment-details td {
+    text-align: left;
+}
+.invoice-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.invoice-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+.invoice-buttons .download {
+    background-color: #28a745;
+}
+.invoice-buttons .complete {
+    background-color: #dc3545;
+}
+.invoice-label {
+    font-weight: bold;
+    color: gray;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+.invoice-value {
+    margin-bottom: 15px;
+}
+.details-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.details-col {
+    flex: 1;
+    padding: 10px;
+}

@@ -95,7 +95,7 @@ $nickname = $nicknameArray[0];
               class="change-password-form"
               style="display: none"
             >
-              <form id="passwordForm" action="php/update_pass.php" method="POST">
+              <form id="passwordForm" action="../php/update_pass.php" method="POST">
                 <label for="newPassword">Masukkan Kata Sandi Baru</label>
                 <input
                   type="password"

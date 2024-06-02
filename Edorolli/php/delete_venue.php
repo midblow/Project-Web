@@ -23,18 +23,9 @@ if (isset($_GET['id']) && isset($_SESSION['id_provider'])) {
         $total_items = $total_items_result->fetch_assoc()['total'];
         $total_pages = ceil($total_items / 8); // Assuming items per page
 
-        // Generate pagination files
-        generate_pagination_files($id_provider, $total_pages, 8, $conn);
-
-        // Generate detail files
-        generate_all_venue_detail_files($conn);
-
         // Redirect to the first page or the previous page if the last page was deleted
-        if ($total_items > 0) {
-            header("Location: ../Provider/venue_prov_" . $id_provider . "_1.php");
-        } else {
-            header("Location: ../Provider/venue_prov_" . $id_provider . "_1.php");
-        }
+        $redirect_page = $total_pages > 0 ? $total_pages : 1;
+        header("Location: ../Provider/venue_prov.php?id_provider=" . $id_provider . "&page=" . $redirect_page);
         exit();
     } else {
         echo "Error: " . $stmt->error;

@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const calendar = document.getElementById("calendar");
     const prevMonthButton = document.getElementById("prevMonth");
     const nextMonthButton = document.getElementById("nextMonth");
+    var idVenue = document.body.getAttribute('data-venue-id');
+    // console.log("idVenue from PHP:", idVenue); //log ini untuk memastikan nilai idVenue diatur dengan benar
+    window.idVenue = idVenue;
 
     let today = new Date();
     let currentMonth = today.getMonth();
@@ -30,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             calendar.appendChild(dayElement);
         }
 
-        fetch("../php/venue_calendar.php")
+        fetch(`../php/venue_calendar.php?id_venue=${idVenue}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
@@ -38,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then((bookings) => {
+                console.log("Bookings data received:", bookings); // Log untuk memeriksa data bookings
                 updateCalendar(bookings, year, month);
             })
             .catch((error) => {

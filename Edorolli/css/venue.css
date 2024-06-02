@@ -1,14 +1,11 @@
 * {
   text-decoration: none;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   background-color: white;
 }
 
@@ -76,7 +73,7 @@ section {
 
 .main-title {
   text-align: left;
-  padding-bottom: 10px;
+  padding: 20px 0;
 }
 
 .main-title h1 {
@@ -89,13 +86,13 @@ section {
   margin: 0 10px;
   color: #bf4f26;
   text-decoration: none;
-  font-size: 18px solid;
+  font-size: 18px;
   position: relative;
   font-weight: 600;
 }
 
 .nav-item.active {
-  color: #0c2240; /* Blue color when active */
+  color: #0c2240;
 }
 
 .nav-item.active::after {
@@ -110,7 +107,7 @@ section {
 
 .nav-item:hover,
 .nav-item:focus {
-  color: #0c2240; /* Hover color */
+  color: #0c2240;
 }
 
 .nav-item:hover::after,
@@ -142,12 +139,13 @@ section {
 
 .image-container {
   position: relative;
-  padding: 10px 10px 0 10px;
+  padding: 10px;
 }
 
 .image-container img {
   width: 100%;
   height: auto;
+  border-radius: 10px;
 }
 
 .heart-icon {
@@ -155,25 +153,16 @@ section {
   top: 10px;
   right: 17px;
   font-size: 24px;
-  color: #fff; /* Warna putih untuk visibilitas lebih baik */
+  color: #fff;
   cursor: pointer;
 }
 
 .heart-icon:hover {
-  position: absolute;
-  top: 10px;
-  right: 17px;
-  font-size: 24px;
-  color: #0c2240;
-  cursor: pointer;
-}
-
-.heart-icon .fas {
   color: #0c2240;
 }
 
 .info {
-  padding: 0 10px 0 10px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -195,15 +184,11 @@ section {
   margin-left: 10px;
 }
 
-.plus-icon .fa-solid {
-  color: #0c2240;
-}
-
 .location {
   display: flex;
   align-items: center;
   font-size: 14px;
-  padding: 0 10px 10px 10px;
+  padding: 10px;
   font-weight: 600;
 }
 

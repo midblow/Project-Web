@@ -72,7 +72,7 @@ $nickname = $nicknameArray[0];
         <div class="content">
           <div class="profile-details">
             <h2>Profile</h2>
-            <form id="profileForm" action="php/update_profile.php" method="POST">
+            <form id="profileForm" action="../php/update_profile.php" method="POST">
 
               <label for="name">Nama</label>
               <input type="text" id="name" name="name" value="<?php echo $_SESSION['name']; ?>" disabled/>

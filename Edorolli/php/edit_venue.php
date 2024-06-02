@@ -71,9 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             echo "Record updated successfully";
-            // Generate detail files
-            generate_all_venue_detail_files($conn);
-            header("Location: ../Provider/venue_detail_" . $venue_id . ".php");
+            header("Location: ../Provider/venue_detail.php?id_venue=" . $venue_id);
             exit();
         } else {
             echo "Error: " . $stmt->error;

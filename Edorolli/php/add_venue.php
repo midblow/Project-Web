@@ -57,22 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->execute()) {
                     echo "New record created successfully";
                     
-                    // Generate detail file for the newly added venue
-                    $new_venue_id = $stmt->insert_id;
-                    $new_venue = [
-                        'id_venue' => $new_venue_id,
-                        'nama_venue' => $name_venue,
-                        'deskripsi_fasilitas' => $deskripsi_fasilitas,
-                        'alamat' => $alamat,
-                        'kota' => $kota,
-                        'penanggung_jawab' => $penanggung_jawab,
-                        'kapasitas' => $kapasitas,
-                        'harga' => $harga,
-                        'jenis_instansi' => $jenis_instansi,
-                        'gambar' => $target_file
-                    ];
-                    generate_venue_detail_file($new_venue);
-
                     // Calculate new total pages for the specific provider
                     $total_items_sql = "SELECT COUNT(*) AS total FROM venue WHERE id_provider = ?";
                     $stmt_total = $conn->prepare($total_items_sql);
@@ -82,11 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $total_items = $total_items_result->fetch_assoc()['total'];
                     $total_pages = ceil($total_items / 8); // Assuming items per page
 
-                    // Generate pagination files
-                    generate_pagination_files($id_provider, $total_pages, 8, $conn);
-
                     // Redirect to the last page
-                    header("Location: ../Provider/venue_prov_" . $id_provider . "_" . $total_pages . ".php");
+                    header("Location: ../Provider/venue_prov.php?id_provider=" . $id_provider . "&page=" . $total_pages);
                     exit();
                 } else {
                     echo "Error: " . $stmt->error;
@@ -106,22 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->execute()) {
             echo "New record created successfully";
 
-            // Generate detail file for the newly added venue
-            $new_venue_id = $stmt->insert_id;
-            $new_venue = [
-                'id_venue' => $new_venue_id,
-                'nama_venue' => $name_venue,
-                'deskripsi_fasilitas' => $deskripsi_fasilitas,
-                'alamat' => $alamat,
-                'kota' => $kota,
-                'penanggung_jawab' => $penanggung_jawab,
-                'kapasitas' => $kapasitas,
-                'harga' => $harga,
-                'jenis_instansi' => $jenis_instansi,
-                'gambar' => $target_file
-            ];
-            generate_venue_detail_file($new_venue);
-            
             // Calculate new total pages for the specific provider
             $total_items_sql = "SELECT COUNT(*) AS total FROM venue WHERE id_provider = ?";
             $stmt_total = $conn->prepare($total_items_sql);
@@ -131,11 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $total_items = $total_items_result->fetch_assoc()['total'];
             $total_pages = ceil($total_items / 8); // Assuming items per page
 
-            // Generate pagination files
-            generate_pagination_files($id_provider, $total_pages, 8, $conn);
-            generate_all_venue_detail_files($conn);
             // Redirect to the last page
-            header("Location: ../Provider/venue_prov_" . $id_provider . "_" . $total_pages . ".php");
+            header("Location: ../Provider/venue_prov.php?id_provider=" . $id_provider . "&page=" . $total_pages);
             exit();
         } else {
             echo "Error: " . $stmt->error;

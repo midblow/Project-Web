@@ -21,15 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['nomorhp'] = $nomorhp;
         $_SESSION['alamat'] = $alamat;
 
-        header("Location: ../Provider/User.php");
+        header("Location: ../Provider/Provider.php");
     } else {
         $_SESSION['error_message'] = 'Gagal memperbarui profil: ' . mysqli_error($conn);
-        header("Location: ../Provider/User.php");
+        header("Location: ../Provider/Provider.php");
     }
 
     mysqli_close($conn);
 } else {
     $_SESSION['error_message'] = 'Permintaan tidak valid!';
-    header("Location: ../Provider/User.php");
+    header("Location: ../Provider/Provider.php");
 }
 ?>

@@ -53,8 +53,8 @@ $nickname = $nicknameArray[0];
           <a href="home_login.php" class="nav-item active" id="all-stay"
             >All Stay</a
           >
-          <a href="veneu.php" class="nav-item" id="venue">Venue</a>
-          <a href="events1.html" class="nav-item" id="event">Event</a>
+          <a href="venue.php" class="nav-item" id="venue">Venue</a>
+          <a href="event.php" class="nav-item" id="event">Event</a>
         </nav>
       </section>
 

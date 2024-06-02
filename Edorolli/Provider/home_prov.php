@@ -45,8 +45,8 @@ $result = $stmt->get_result();
         <section class="main-title">
             <nav>
                 <a href="../Provider/home_prov.php" class="nav-item active" id="all-stay">All Stay</a>
-                <a href="venue_prov_<?php echo $id_provider; ?>_1.php" class="nav-item" id="venue">My Venue</a>
-                <a href="events1.html" class="nav-item" id="booking">Booking Confirmation</a>
+                <a href="venue_prov.php?id_provider=<?php echo $id_provider; ?>&page=1" class="nav-item" id="venue">My Venue</a>
+                <a href="booking_confirmation.php" class="nav-item" id="booking">Booking Confirmation</a>
             </nav>
         </section>
 
@@ -72,7 +72,7 @@ $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
                         echo '<div class="card">';
                         echo '    <div class="image-container">';
-                        echo '        <a href="venue_detail_' . $row["id_venue"] . '.php">';
+                        echo '        <a href="venue_detail.php?id_venue=' . $row["id_venue"] . '">';
                         echo '            <img src="' . $row["gambar"] . '" alt="Venue Image">';
                         echo '        </a>';
                         echo '        <span class="heart-icon"><i class="far fa-heart" onclick="klikLike(this)"></i></span>';

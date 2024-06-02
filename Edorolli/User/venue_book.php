@@ -1,87 +1,135 @@
 <?php
 session_start();
-if (!isset($_SESSION['name'])) {
-    // Jika sesi nama tidak diatur, redirect ke halaman login
+if (!isset($_SESSION['id'])) {
     header("Location: ../User/login_user.php");
     exit();
-  }
-  
+}
+
+require_once '../php/functions.php';
+$conn = connectDatabase();
+
+// Mengambil ID Venue dari URL
+$id_venue = isset($_GET['id_venue']) ? (int)$_GET['id_venue'] : 0;
+
+if ($id_venue <= 0) {
+    echo "Invalid venue ID.";
+    exit();
+}
+
+// Memeriksa koneksi
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Mengambil data venue dari database berdasarkan ID Venue
+$sql = "SELECT * FROM venue WHERE id_venue = ?";
+$stmt = $conn->prepare($sql);
+
+if ($stmt === false) {
+    die("Error preparing statement: " . $conn->error);
+}
+
+$stmt->bind_param("i", $id_venue);
+$stmt->execute();
+$result = $stmt->get_result();
+$venue = $result->fetch_assoc();
+
+if (!$venue) {
+    echo "Venue not found.";
+    exit();
+}
+
+// Mengambil booking dengan status confirmed untuk id_user yang sedang mengakses
+$user_id = $_SESSION['id']; // Assuming user ID is stored in session
+$sqlBooking = "SELECT start_date, end_date FROM booking WHERE id_venue = ? AND status = 'confirmed' AND user_id = ?";
+$stmtBooking = $conn->prepare($sqlBooking);
+
+if ($stmtBooking === false) {
+    die("Error preparing statement: " . $conn->error);
+}
+
+$stmtBooking->bind_param("ii", $id_venue, $user_id);
+$stmtBooking->execute();
+$resultBooking = $stmtBooking->get_result();
+$bookings = [];
+while ($row = $resultBooking->fetch_assoc()) {
+    $bookings[] = $row;
+}
+
+error_log("Booking query for id_venue = $id_venue and user_id = $user_id");
+error_log("Booking results: " . print_r($bookings, true));
 
 $nicknameArray = explode(' ', $_SESSION['name']);
 $nickname = $nicknameArray[0];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edoroli - Reservasi Venue Online</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/venue_book.css">
     <link rel="stylesheet" href="../css/footer.css" />
     <script src="../js/venue_calendar.js"></script>
     <script src="../js/venue_popup.js"></script>
 </head>
-<body>
+<body data-venue-id="<?php echo htmlspecialchars($id_venue); ?>">
     <header>
-      <div class="wrapper">
-        <div class="logo">
-          <img src="../image/logo.png" alt="Logo" />
+        <div class="wrapper">
+            <div class="logo">
+                <img src="../image/logo.png" alt="Logo" />
+            </div>
+            <div class="nama_website">
+                <a href="#">Edoroli</a>
+            </div>
+            <div class="menu">
+                <a href="User.php">Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
+            </div>
         </div>
-        <div class="nama_website">
-          <a href="#">Edoroli</a>
-        </div>
-        <div class="menu">
-          <a href="User.php">Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
-        </div>
-      </div>
     </header>
 
     <div class="main-nav">
-      <div class="wrapper">
-        <a href="home_login.php" class="nav-item" id="all-stay">All Stay</a>
-        <a href="venue.php" class="nav-item active" id="venue">Venue</a>
-        <a href="events1.html" class="nav-item" id="event">Event</a>
-      </div>
+        <div class="wrapper">
+            <a href="home_login.php" class="nav-item" id="all-stay">All Stay</a>
+            <a href="venue.php" class="nav-item active" id="venue">Venue</a>
+            <a href="events1.html" class="nav-item" id="event">Event</a>
+        </div>
     </div>
 
     <section class="image-card">
-      <div class="image-container">
-        <img src="../image/Sangkareang.jpg" alt="Image">
-        <div class="overlay">
-          <h1>TAMAN SANGKAREANG</h1>
+        <div class="image-container">
+            <img src="<?php echo htmlspecialchars($venue['gambar']); ?>" alt="Image">
+            <div class="overlay">
+                <h1><?php echo htmlspecialchars(strtoupper($venue['nama_venue'])); ?></h1>
+            </div>
         </div>
-      </div>
     </section>
 
     <div class="content-container">
         <div class="details-container">
             <div class="left-section">
                 <div class="header-section">
-                    <h2>Taman Sangkareang</h2>
+                    <h2><?php echo htmlspecialchars(strtoupper($venue['nama_venue'])); ?></h2>
                 </div>
                 <div class="desc-box">
                     <h3>Deskripsi & Fasilitas:</h3>
-                    <p>Description of the venue goes here.</p>
-                    <ul>
-                        <li>Facility 1</li>
-                        <li>Facility 2</li>
-                        <li>Facility 3</li>
-                    </ul>
+                    <p><?php echo nl2br(htmlspecialchars($venue['deskripsi_fasilitas'])); ?></p>
                 </div>
                 <div class="alamat-box">
                     <h3>Alamat:</h3>
-                    <p>Jl. Pendidikan, Dasan Agung Baru, Kec. Selaparang, Kota Mataram, Nusa Tenggara Barat</p>
+                    <p><?php echo htmlspecialchars($venue['alamat']); ?></p>
                 </div>
                 <div class="kapasitas-harga-container">
                     <div class="kapasitas-box">
                         <h3>Kapasitas:</h3>
-                        <p>100 People</p>
+                        <p><?php echo number_format($venue['kapasitas'], 0, ',', '.'); ?> Orang</p>
                     </div>
                     <div class="harga-box">
                         <h3>Harga:</h3>
-                        <p>Rp 1.000.000</p>
+                        <p>Rp <?php echo number_format($venue['harga'], 0, ',', '.'); ?></p>
                     </div>
                 </div>
             </div>
@@ -94,6 +142,21 @@ $nickname = $nicknameArray[0];
                     <button type="button" class="book-button" id="bookButton" disabled>Book</button>
                     <button type="button" class="whatsapp-button">WhatsApp</button>
                 </form>
+                  <div class="confirmed-container-wrapper">
+                    <?php if (!empty($bookings)): ?>
+                        <?php foreach ($bookings as $booking): ?>
+                            <?php if (isset($booking['start_date']) && isset($booking['end_date'])): ?>
+                                <div class="confirmed-container">
+                                    <span class="date-label">Tanggal Mulai</span>
+                                    <p><?php echo htmlspecialchars($booking['start_date']); ?></p>
+                                    <span class="date-label">Tanggal Selesai</span>
+                                    <p><?php echo htmlspecialchars($booking['end_date']); ?></p>
+                                    <a href="add_event.php">Buat Event</a>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
@@ -139,4 +202,3 @@ $nickname = $nicknameArray[0];
     <?php require_once '../php/footer.php'; ?>
 </body>
 </html>
-

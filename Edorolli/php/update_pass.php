@@ -6,7 +6,7 @@ $conn = connectDatabase();
 // Periksa apakah form sudah disubmit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!isset($_SESSION['id'])) {
-        header("Location: ../User_KSandi.php?status=error&message=Akses tidak sah.");
+        header("Location: ../User/User_KSandi.php?status=error&message=Akses tidak sah.");
         exit();
     }
 
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Validasi kata sandi
     if ($newPassword !== $confirmPassword) {
-        header("Location: ../User_KSandi.php?status=error&message=Kata sandi dan konfirmasi kata sandi tidak cocok.");
+        header("Location: ../User/User_KSandi.php?status=error&message=Kata sandi dan konfirmasi kata sandi tidak cocok.");
         exit();
     }
 
@@ -25,16 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param('ss', $newPassword, $email);
         if ($stmt->execute()) {
-            header("Location: ../User_KSandi.php?status=success&message=Kata Sandi Berhasil Disimpan");
+            header("Location: ../User/User_KSandi.php?status=success&message=Kata Sandi Berhasil Disimpan");
         } else {
-            header("Location: ../User_KSandi.php?status=error&message=Terjadi kesalahan, silakan coba lagi.");
+            header("Location: ../User/User_KSandi.php?status=error&message=Terjadi kesalahan, silakan coba lagi.");
         }
         $stmt->close();
     } else {
-        header("Location: ../User_KSandi.php?status=error&message=Terjadi kesalahan dalam persiapan statement.");
+        header("Location: ../User/User_KSandi.php?status=error&message=Terjadi kesalahan dalam persiapan statement.");
     }
 
     $conn->close();
 } else {
-    header("Location: ../User_KSandi.php?status=error&message=Akses tidak sah.");
+    header("Location: ../User/User_KSandi.php?status=error&message=Akses tidak sah.");
 }

@@ -1,0 +1,226 @@
+* {
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.wrapper {
+    width: 1100px;
+    margin: auto;
+    align-items: center;
+}
+
+.nama_website a {
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    font-family: "Poppins";
+    color: #fff;
+}
+
+.logo img {
+    padding: 22px 10px 0px 0px;
+    vertical-align: center;
+    float: left;
+    max-width: 50px;
+    max-height: 30px;
+}
+
+.menu {
+    float: right;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.menu a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.menu a i {
+    margin-left: 7px;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+header {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    line-height: 80px;
+    position: sticky;
+    top: 0px;
+    background-color: #0c2240;
+    z-index: 10;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-title {
+    max-width: 1100px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title a {
+    margin: 0 10px;
+    color: #bf4f26;
+    text-decoration: none;
+    font-size: 18px solid;
+    position: relative;
+    font-weight: 600;
+  }
+  
+  .nav-item.active {
+    color: #0c2240; /* Blue color when active */
+  }
+  
+  .nav-item.active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #0c2240;
+    left: 0;
+    bottom: -4px;
+  }
+  
+  .nav-item:hover,
+  .nav-item:focus {
+    color: #0c2240; /* Hover color */
+  }
+  
+  .nav-item:hover::after,
+  .nav-item:focus::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #0c2240;
+    left: 0;
+    bottom: -4px;
+  }
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+main h1 {
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.order-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.order-item {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.order-info h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.order-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+.order-status {
+    align-self: flex-end;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #28a745;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+    align-self: flex-end;
+    margin-top: 15px;  /* Added margin-top for spacing */
+}
+
+
+.order-actions button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.approve {
+    background-color: #0c2240;
+    color: #fff;
+}
+
+.decline {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .pagination-button {
+    background-color: #0c2240;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .pagination-button:hover {
+    background-color: #bf4f26;
+  }
+  
+  .page-number {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    background-color: #0c2240;
+    color: white;
+  }
