@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($stmt) && $stmt->execute()) {
         echo "Event updated successfully";
-        header("Location: ../User/event_detail.php?id_event=" . $id_event);
+        header("Location: ../User/event_detail.php?id_venue=" . $id_venue"&id_event" . $id_event);
         exit();
     } else {
         echo "Error: " . $stmt->error;

@@ -1,0 +1,347 @@
+/* Reset CSS */
+* {
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.wrapper {
+  width: 1100px;
+  margin: auto;
+  align-items: center;
+}
+
+.nama_website a {
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+  font-family: "Poppins";
+  color: #fff;
+}
+
+.logo img {
+  padding: 22px 10px 0px 0px;
+  vertical-align: center;
+  float: left;
+  max-width: 50px;
+  max-height: 30px;
+}
+
+.menu {
+  float: right;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.menu a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.menu a i {
+  margin-left: 7px;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+header {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  line-height: 80px;
+  position: sticky;
+  top: 0px;
+  background-color: #0c2240;
+  z-index: 10;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-title {
+  max-width: 1100px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-title h1 {
+  font-size: 35px;
+  color: #0c2240;
+  margin-bottom: 5px;
+}
+
+.main-title a {
+  margin: 0 10px;
+  color: #bf4f26;
+  text-decoration: none;
+  font-size: 18px solid;
+  position: relative;
+  font-weight: 600;
+}
+
+.nav-item.active {
+  color: #0c2240; /* Blue color when active */
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  color: #0c2240; /* Hover color */
+}
+
+.nav-item:hover::after,
+.nav-item:focus::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; 
+}
+
+.container {
+  display: flex;
+  margin: 20px auto;
+  max-width: 1100px;
+  gap: 20px;
+  overflow: hidden; 
+}
+
+.sidebar {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.profile-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+  color: #0c2240;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar nav ul li a i {
+  font-size: 18px;
+}
+
+.sidebar nav ul li.active a,
+.sidebar nav ul li a:hover {
+  color: #a62821;
+}
+
+.content {
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-header h1 {
+  font-size: 24px;
+  color: #0c2240;
+}
+
+.profile-header .tabs {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.profile-header .tabs li {
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+}
+
+.profile-header .tabs li.active {
+  color: #0c2240;
+  font-weight: bold;
+}
+
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-details h2 {
+  font-size: 20px;
+  color: #0c2240;
+  margin-bottom: 10px;
+}
+
+.profile-details p {
+  font-size: 16px;
+  color: #333;
+}
+
+.profile-details .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #0c2240;
+  color: white;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.profile-details .btn:hover {
+  background-color: #a62821;
+}
+
+.profile-details .cancel-btn {
+  background-color: #ccc;
+  color: #333;
+}
+
+.riwayat-reservasi {
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.riwayat-reservasi h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #0c2240;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #0c2240;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.card-header h3 {
+  font-size: 18px;
+  color: #fff;
+}
+
+.card-header p {
+  font-size: 12px;
+  color: #fff;
+}
+
+.card-body {
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  font-size: 12px;
+  color: #fff;
+}
+
+.card-body p span {
+  font-weight: bold;
+  color: #0c2240;
+}
+
+.card-footer {
+  text-align: right;
+}
+
+.card-footer .btn {
+  background-color: #0c2240;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.card-footer .btn {
+  background-color: green;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #0c2240;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

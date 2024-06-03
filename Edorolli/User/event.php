@@ -8,15 +8,15 @@ $items_per_page = 10;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $items_per_page;
 
-// Fetch total number of events
-$total_sql = "SELECT COUNT(*) as total FROM event";
+// Fetch total number of confirmed events
+$total_sql = "SELECT COUNT(*) as total FROM event WHERE status = 'confirmed'";
 $total_result = $conn->query($total_sql);
 $total_row = $total_result->fetch_assoc();
 $total_items = $total_row['total'];
 $total_pages = ceil($total_items / $items_per_page);
 
-// Fetch events for the current page
-$sql = "SELECT * FROM event LIMIT ?, ?";
+// Fetch confirmed events for the current page
+$sql = "SELECT * FROM event WHERE status = 'confirmed' LIMIT ?, ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $offset, $items_per_page);
 $stmt->execute();
@@ -34,7 +34,7 @@ if ($result === false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edoroli - Reservasi Venue Online</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap"
         rel="stylesheet"
     />
     <link
@@ -53,7 +53,7 @@ if ($result === false) {
                 <a href="../index.html">Edoroli</a>
             </div>
             <div class="menu">
-                <a href="User.php"> Hallo <?php echo $_SESSION['name']; ?><i class="far fa-user"></i></a>
+                <a href="User.php"> Hallo <?php echo htmlspecialchars($_SESSION['name']); ?><i class="far fa-user"></i></a>
             </div>
         </div>
     </header>
@@ -63,7 +63,7 @@ if ($result === false) {
         <nav>
             <a href="home_login.php" class="nav-item" id="all-stay">All Stay</a>
             <a href="venue.php" class="nav-item" id="venue">Venue</a>
-            <a href="events1.html" class="nav-item active" id="event">Event</a>
+            <a href="events.php" class="nav-item active" id="event">Event</a>
         </nav>
     </section>
 
@@ -90,15 +90,5 @@ if ($result === false) {
             <a href="?page=<?php echo $page + 1; ?>" class="pagination-button" id="next-button">Next</a>
         <?php endif; ?>
     </div>
-
-    <script src="../js/pageEvent.js"></script>
-    <script>
-        function updatePageNumber() {
-            document.querySelector('.page-number').textContent = <?php echo $page; ?>;
-        }
-        updatePageNumber();
-    </script>
 </body>
 </html>
-
-<?php

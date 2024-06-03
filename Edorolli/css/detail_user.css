@@ -1,0 +1,404 @@
+/* Reset CSS */
+* {
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.wrapper {
+  width: 1100px;
+  margin: auto;
+  align-items: center;
+}
+
+.nama_website a {
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+  font-family: "Poppins";
+  color: #fff;
+}
+
+.logo img {
+  padding: 22px 10px 0px 0px;
+  vertical-align: center;
+  float: left;
+  max-width: 50px;
+  max-height: 30px;
+}
+
+.menu {
+  float: right;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.menu a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.menu a i {
+  margin-left: 7px;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+header {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  line-height: 80px;
+  position: sticky;
+  top: 0px;
+  background-color: #0c2240;
+  z-index: 10;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-title {
+  max-width: 1100px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-title h1 {
+  font-size: 35px;
+  color: #0c2240;
+  margin-bottom: 5px;
+}
+
+.main-title a {
+  margin: 0 10px;
+  color: #bf4f26;
+  text-decoration: none;
+  font-size: 18px solid;
+  position: relative;
+  font-weight: 600;
+}
+
+.nav-item.active {
+  color: #0c2240; /* Blue color when active */
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  color: #0c2240; /* Hover color */
+}
+
+.nav-item:hover::after,
+.nav-item:focus::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0c2240;
+  left: 0;
+  bottom: -4px;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+  .container {
+    display: flex;
+    margin: 20px auto;
+    max-width: 1100px;
+    gap: 20px;
+  }
+  
+  .sidebar {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 4px 8px rgba(0.1, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+  }
+  
+  .profile-info {
+    text-align: center;
+  }
+  
+  .profile-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .profile-info p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .sidebar nav ul {
+    list-style: none; /* Menghilangkan tanda titik pada daftar */
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin: 15px 0; /* Menambahkan jarak antara elemen daftar */
+  }
+  
+  .sidebar nav ul li a {
+    color: #0c2240;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .sidebar nav ul li a i {
+    font-size: 18px;
+  }
+  
+  .sidebar nav ul li.active a {
+    color: #a62821;
+  }
+  
+  .sidebar nav ul li.active a i {
+    color: #a62821;
+  }
+  
+  .sidebar nav ul li a:hover {
+    text-decoration: underline;
+    color: #a62821;
+  }
+  
+  .content {
+    flex-grow: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h1 {
+    font-size: 24px;
+    color: #0c2240;
+  }
+  
+  .profile-header .tabs {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+  
+  .profile-header .tabs li {
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .profile-header .tabs li.active {
+    color: #0c2240;
+    font-weight: bold;
+  }
+  
+  .profile-details {
+    margin-bottom: 20px;
+    max-width: 100%; /* Atur batas lebar maksimum cardbox */
+    padding: 20px; /* Tambahkan padding untuk memberikan ruang di sekitar form */
+    box-sizing: border-box; /* Pastikan padding dihitung dalam lebar total */
+  }
+  
+  .profile-details h2 {
+    font-size: 20px;
+    color: #0c2240;
+    margin-bottom: 20px;
+  }
+  
+  .profile-details form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%; /* Pastikan form mengambil 100% lebar dari cardbox */
+    max-width: 800px; /* Atur batas lebar maksimum form */
+  }
+  
+  .profile-details form label {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .profile-details form input,
+  .profile-details form textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box; /* Pastikan padding dihitung dalam lebar total */
+    resize: none;
+  }
+  
+  .profile-details .edit-btn {
+    background-color: #C3232B;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 20px;
+  }
+  
+  .profile-details .edit-btn:hover {
+    background-color: #0c2240;
+  }
+  
+  .profile-details .button-group {
+    display: block;
+    gap: 10px;
+    text-align: right;
+  }
+  
+  .profile-details .cancel-btn,
+  .profile-details .save-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .profile-details .save-btn {
+    background-color: #0c2240;
+  }
+  
+  .profile-details .cancel-btn:hover {
+    opacity: 0.8;
+  }
+  
+  .profile-details .save-btn:hover {
+    background-color: #bf4f26;
+  }
+
+
+  footer {
+    background-color: #0c2240;
+    color: white;
+    padding: 40px 20px;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #fff;
+  }
+  
+  .footer-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-left img {
+    margin-right: 10px;
+  }
+  
+  .footer-left .nama_website a {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .footer-center {
+    flex: 2;
+    margin-right: 15px;
+    margin-left: 30px;
+  }
+  
+  .footer-center h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-center p {
+    margin-bottom: 20px;
+  }
+  
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footer-right h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-right ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-right ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-right ul li a i {
+    margin-right: 8px;
+  }
+  
+  .footer-right ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }

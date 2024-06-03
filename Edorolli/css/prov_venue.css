@@ -1,0 +1,152 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.logo-nama {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.nama_website a {
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.main-title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.main-title h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nav-links .nav-item {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-links .nav-item.active {
+    color: red;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 25%;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.profile-info p {
+    margin: 5px 0 20px 0;
+    color: #888;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.sidebar nav ul li a i {
+    margin-right: 10px;
+}
+
+.content {
+    width: 75%;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.main-venue h2 {
+    margin-bottom: 20px;
+}
+
+.venue-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #1b2a4e;
+    color: #fff;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.accept-btn {
+    background-color: #ffc107;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
