@@ -7,6 +7,9 @@ function enableEditing() {
         if (element.tagName === 'TEXTAREA') {
             element.removeAttribute('readonly');
         }
+        else if (element.tagName === 'INPUT' && element.type === 'text') {
+            element.removeAttribute('readonly');
+        }
     });
 
     document.querySelector(".edit-button").style.display = "none";
@@ -35,7 +38,7 @@ function cancelEditing() {
 function previewImage(event) {
     var reader = new FileReader();
     reader.onload = function () {
-        var output = document.getElementById("preview-image");
+        var output = document.getElementById("preview-image-upload");
         output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
@@ -46,9 +49,3 @@ function deleteEvent(eventId) {
         window.location.href = "../php/delete_event.php?id_event=" + eventId;
     }
 }
-
-window.addEventListener('load', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const id_event = urlParams.get('id_event');
-    console.log("Event ID from URL:", id_event);
-});

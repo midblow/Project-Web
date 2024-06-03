@@ -33,7 +33,7 @@ $sql = "SELECT b.id, b.start_date, b.end_date, b.status, u.gmail, u.name, v.nama
         FROM booking b
         JOIN user u ON b.user_id = u.id
         JOIN venue v ON b.id_venue = v.id_venue
-        WHERE v.id_provider = $id_provider
+        WHERE v.id_provider = $id_provider 
         LIMIT $offset, $items_per_page";
 $result = $conn->query($sql);
 

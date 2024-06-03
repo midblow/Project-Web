@@ -16,7 +16,7 @@ $total_items = $total_row['total'];
 $total_pages = ceil($total_items / $items_per_page);
 
 // Fetch confirmed events for the current page
-$sql = "SELECT * FROM event WHERE status = 'confirmed' LIMIT ?, ?";
+$sql = "SELECT * FROM event  WHERE status = 'confirmed' LIMIT ?, ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $offset, $items_per_page);
 $stmt->execute();
@@ -74,7 +74,7 @@ if ($result === false) {
                     <img src="<?php echo htmlspecialchars($event['gambar']); ?>" alt="<?php echo htmlspecialchars($event['nama_event']); ?>" />
                 </a>
                 <div class="event-info">
-                    <a href="event_detail.php?id_event=<?php echo $event['id_event']; ?>"><h2><?php echo htmlspecialchars($event['nama_event']); ?></h2></a>
+                <a href="event_detail.php?id_venue=<?php echo $event['id_venue']; ?>&id_event=<?php echo $event['id_event']; ?>"><h2><?php echo htmlspecialchars($event['nama_event']); ?></h2></a>
                     <p><?php echo htmlspecialchars($event['deskripsi']); ?></p>
                 </div>
             </div>

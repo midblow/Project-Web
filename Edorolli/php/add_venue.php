@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($uploadOk == 1) {
         $temp_file = $target_dir . 'temp_' . basename($gambar["name"]);
         if (move_uploaded_file($gambar["tmp_name"], $temp_file)) {
+            
             if (resize_and_crop_image($temp_file, $target_file, 278, 285)) {
                 unlink($temp_file);
 

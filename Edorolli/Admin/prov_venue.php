@@ -9,7 +9,9 @@ if (!isset($_SESSION['email_admin'])) {
 require_once '../php/functions.php';
 $conn = connectDatabase();
 
-$provider_id = isset($_GET['id_provider']) ? (int)$_GET['id_provider'] : null;
+// Mengambil parameter 'id' dari URL, bukan 'id_provider'
+$provider_id = isset($_GET['id']) ? (int)$_GET['id'] : null;
+// var_dump($provider_id); die;
 if ($provider_id === null) {
     echo "Provider ID not specified.";
     exit();
@@ -48,7 +50,8 @@ $conn->close();
     <title>Manage Provider</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/prov_venue.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
 <header>
@@ -76,18 +79,18 @@ $conn->close();
 <main>
     <div class="container">
         <div class="sidebar">
-            <div class="profile-info">
-                <img src="../image/profile.jpg" alt="Profile Picture" />
-                <h3><?php echo htmlspecialchars($provider['username']); ?></h3>
-                <p><?php echo htmlspecialchars($provider['gmail']); ?></p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="prov_detail.php?id_provider=<?php echo $provider_id; ?>"><i class="far fa-user"></i> Profile</a></li>
-                    <li><a href="prov_booking.php?id_provider=<?php echo $provider_id; ?>"><i class="far fa-file-alt"></i> Riwayat Booking</a></li>
-                    <li><a href="prov_venue.php?id_provider=<?php echo $provider_id; ?>"><i class="fas fa-building"></i> Venue</a></li>
-                </ul>
-            </nav>
+          <div class="profile-info">
+            <img src="../image/MLBB.jpg" alt="Profile Picture" />
+            <h3><?php echo htmlspecialchars($provider['username']); ?></h3>
+            <p><?php htmlspecialchars($provider['gmail']); ?></p>
+          </div>
+          <nav>
+            <ul>
+            <li><a href="prov_detail.php?id=<?php echo $provider_id; ?>"><i class="far fa-user"></i> Profile</a></li>
+            <li><a href="prov_booking.php?id=<?php echo $provider_id; ?>"><i class="far fa-file-alt"></i> Riwayat Booking</a></li>
+            <li><a href="prov_venue.php?id=<?php echo $provider_id; ?>"><i class="fas fa-building"></i> Venue</a></li>
+            </ul>
+          </nav>
         </div>
         <div class="content">
             <div class="main-venue">

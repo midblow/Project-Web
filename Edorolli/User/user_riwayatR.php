@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['email_admin'])) {
-    header("Location: http://localhost/Project-Web/Edorolli/Admin/login_admin.php");
+if (!isset($_SESSION['name'])) {
+    header("Location: http://localhost/Project-Web/Edorolli/user/login_user.php");
     exit();
 }
 
@@ -75,15 +75,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
             <div class="logo"><img src="../image/logo.png" alt="Logo"></div>
             <div class="nama_website"><a href="#">Edoroli</a></div>
         </div>
-        <div class="menu"><a href="user_manage.php?page=1">Hallo <?php echo $_SESSION['username']; ?><i class="far fa-user"></i></a></div>
+        <div class="menu"><a href="user_manage.php?page=1">Hallo <?php echo $_SESSION['name']; ?><i class="far fa-user"></i></a></div>
     </div>
 </header>
 <nav class="main-title">
-<h1>All You Can Manage</h1>
+<h1>Kelola Akun Anda</h1>
     <div class="nav-links">
-        <a href="user_manage.php?page=1" class="nav-item active" id="user">Manage User</a>
-        <a href="prov_manage.php?page=1" class="nav-item" id="provider">Manage Provider</a>
-        <a href="content_manage.php" class="nav-item" id="content">Manage Content</a>
+        <a href="User.php" class="nav-item" id="user">Profil</a>
+        <a href="user_riwayatR.php" class="nav-item active" id="provider">Riwayat Reservasi</a>
+        <a href="User_Ksandi.php" class="nav-item" id="content">Kelola Akun</a>
     </div>
 </nav>
 
@@ -92,14 +92,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
         <div class="sidebar">
             <div class="profile-info">
                 <img src="../image/MLBB.jpg" alt="Profile Picture" />
-                <h3><?php echo htmlspecialchars($userName); ?></h3>
-                <p><?php echo htmlspecialchars($userGmail); ?></p>
+                <h3><?php echo  $_SESSION['name']; ?></h3>
+                <p><?php echo $_SESSION['gmail']; ?></p>
             </div>
             <nav>
                 <ul>
                     <li><a href="user_detail.php?id=<?php echo $id_user; ?>"><i class="far fa-user"></i> Profile</a></li>
                     <li class="active"><a href="#"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
-                    <li><a href="userEvent_manage.php?id_user=<?php echo $id_user; ?>&page=1"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                    <li><a href="User_KSandi.php"><i class="fas fa-cogs"></i> Kelola Akun</a></li>
+                    <li><a href="User.php" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                 </ul>
             </nav>
         </div>

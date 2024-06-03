@@ -146,6 +146,38 @@ function generateInvoice($booking_id) {
 // exit();
 
 
+// Fungsi untuk mengunggah gambar
+function uploadImage($file) {
+    $target_dir = "../uploads/";
+    $target_file = $target_dir . basename($file["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // Periksa apakah file adalah gambar asli
+    $check = getimagesize($file["tmp_name"]);
+    if ($check === false) {
+        return ["error" => "File is not an image."];
+    }
+
+    // Periksa ukuran file
+    if ($file["size"] > 5000000) { // 5MB
+        return ["error" => "Sorry, your file is too large."];
+    }
+
+    // Perbolehkan format file tertentu
+    if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
+        return ["error" => "Sorry, only JPG, JPEG, PNG & GIF files are allowed."];
+    }
+
+    if (move_uploaded_file($file["tmp_name"], $target_file)) {
+        // Resize dan crop gambar
+        $resized_file = $target_dir . 'resized_' . basename($file["name"]);
+        resize_and_crop_image($target_file, $resized_file, 278, 285);
+        return ["path" => $resized_file];
+    } else {
+        return ["error" => "Sorry, there was an error uploading your file."];
+    }
+}
+
 function resize_and_crop_image($source_image_path, $output_image_path, $output_width, $output_height) {
     list($original_width, $original_height, $image_type) = getimagesize($source_image_path);
     

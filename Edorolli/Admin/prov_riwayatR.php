@@ -9,24 +9,24 @@ if (!isset($_SESSION['email_admin'])) {
 require_once '../php/functions.php';
 $conn = connectDatabase();
 
-$id_user = isset($_GET['id_user']) ? intval($_GET['id_user']) : 0;
+$id_provider = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $limit = 10; // Number of records per page
 
-// Fetch user details based on id_user
+// Fetch provider details based on id_provider
 $userName = 'Guest';
 $userGmail = '';
 
-if ($id_user > 0) {
-    $userSql = "SELECT name, gmail FROM user WHERE id = ?";
-    if ($stmt = $conn->prepare($userSql)) {
-        $stmt->bind_param('i', $id_user);
+if ($id_provider > 0) {
+    $providerSql = "SELECT username, gmail FROM provider WHERE id_provider = ?";
+    if ($stmt = $conn->prepare($providerSql)) {
+        $stmt->bind_param('i', $id_provider);
         $stmt->execute();
-        $userResult = $stmt->get_result();
+        $providerResult = $stmt->get_result();
 
-        if ($userResult->num_rows > 0) {
-            $user = $userResult->fetch_assoc();
-            $userName = $user['name'];
-            $userGmail = $user['gmail'];
+        if ($providerResult->num_rows > 0) {
+            $provider = $providerResult->fetch_assoc();
+            $userName = $provider['username'];
+            $userGmail = $provider['gmail'];
         }
         $stmt->close();
     }
@@ -35,14 +35,15 @@ if ($id_user > 0) {
 // Serve JSON data if requested
 if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
     $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
-    $sql = "SELECT v.nama_venue AS venue_name, p.id_provider, p.gmail AS email_provider, b.start_date, b.end_date
+    $sql = "SELECT v.nama_venue AS venue_name, u.id AS id_user, u.gmail AS email_user, b.start_date, b.end_date
             FROM booking b
             INNER JOIN venue v ON b.id_venue = v.id_venue
             INNER JOIN provider p ON v.id_provider = p.id_provider
-            WHERE b.user_id = ? AND b.status = 'confirmed'
+            INNER JOIN user u ON b.user_id = u.id
+            WHERE p.id_provider = ? AND b.status = 'confirmed'
             LIMIT ?, ?";
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param('iii', $id_user, $offset, $limit);
+        $stmt->bind_param('iii', $id_provider, $offset, $limit);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -81,8 +82,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
 <nav class="main-title">
 <h1>All You Can Manage</h1>
     <div class="nav-links">
-        <a href="user_manage.php?page=1" class="nav-item active" id="user">Manage User</a>
-        <a href="prov_manage.php?page=1" class="nav-item" id="provider">Manage Provider</a>
+        <a href="user_manage.php?page=1" class="nav-item" id="user">Manage User</a>
+        <a href="prov_manage.php?page=1" class="nav-item active" id="provider">Manage Provider</a>
         <a href="content_manage.php" class="nav-item" id="content">Manage Content</a>
     </div>
 </nav>
@@ -97,9 +98,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
             </div>
             <nav>
                 <ul>
-                    <li><a href="user_detail.php?id=<?php echo $id_user; ?>"><i class="far fa-user"></i> Profile</a></li>
+                    <li><a href="user_detail.php?id=<?php echo $id_provider; ?>"><i class="far fa-user"></i> Profile</a></li>
                     <li class="active"><a href="#"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
-                    <li><a href="userEvent_manage.php?id_user=<?php echo $id_user; ?>&page=1"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                    <li><a href="userEvent_manage.php?id_provider=<?php echo $id_provider; ?>&page=1"><i class="fas fa-calendar-alt"></i> Events</a></li>
                 </ul>
             </nav>
         </div>
@@ -115,10 +116,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
 <script>
 let offset = 0;
 const limit = <?php echo $limit; ?>;
-const idUser = <?php echo $id_user; ?>;
+const idProvider = <?php echo $id_provider; ?>;
 
 function loadMoreReservations() {
-    fetch(`?action=load_more&id_user=${idUser}&offset=${offset}&limit=${limit}`)
+    fetch(`?action=load_more&id=${idProvider}&offset=${offset}&limit=${limit}`)
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
@@ -134,12 +135,12 @@ function loadMoreReservations() {
 
                     const cardBody = document.createElement('div');
                     cardBody.className = 'card-body';
-                    cardBody.innerHTML = `<p>ID Provider: ${reservation.id_provider}</p><p>Email Provider: ${reservation.email_provider}</p>`;
+                    cardBody.innerHTML = `<p>ID User: ${reservation.id_user}</p><p>Email User: ${reservation.email_user}</p>`;
                     card.appendChild(cardBody);
 
                     const cardFooter = document.createElement('div');
                     cardFooter.className = 'card-footer';
-                    cardFooter.innerHTML = `<a href='#' class='btn btn-primary'>See Invoice</a>`;
+                    cardFooter.innerHTML = `<a href='invoice.php?id_provider=${reservation.id_user}&id_invoice=${reservation.id_invoice}' class='btn btn-primary'>See Invoice</a>`;
                     card.appendChild(cardFooter);
 
                     container.appendChild(card);

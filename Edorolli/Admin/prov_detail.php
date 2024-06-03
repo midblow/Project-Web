@@ -10,11 +10,11 @@ require_once '../php/functions.php';
 $conn = connectDatabase();
 
 // Mengambil ID user dari URL
-$userId = $_GET['id'];
+$provider_id = $_GET['id'];
 
 $sql = "SELECT * FROM provider WHERE id_provider = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $userId);
+$stmt->bind_param("i", $provider_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
@@ -43,8 +43,8 @@ $user = $result->fetch_assoc();
 <nav class="main-title">
 <h1>All You Can Manage</h1>
     <div class="nav-links">
-        <a href="user_manage.php?page=1" class="nav-item active" id="user">Manage User</a>
-        <a href="prov_manage.php?page=1" class="nav-item" id="provider">Manage Provider</a>
+        <a href="user_manage.php?page=1" class="nav-item" id="user">Manage User</a>
+        <a href="prov_manage.php?page=1" class="nav-item active" id="provider">Manage Provider</a>
         <a href="content_manage.php" class="nav-item" id="content">Manage Content</a>
     </div>
 </nav>
@@ -55,13 +55,13 @@ $user = $result->fetch_assoc();
           <div class="profile-info">
             <img src="../image/MLBB.jpg" alt="Profile Picture" />
             <h3><?php echo htmlspecialchars($user['username']); ?></h3>
-            <p><?php htmlspecialchars($user['gmail']); ?></p>
+            <p><?php echo htmlspecialchars($user['gmail']); ?></p>
           </div>
           <nav>
             <ul>
-              <li class="active"><a href="prov_detail.php"><i class="far fa-user"></i> Profile</a></li>
-              <li><a href="#"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
-              <li><a href="prov_venue.php"><i class="fas fa-cogs"></i> Venue</a></li>
+            <li><a href="prov_detail.php?id=<?php echo $provider_id; ?>"><i class="far fa-user"></i> Profile</a></li>
+            <li><a href="prov_riwayatR.php?id=<?php echo $provider_id; ?>"><i class="far fa-file-alt"></i> Riwayat Booking</a></li>
+            <li><a href="prov_venue.php?id=<?php echo $provider_id; ?>"><i class="fas fa-building"></i> Venue</a></li>
             </ul>
           </nav>
         </div>
@@ -87,7 +87,7 @@ $user = $result->fetch_assoc();
               <textarea id="address" name="address" rows="4" disabled><?php echo htmlspecialchars($user['alamat']); ?></textarea>
               
               <div class="button-group">
-                <button type="button" id="editBtn" class="edit-btn" onclick="deleteAccount(<?php echo $userId; ?>)">Delete Account</button>
+                <button type="button" id="editBtn" class="edit-btn" onclick="deleteAccount(<?php echo $provider_id; ?>)">Delete Account</button>
               </div>
             </form>
           </div>
@@ -97,9 +97,9 @@ $user = $result->fetch_assoc();
 
     <?php require_once '../php/footer.php'; ?>
 <script>
-function deleteAccount(userId) {
+function deleteAccount(provider_id) {
   if (confirm('Are you sure you want to delete this account?')) {
-    window.location.href = '../php/delete_user.php?id=' + userId;
+    window.location.href = '../php/delete_user.php?id=' + provider_id;
   }
 }
 </script>

@@ -151,7 +151,7 @@ $nickname = $nicknameArray[0];
                                     <p><?php echo htmlspecialchars($booking['start_date']); ?></p>
                                     <span class="date-label">Tanggal Selesai</span>
                                     <p><?php echo htmlspecialchars($booking['end_date']); ?></p>
-                                    <a href="add_event.php">Buat Event</a>
+                                    <a href="event_detail.php?id_venue=<?php echo $id_venue; ?>">Buat Event</a>
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
