@@ -3,33 +3,27 @@ session_start();
 require_once '../php/functions.php';
 $conn = connectDatabase();
 
+// Get id_user and id_invoice from the URL parameters
+$id_user = isset($_GET['id_user']) ? intval($_GET['id_user']) : 0;
+$id_invoice = isset($_GET['id_invoice']) ? intval($_GET['id_invoice']) : 0;
 
-// Retrieve invoice data from session
-$invoice_data = isset($_SESSION['invoice_data']) ? json_decode($_SESSION['invoice_data'], true) : null;
+// Fetch invoice details using id_invoice from URL parameters
+$sql_invoice = "SELECT i.*, b.*, v.nama_venue, v.alamat as venue_address, v.harga, p.gmail as provider_email, p.lembaga, u.name as user_name, u.gmail as user_email, u.nomorhp as user_phone
+                FROM invoice i
+                JOIN booking b ON i.booking_id = b.id
+                JOIN venue v ON b.id_venue = v.id_venue
+                JOIN provider p ON v.id_provider = p.id_provider
+                JOIN user u ON b.user_id = u.id
+                WHERE i.id_invoice = ? AND u.id = ?";
+$stmt_invoice = $conn->prepare($sql_invoice);
+$stmt_invoice->bind_param("ii", $id_invoice, $id_user);
+$stmt_invoice->execute();
+$result_invoice = $stmt_invoice->get_result();
+$invoice = $result_invoice->fetch_assoc();
 
-// Check if invoice data is available
-if ($invoice_data) {
-    $id_user = $invoice_data['id_user'];
-    $id_invoice = $invoice_data['id_invoice'];
-
-    // Fetch invoice details using id_invoice from session
-    $sql_invoice = "SELECT i.*, b.*, v.nama_venue, v.alamat as venue_address, v.harga, p.gmail as provider_email, p.lembaga, u.name as user_name, u.gmail as user_email, u.nomorhp as user_phone
-                    FROM invoice i
-                    JOIN booking b ON i.booking_id = b.id
-                    JOIN venue v ON b.id_venue = v.id_venue
-                    JOIN provider p ON v.id_provider = p.id_provider
-                    JOIN user u ON b.user_id = u.id
-                    WHERE i.id_invoice = ? AND u.id = ?";
-    $stmt_invoice = $conn->prepare($sql_invoice);
-    $stmt_invoice->bind_param("ii", $id_invoice, $id_user);
-    $stmt_invoice->execute();
-    $result_invoice = $stmt_invoice->get_result();
-    $invoice = $result_invoice->fetch_assoc();
-
-    if (!$invoice) {
-        die("Invoice not found.");
-    } 
-}
+if (!$invoice) {
+    die("Invoice not found.");
+} 
 
 // Calculate totals
 $date1 = new DateTime($invoice['start_date']);

@@ -35,10 +35,11 @@ if ($id_user > 0) {
 // Serve JSON data if requested
 if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
     $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
-    $sql = "SELECT v.nama_venue AS venue_name, p.lembaga, p.gmail AS email_provider, b.start_date, b.end_date
+    $sql = "SELECT v.nama_venue AS venue_name, p.lembaga, p.gmail AS email_provider, b.start_date, b.end_date, i.id_invoice
             FROM booking b
             INNER JOIN venue v ON b.id_venue = v.id_venue
             INNER JOIN provider p ON v.id_provider = p.id_provider
+            INNER JOIN invoice i ON b.id = i.booking_id
             WHERE b.user_id = ? AND b.status = 'confirmed'
             LIMIT ?, ?";
     if ($stmt = $conn->prepare($sql)) {
@@ -56,27 +57,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
         exit();
     }
 }
-
-$invoice_data = isset($_SESSION['invoice_data']) ? json_decode($_SESSION['invoice_data'], true) : null;
-$id_user = $invoice_data['id_user'];
-$id_invoice = $invoice_data['id_invoice'];
-    // Query untuk mendapatkan id_venue berdasarkan id_invoice
-    $id_invoice = $invoice_data['id_invoice'];
-    $sql = "SELECT b.start_date, b.end_date
-            FROM booking b
-            JOIN invoice i ON i.booking_id = b.id
-            WHERE i.id_invoice = $id_invoice";
-
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Ambil id_venue dari hasil query
-        $row = $result->fetch_assoc();
-        $start_date = $row['start_date'];
-        $end_date = $row['end_date'];
-    }
-// var_dump($start_date); die;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,7 +142,7 @@ function loadMoreReservations() {
 
                     const cardFooter = document.createElement('div');
                     cardFooter.className = 'card-footer';
-                    cardFooter.innerHTML = `<a href='../User/invoice.php?id_user=$id_user&id_invoice=$id_invoice'; class='btn btn-primary'>See Invoice</a>`;
+                    cardFooter.innerHTML = `<a href='../User/invoice.php?id_user=${idUser}&id_invoice=${reservation.id_invoice}' class='btn btn-primary'>See Invoice</a>`;
                     card.appendChild(cardFooter);
                     
                     container.appendChild(card);
