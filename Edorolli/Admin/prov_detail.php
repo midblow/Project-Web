@@ -45,7 +45,7 @@ $user = $result->fetch_assoc();
     <div class="nav-links">
         <a href="user_manage.php?page=1" class="nav-item" id="user">Manage User</a>
         <a href="prov_manage.php?page=1" class="nav-item active" id="provider">Manage Provider</a>
-        <a href="content_manage.php" class="nav-item" id="content">Manage Content</a>
+        <a href="content_venue.php" class="nav-item" id="content">Manage Content</a>
     </div>
 </nav>
 
@@ -60,7 +60,7 @@ $user = $result->fetch_assoc();
           <nav>
             <ul>
             <li><a href="prov_detail.php?id=<?php echo $provider_id; ?>"><i class="far fa-user"></i> Profile</a></li>
-            <li><a href="prov_riwayatR.php?id=<?php echo $provider_id; ?>"><i class="far fa-file-alt"></i> Riwayat Booking</a></li>
+            <li><a href="prov_riwayatR.php?id=<?php echo $provider_id; ?>"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
             <li><a href="prov_venue.php?id=<?php echo $provider_id; ?>"><i class="fas fa-building"></i> Venue</a></li>
             </ul>
           </nav>

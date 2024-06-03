@@ -1,13 +1,15 @@
 * {
   text-decoration: none;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  background-color: white;
 }
 
 .wrapper {
@@ -63,19 +65,27 @@ header {
   top: 0px;
   background-color: #0c2240;
   z-index: 10;
-  justify-content: space-between;
+  justify-content: space-between; /* Ensure the elements are spread out */
   align-items: center;
 }
 
-.main-nav {
-  width: 100%;
-  background-color: white;
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
+section {
+  max-width: 1100px;
+  margin: auto;
 }
 
-.main-nav .nav-item {
+.main-title {
+  text-align: left;
+  padding: 20px 0;
+}
+
+.main-title h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.main-title nav a {
   margin: 0 10px;
   color: #bf4f26;
   text-decoration: none;
@@ -84,25 +94,11 @@ header {
   font-weight: 600;
 }
 
-.main-nav .wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.main-nav .nav-item#all-stay {
-  margin-left: 0;
-}
-
-.main-nav .nav-item#venue,
-.main-nav .nav-item#event {
-  margin-left: 10px;
-}
-
-.main-nav .nav-item.active {
+.nav-item.active {
   color: #0c2240;
 }
 
-.main-nav .nav-item.active::after {
+.nav-item.active::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -112,13 +108,13 @@ header {
   bottom: -4px;
 }
 
-.main-nav .nav-item:hover,
-.main-nav .nav-item:focus {
+.nav-item:hover,
+.nav-item:focus {
   color: #0c2240;
 }
 
-.main-nav .nav-item:hover::after,
-.main-nav .nav-item:focus::after {
+.nav-item:hover::after,
+.nav-item:focus::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -158,7 +154,7 @@ header {
   transform: translate(-50%, -50%);
 }
 
-.overlay-title{
+.overlay-title {
   font-size: 5em;
   font-weight: bold;
   text-shadow: 2px 2px 4px #000000;
@@ -217,7 +213,7 @@ header {
   border-radius: 5px;
   background-color: green;
   transition: all 0.3s;
-  font-size: 10px; 
+  font-size: 10px;
   padding: 5px;
 }
 
@@ -227,7 +223,7 @@ header {
   border: 5px solid #dbd3d3b2;
 }
 
-.confirmed-container:hover .date-label{
+.confirmed-container:hover .date-label {
   color: white;
 }
 
@@ -238,8 +234,9 @@ header {
 }
 
 @media screen and (max-width: 600px) {
-  .confirmed-container p, .confirmed-container a {
-    font-size: 15px; 
+  .confirmed-container p,
+  .confirmed-container a {
+    font-size: 15px;
   }
 }
 
@@ -274,13 +271,11 @@ header {
 
 .content-container h3 {
   margin-bottom: 5px;
-
 }
 
 .header-section h2 {
   margin-bottom: 0;
 }
-
 
 .alamat-box,
 .kapasitas-box,
@@ -290,18 +285,18 @@ header {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
 }
 
-.desc-box{
+.desc-box {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
-  padding: 10px;
+  padding: 5px;
 }
 
-.desc-box ul li{
+.desc-box ul li {
   list-style: none;
 }
 
@@ -511,7 +506,8 @@ form button {
   float: right;
 }
 
-.dropbtn:hover, .dropbtn:focus {
+.dropbtn:hover,
+.dropbtn:focus {
   border-color: #0c2240;
   background-color: #f1f1f1;
 }
@@ -521,7 +517,7 @@ form button {
   position: relative;
   background-color: #f9f9f9;
   min-width: 100%;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 5px;
   margin-top: 10px;

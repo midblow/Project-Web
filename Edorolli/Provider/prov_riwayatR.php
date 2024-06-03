@@ -9,24 +9,24 @@ if (!isset($_SESSION['name'])) {
 require_once '../php/functions.php';
 $conn = connectDatabase();
 
-$id_user = isset($_GET['id_user']) ? intval($_GET['id_user']) : 0;
+$id_provider = isset($_GET['id_provider']) ? intval($_GET['id_provider']) : 0;
 $limit = 10; // Number of records per page
 
-// Fetch user details based on id_user
+// Fetch user details based on id_provider
 $userName = 'Guest';
 $userGmail = '';
 
-if ($id_user > 0) {
-    $userSql = "SELECT name, gmail FROM user WHERE id = ?";
-    if ($stmt = $conn->prepare($userSql)) {
-        $stmt->bind_param('i', $id_user);
+if ($id_provider > 0) {
+    $providerSql = "SELECT username, gmail FROM provider WHERE id_provider = ?";
+    if ($stmt = $conn->prepare($providerSql)) {
+        $stmt->bind_param('i', $id_provider);
         $stmt->execute();
-        $userResult = $stmt->get_result();
+        $providerResult = $stmt->get_result();
 
-        if ($userResult->num_rows > 0) {
-            $user = $userResult->fetch_assoc();
-            $userName = $user['name'];
-            $userGmail = $user['gmail'];
+        if ($providerResult->num_rows > 0) {
+            $provider = $providerResult->fetch_assoc();
+            $userName = $provider['username'];
+            $userGmail = $provider['gmail'];
         }
         $stmt->close();
     }
@@ -35,14 +35,15 @@ if ($id_user > 0) {
 // Serve JSON data if requested
 if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
     $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
-    $sql = "SELECT v.nama_venue AS venue_name, p.lembaga, p.gmail AS email_provider, b.start_date, b.end_date
+    $sql = "SELECT v.nama_venue AS venue_name, u.id AS id_user, u.name AS nama_user, u.gmail AS email_user, b.start_date, b.end_date
             FROM booking b
             INNER JOIN venue v ON b.id_venue = v.id_venue
             INNER JOIN provider p ON v.id_provider = p.id_provider
-            WHERE b.user_id = ? AND b.status = 'confirmed'
+            INNER JOIN user u ON b.user_id = u.id
+            WHERE p.id_provider = ? AND b.status = 'confirmed'
             LIMIT ?, ?";
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param('iii', $id_user, $offset, $limit);
+        $stmt->bind_param('iii', $id_provider, $offset, $limit);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -56,26 +57,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
         exit();
     }
 }
-
-$invoice_data = isset($_SESSION['invoice_data']) ? json_decode($_SESSION['invoice_data'], true) : null;
-$id_user = $invoice_data['id_user'];
-$id_invoice = $invoice_data['id_invoice'];
-    // Query untuk mendapatkan id_venue berdasarkan id_invoice
-    $id_invoice = $invoice_data['id_invoice'];
-    $sql = "SELECT b.start_date, b.end_date
-            FROM booking b
-            JOIN invoice i ON i.booking_id = b.id
-            WHERE i.id_invoice = $id_invoice";
-
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Ambil id_venue dari hasil query
-        $row = $result->fetch_assoc();
-        $start_date = $row['start_date'];
-        $end_date = $row['end_date'];
-    }
-// var_dump($start_date); die;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,10 +82,10 @@ $id_invoice = $invoice_data['id_invoice'];
 <section class="main-title">
 <h1>Kelola Akun Anda</h1>
     <nav class="nav-links">
-        <a href="User.php" class="nav-item" id="user">Profile</a>
-        <a href="user_riwayatR.php?id_user=<?php echo $_SESSION['id']; ?>" class="nav-item active" id="provider">Riwayat Reservasi</a>
-        <a href="User_Ksandi.php" class="nav-item" id="content">Kelola Akun</a>
-    </nav>
+        <a href="provider.php" class="nav-item" id="user">Profile</a>
+        <a href="user_riwayatR.php" class="nav-item active" id="provider">Riwayat Reservasi</a>
+        <a href="provider_Ksandi.php" class="nav-item" id="content">Kelola Akun</a>
+</nav>
 </section>
 
 <main>
@@ -117,9 +98,9 @@ $id_invoice = $invoice_data['id_invoice'];
             </div>
             <nav>
                 <ul>
-                    <li><a href="user.php"><i class="far fa-user"></i> Profile</a></li>
-                    <li class="active"><a href="user_riwayatR.php?id_user=<?php echo $_SESSION['id']; ?>"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
-                    <li><a href="User_KSandi.php"><i class="fas fa-cogs"></i> Kelola Akun</a></li>
+                    <li><a href="provider.php"><i class="far fa-user"></i> Profile</a></li>
+                    <li class="active"><a href="#"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
+                    <li><a href="Provider_KSandi.php"><i class="fas fa-cogs"></i> Kelola Akun</a></li>
                     <li><a href="User.php" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
                 </ul>
             </nav>
@@ -136,10 +117,10 @@ $id_invoice = $invoice_data['id_invoice'];
 <script>
 let offset = 0;
 const limit = <?php echo $limit; ?>;
-const idUser = <?php echo $id_user; ?>;
+const id_provider = <?php echo $id_provider; ?>;
 
 function loadMoreReservations() {
-    fetch(`?action=load_more&id_user=${idUser}&offset=${offset}&limit=${limit}`)
+    fetch(`?action=load_more&id_provider=${id_provider}&offset=${offset}&limit=${limit}`)
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
@@ -155,14 +136,14 @@ function loadMoreReservations() {
 
                     const cardBody = document.createElement('div');
                     cardBody.className = 'card-body';
-                    cardBody.innerHTML = `<p>Nama Lembaga: ${reservation.lembaga}</p><p>Email Provider: ${reservation.email_provider}</p>`;
+                    cardBody.innerHTML = `<p>Nama User: ${reservation.nama_user}</p><p>Email User: ${reservation.email_user}</p>`;
                     card.appendChild(cardBody);
 
                     const cardFooter = document.createElement('div');
                     cardFooter.className = 'card-footer';
-                    cardFooter.innerHTML = `<a href='../User/invoice.php?id_user=$id_user&id_invoice=$id_invoice'; class='btn btn-primary'>See Invoice</a>`;
+                    cardFooter.innerHTML = `<a href='#' class='btn btn-primary'>See Invoice</a>`;
                     card.appendChild(cardFooter);
-                    
+
                     container.appendChild(card);
                 });
                 offset += limit;

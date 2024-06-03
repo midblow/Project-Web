@@ -54,7 +54,7 @@ $result = $conn->query($sql);
     <div class="nav-links">
         <a href="user_manage.php?page=1" class="nav-item" id="user">Manage User</a>
         <a href="prov_manage.php?page=1" class="nav-item active" id="provider">Manage Provider</a>
-        <a href="content_manage.php" class="nav-item" id="content">Manage Content</a>
+        <a href="content_venue.php" class="nav-item" id="content">Manage Content</a>
     </div>
 </nav>
 

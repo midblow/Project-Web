@@ -3,25 +3,32 @@ session_start();
 require_once '../php/functions.php';
 $conn = connectDatabase();
 
-$id_user = $_GET['id_user'];
-$id_invoice = $_GET['id_invoice'];
 
-// Fetch invoice details
-$sql_invoice = "SELECT i.*, b.*, v.nama_venue, v.alamat as venue_address, v.harga, p.gmail as provider_email, p.lembaga, u.name as user_name, u.gmail as user_email, u.nomorhp as user_phone
-                FROM invoice i
-                JOIN booking b ON i.booking_id = b.id
-                JOIN venue v ON b.id_venue = v.id_venue
-                JOIN provider p ON v.id_provider = p.id_provider
-                JOIN user u ON b.user_id = u.id
-                WHERE i.id_invoice = ? AND u.id = ?";
-$stmt_invoice = $conn->prepare($sql_invoice);
-$stmt_invoice->bind_param("ii", $id_invoice, $id_user);
-$stmt_invoice->execute();
-$result_invoice = $stmt_invoice->get_result();
-$invoice = $result_invoice->fetch_assoc();
+// Retrieve invoice data from session
+$invoice_data = isset($_SESSION['invoice_data']) ? json_decode($_SESSION['invoice_data'], true) : null;
 
-if (!$invoice) {
-    die("Invoice not found.");
+// Check if invoice data is available
+if ($invoice_data) {
+    $id_user = $invoice_data['id_user'];
+    $id_invoice = $invoice_data['id_invoice'];
+
+    // Fetch invoice details using id_invoice from session
+    $sql_invoice = "SELECT i.*, b.*, v.nama_venue, v.alamat as venue_address, v.harga, p.gmail as provider_email, p.lembaga, u.name as user_name, u.gmail as user_email, u.nomorhp as user_phone
+                    FROM invoice i
+                    JOIN booking b ON i.booking_id = b.id
+                    JOIN venue v ON b.id_venue = v.id_venue
+                    JOIN provider p ON v.id_provider = p.id_provider
+                    JOIN user u ON b.user_id = u.id
+                    WHERE i.id_invoice = ? AND u.id = ?";
+    $stmt_invoice = $conn->prepare($sql_invoice);
+    $stmt_invoice->bind_param("ii", $id_invoice, $id_user);
+    $stmt_invoice->execute();
+    $result_invoice = $stmt_invoice->get_result();
+    $invoice = $result_invoice->fetch_assoc();
+
+    if (!$invoice) {
+        die("Invoice not found.");
+    } 
 }
 
 // Calculate totals
@@ -46,17 +53,17 @@ if (in_array($metode_pembayaran, ['bri', 'bca', 'mandiri', 'bni'])) {
     $metode = 'E-Wallet';
     $nama_metode = ucfirst($metode_pembayaran);
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice</title>
     <link rel="stylesheet" href="../css/invoice.css">
 </head>
+
 <body>
     <div class="invoice-wrapper">
         <div class="invoice-header">
@@ -135,6 +142,7 @@ if (in_array($metode_pembayaran, ['bri', 'bca', 'mandiri', 'bni'])) {
         </div>
     </div>
 </body>
+
 </html>
 
 <?php

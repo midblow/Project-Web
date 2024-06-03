@@ -72,7 +72,7 @@ $conn->close();
     <div class="nav-links">
         <a href="user_manage.php?page=1" class="nav-item" id="user">Manage User</a>
         <a href="prov_manage.php?page=1" class="nav-item active" id="provider">Manage Provider</a>
-        <a href="content_manage.php" class="nav-item" id="content">Manage Content</a>
+        <a href="content_venue.php" class="nav-item" id="content">Manage Content</a>
     </div>
 </nav>
 
@@ -82,12 +82,12 @@ $conn->close();
           <div class="profile-info">
             <img src="../image/MLBB.jpg" alt="Profile Picture" />
             <h3><?php echo htmlspecialchars($provider['username']); ?></h3>
-            <p><?php htmlspecialchars($provider['gmail']); ?></p>
+            <p><?php echo htmlspecialchars($provider['gmail']); ?></p>
           </div>
           <nav>
             <ul>
             <li><a href="prov_detail.php?id=<?php echo $provider_id; ?>"><i class="far fa-user"></i> Profile</a></li>
-            <li><a href="prov_booking.php?id=<?php echo $provider_id; ?>"><i class="far fa-file-alt"></i> Riwayat Booking</a></li>
+            <li><a href="prov_riwayatR.php?id=<?php echo $provider_id; ?>"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
             <li><a href="prov_venue.php?id=<?php echo $provider_id; ?>"><i class="fas fa-building"></i> Venue</a></li>
             </ul>
           </nav>
@@ -104,6 +104,7 @@ $conn->close();
                             <form action="set_main_venue.php" method="POST">
                                 <input type="hidden" name="venue_id" value="<?php echo $venue['id_venue']; ?>">
                                 <input type="hidden" name="provider_id" value="<?php echo $provider_id; ?>">
+                                <input type='checkbox' />
                                 <button type="submit" class="accept-btn">Accept</button>
                             </form>
                         <?php endif; ?>
@@ -113,7 +114,7 @@ $conn->close();
         </div>
     </div>
 </main>
-
+g
 <?php require_once '../php/footer.php'; ?>
 </body>
 </html>

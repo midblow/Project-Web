@@ -54,8 +54,8 @@
         <div class="sidebar">
         <div class="profile-info">
             <img src="../image/MLBB.jpg" alt="Profile Picture" />
-            <h3>Alfin Nashirul</h3>
-            <p>alfin@gmail.com</p>
+            <h3>Admin</h3>
+            <p>anonymous@gmail.com</p>
         </div>
         <nav>
             <ul>

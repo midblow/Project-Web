@@ -46,8 +46,8 @@ $nickname = $nicknameArray[0];
       <h1>Kelola Akun Anda</h1>
       <nav>
         <a href="User.php" class="nav-item active">Profile</a>
-        <a href="user_riwayatR.php" class="nav-item">Riwayat Reservasi</a>
-        <a href="User_KSandi.php" class="nav-item">Kelola Akun</a>
+        <a href="user_riwayatR.php?id_user=<?php echo $_SESSION['id']; ?>" class="nav-item">Riwayat Reservasi</a>
+        <a href="User_KSandi.php"  class="nav-item">Kelola Akun</a>
       </nav>
     </section>
 
@@ -62,7 +62,7 @@ $nickname = $nicknameArray[0];
           <nav>
             <ul>
               <li class="active"><a href="User.php"><i class="far fa-user"></i> Profile</a></li>
-              <li><a href="user_riwayatR.php"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
+              <li><a href="user_riwayatR.php?id_user=<?php echo $_SESSION['id']; ?>"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
               <li><a href="User_KSandi.php"><i class="fas fa-cogs"></i> Kelola Akun</a></li>
               <li><a href="User.php" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
             </ul>

@@ -84,7 +84,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
     <div class="nav-links">
         <a href="user_manage.php?page=1" class="nav-item" id="user">Manage User</a>
         <a href="prov_manage.php?page=1" class="nav-item active" id="provider">Manage Provider</a>
-        <a href="content_manage.php" class="nav-item" id="content">Manage Content</a>
+        <a href="content_venue.php" class="nav-item" id="content">Manage Content</a>
     </div>
 </nav>
 
@@ -98,9 +98,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
             </div>
             <nav>
                 <ul>
-                    <li><a href="user_detail.php?id=<?php echo $id_provider; ?>"><i class="far fa-user"></i> Profile</a></li>
+                    <li><a href="prov_detail.php?id=<?php echo $id_provider; ?>"><i class="far fa-user"></i> Profile</a></li>
                     <li class="active"><a href="#"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
-                    <li><a href="userEvent_manage.php?id_provider=<?php echo $id_provider; ?>&page=1"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                    <li><a href="prov_venue.php?id=<?php echo $id_provider; ?>"><i class="fas fa-building"></i> Venue</a></li>
                 </ul>
             </nav>
         </div>

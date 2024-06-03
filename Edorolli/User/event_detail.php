@@ -99,6 +99,7 @@ $nickname = $nicknameArray[0];
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/event_detail.css">
+    <link rel="stylesheet" href="../css/footer.css" />
 </head>
 <body>
     <header>
@@ -110,6 +111,14 @@ $nickname = $nicknameArray[0];
             <div class="menu"><a href="User.php">Hallo <?php echo $_SESSION['name']; ?><i class="far fa-user"></i></a></div>
         </div>
     </header>
+    <section class="main-title">
+        <h1>Temukan venue terbaik untuk event anda</h1>
+        <nav>
+            <a href="home_login.php" class="nav-item" id="all-stay">All Stay</a>
+            <a href="venue.php" class="nav-item" id="venue">Venue</a>
+            <a href="events.php" class="nav-item active" id="event">Event</a>
+        </nav>
+    </section>
     <main>
         <form id="event-form" action="../php/save_event.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id_event" value="<?php echo $id_event; ?>">
@@ -181,7 +190,7 @@ $nickname = $nicknameArray[0];
                         <button type="button" class="delete-button" onclick="deleteEvent(<?php echo $id_event; ?>)">Delete</button>
                         <button type="button" class="edit-button" onclick="enableEditing()">Edit</button>
                         <button type="button" class="cancel-button" onclick="cancelEditing()">Cancel</button>
-                        <button type="submit" class="submit-button">Submit</button>
+                        <button type="submit" class="submit-button1">Submit</button>
                     <?php else: ?>
                         <button type="submit" class="submit-button">Submit</button>
                     <?php endif; ?>
@@ -190,6 +199,7 @@ $nickname = $nicknameArray[0];
             <?php endif; ?>
         </form>
     </main>
+    <?php require_once '../php/footer.php'; ?>
     <script src="../js/editEvent.js"></script>
 </body>
 </html>

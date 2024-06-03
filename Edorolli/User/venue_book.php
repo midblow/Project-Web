@@ -77,27 +77,28 @@ $nickname = $nicknameArray[0];
     <script src="../js/venue_popup.js"></script>
 </head>
 <body data-venue-id="<?php echo htmlspecialchars($id_venue); ?>">
-    <header>
-        <div class="wrapper">
-            <div class="logo">
-                <img src="../image/logo.png" alt="Logo" />
-            </div>
-            <div class="nama_website">
-                <a href="#">Edoroli</a>
-            </div>
-            <div class="menu">
-                <a href="User.php">Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
-            </div>
-        </div>
-    </header>
-
-    <div class="main-nav">
-        <div class="wrapper">
-            <a href="home_login.php" class="nav-item" id="all-stay">All Stay</a>
-            <a href="venue.php" class="nav-item active" id="venue">Venue</a>
-            <a href="events1.html" class="nav-item" id="event">Event</a>
-        </div>
+<header>
+    <div class="wrapper">
+      <div class="logo">
+        <img src="../image/logo.png" />
+      </div>
+      <div class="nama_website">
+        <a>Edoroli</a>
+      </div>
+      <div class="menu">
+        <a href="User.php"> Hallo <?php echo htmlspecialchars($nickname); ?><i class="far fa-user"></i></a>
+      </div>
     </div>
+  </header>
+
+  <section class="main-title">
+    <h1>Temukan venue terbaik untuk event anda</h1>
+    <nav>
+      <a href="home_login.php" class="nav-item" id="all-stay">All Stay</a>
+      <a href="venue.php" class="nav-item active" id="venue">Venue</a>
+      <a href="event.php" class="nav-item" id="event">Event</a>
+    </nav>
+  </section>
 
     <section class="image-card">
         <div class="image-container">

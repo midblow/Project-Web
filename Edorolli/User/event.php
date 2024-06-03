@@ -42,6 +42,7 @@ if ($result === false) {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="stylesheet" href="../css/events.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
 </head>
 <body>
     <header>
@@ -90,5 +91,6 @@ if ($result === false) {
             <a href="?page=<?php echo $page + 1; ?>" class="pagination-button" id="next-button">Next</a>
         <?php endif; ?>
     </div>
+    <?php require_once '../php/footer.php'; ?>
 </body>
 </html>

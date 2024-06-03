@@ -92,9 +92,10 @@ function regProv($data) {
     }
 }
 
-function generateInvoice($booking_id) {
+function generateInvoice($booking_id)
+{
     $conn = connectDatabase();
-    
+
     // Fetch booking details
     $sql = "SELECT b.*, v.harga, p.lembaga, b.user_id
             FROM booking b
@@ -126,9 +127,9 @@ function generateInvoice($booking_id) {
     $date = date('Y-m-d');
     $payment_method = $booking['metode_pembayaran'];
 
-    $sql_invoice = "INSERT INTO invoice (booking_id, date, total_amount, payment_method, service_fee) VALUES (?, ?, ?, ?, ?)";
+    $sql_invoice = "INSERT INTO invoice (id_invoice, booking_id, date, total_amount, payment_method, service_fee) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt_invoice = $conn->prepare($sql_invoice);
-    $stmt_invoice->bind_param("isdss", $booking_id, $date, $grand_total, $payment_method, $service_fee);
+    $stmt_invoice->bind_param("iisdss", $id_invoice, $booking_id, $date, $grand_total, $payment_method, $service_fee);
     $stmt_invoice->execute();
 
     if ($stmt_invoice->affected_rows > 0) {
