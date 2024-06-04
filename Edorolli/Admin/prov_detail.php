@@ -59,7 +59,7 @@ $user = $result->fetch_assoc();
           </div>
           <nav>
             <ul>
-            <li><a href="prov_detail.php?id=<?php echo $provider_id; ?>"><i class="far fa-user"></i> Profile</a></li>
+            <li class="active"><a href="prov_detail.php?id=<?php echo $provider_id; ?>"><i class="far fa-user"></i> Profile</a></li>
             <li><a href="prov_riwayatR.php?id=<?php echo $provider_id; ?>"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
             <li><a href="prov_venue.php?id=<?php echo $provider_id; ?>"><i class="fas fa-building"></i> Venue</a></li>
             </ul>

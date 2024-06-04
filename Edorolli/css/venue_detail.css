@@ -181,7 +181,7 @@
     border: 2px dashed #ccc;
     padding: 20px;
     border-radius: 10px;
-    width: 100%;
+    width: 97.5%;
     justify-content: center;
   }
   
@@ -206,23 +206,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
   }
   
   .radio-container div {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
   }
   
   .radio-container input[type="radio"] {
-    margin-right: 5px;
+    margin-right: 0px; 
   }
   
   .main-venue-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 15px;
     margin-top: 10px;
     width: fit-content;
     margin-left: auto; 

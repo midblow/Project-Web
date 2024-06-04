@@ -137,7 +137,7 @@ main {
   .sidebar {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 4px 8px rgba(0.1, 0, 0, 0.1);
     padding: 20px;
     width: 250px;
   }
@@ -156,73 +156,201 @@ main {
   .profile-info h3 {
     font-size: 18px;
     margin-bottom: 5px;
-  }.container {
-    display: flex;
-  }
-  
-  .sidebar {
-    flex: 1;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-right: 1px solid #ddd;
-  }
-  
-  .profile-info {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-info img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-  }
-  
-  .profile-info h3 {
-    margin: 10px 0;
   }
   
   .profile-info p {
+    font-size: 14px;
     color: #666;
   }
   
   .sidebar nav ul {
-    list-style: none;
+    list-style: none; /* Menghilangkan tanda titik pada daftar */
     padding: 0;
   }
   
   .sidebar nav ul li {
-    margin-bottom: 10px;
+    margin: 15px 0; /* Menambahkan jarak antara elemen daftar */
   }
   
   .sidebar nav ul li a {
-    color: #333;
-    text-decoration: none;
+    color: #0c2240;
+    font-size: 16px;
     display: flex;
     align-items: center;
+    gap: 10px;
   }
   
   .sidebar nav ul li a i {
-    margin-right: 10px;
+    font-size: 18px;
   }
   
-  .sidebar nav ul li a:hover,
-  .sidebar nav ul li a.active {
-    color: #0c2240;
+  .sidebar nav ul li.active a {
+    color: #a62821;
   }
   
+  .sidebar nav ul li.active a i {
+    color: #a62821;
+  }
+  
+  .sidebar nav ul li a:hover {
+    text-decoration: underline;
+    color: #a62821;
+  }
+.container {
+  display: flex;
+  margin: 20px auto;
+  max-width: 1100px;
+  gap: 20px;
+}
+
+.sidebar {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px rgba(0.1, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.profile-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+.sidebar nav ul {
+  list-style: none; /* Menghilangkan tanda titik pada daftar */
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin: 15px 0; /* Menambahkan jarak antara elemen daftar */
+}
+
+.sidebar nav ul li a {
+  color: #0c2240;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar nav ul li a i {
+  font-size: 18px;
+}
+
+.sidebar nav ul li.active a {
+  color: #a62821;
+}
+
+.sidebar nav ul li.active a i {
+  color: #a62821;
+}
+
+.sidebar nav ul li a:hover {
+  text-decoration: underline;
+  color: #a62821;
+}
+
+.content {
+  flex-grow: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-header h1 {
+  font-size: 24px;
+  color: #0c2240;
+}
+
+.profile-header .tabs {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.profile-header .tabs li {
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+}
+
+.profile-header .tabs li.active {
+  color: #0c2240;
+  font-weight: bold;
+}
+
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-details h2 {
+  font-size: 20px;
+  color: #0c2240;
+  margin-bottom: 10px;
+}
+
+.profile-details p {
+  font-size: 16px;
+  color: #333;
+}
+
+.profile-details .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #0c2240;
+  color: white;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.profile-details .btn:hover {
+  background-color: #a62821;
+}
+
+.profile-details .cancel-btn {
+  background-color: #ccc;
+  color: #333;
+}
   .content {
     flex: 3;
     padding: 20px;
   }
   
+  .EP{
+    text-align: center;
+  }
   .events-proposal {
     margin-bottom: 20px;
   }
   
   .event-card {
-    background-color: #a62821;
-    color: white;
+    background-color: #0c2240;
+    color: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -247,10 +375,25 @@ main {
     border-radius: 5px;
   }
   
-  .approve-btn,
-  .decline-btn {
-    background-color: #333;
+  .approve-btn{
+    background-color: #28a745;
     color: white;
+    width: 150px;  
+    height: 30px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .decline-btn {
+    background-color: rgb(255, 0, 0);;
+    color: white;
+    width: 150px;  /* Lebar tombol */
+    height: 30px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -258,9 +401,12 @@ main {
     margin-left: 10px;
   }
   
-  .approve-btn:hover,
+  .approve-btn:hover{
+    background-color: #28a745;
+  }
+
   .decline-btn:hover {
-    background-color: #555;
+    background-color: rgb(255, 0, 0);
   }
   
   .pagination {

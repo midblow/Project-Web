@@ -91,6 +91,9 @@
             ?>
             </tbody>
         </table>
+        <div class="button-group">
+                    <button type="submit" id="editBtn" class="edit-btn">Submit</button>
+        </div>
         </div>
     </div>
     </main>

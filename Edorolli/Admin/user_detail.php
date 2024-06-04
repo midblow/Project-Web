@@ -59,7 +59,7 @@ $user = $result->fetch_assoc();
       </div>
       <nav>
         <ul>
-          <li><a href="user_detail.php?id=<?php echo $id_user; ?>"><i class="far fa-user"></i> Profile</a></li>
+          <li class="active"><a href="user_detail.php?id=<?php echo $userId; ?>"><i class="far fa-user"></i> Profile</a></li>
           <li><a href="user_riwayatR.php?id_user=<?php echo $userId; ?>"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
           <li><a href="userEvent_manage.php?id_user=<?php echo $userId; ?>&page=1"><i class="fas fa-calendar-alt"></i> Events</a></li>
         </ul>

@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
-
+var_dump($uploadOk); 
     if ($uploadOk == 1) {
         $temp_file = $target_dir . 'temp_' . basename($gambar["name"]);
         if (move_uploaded_file($gambar["tmp_name"], $temp_file)) {

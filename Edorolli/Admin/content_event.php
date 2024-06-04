@@ -1,27 +1,42 @@
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username'])) {
     header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
     exit();
+}
+
+include '../php/functions.php';
+$conn = connectDatabase();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $eventIds = isset($_POST['event']) ? $_POST['event'] : [];
+
+    // Reset all rekomendasi to 0
+    $conn->query("UPDATE event SET rekomendasi = 0");
+
+    // Set rekomendasi to 1 for selected events
+    if (!empty($eventIds)) {
+        $eventIds = array_map('intval', $eventIds); // Sanitize input
+        $ids = implode(',', $eventIds);
+        $conn->query("UPDATE event SET rekomendasi = 1 WHERE id_event IN ($ids)");
     }
+}
 
-    include '../php/functions.php';
-    $conn = connectDatabase();
+// Fetch user event data from the database
+$sql = "SELECT user.id, user.gmail, event.nama_event, event.rekomendasi, event.id_event
+        FROM event 
+        INNER JOIN user ON event.id_user = user.id";
+$result = $conn->query($sql);
 
-    // Fetch user event data from the database
-    $sql = "SELECT user.id, user.gmail, event.nama_event 
-            FROM event 
-            INNER JOIN user ON event.id_user = user.id";
-    $result = $conn->query($sql);
-
-    if (!$result) {
+if (!$result) {
     die("Query failed: " . $conn->error);
-    }
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edoroli - Manage Users</title>
@@ -29,9 +44,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="../css/manage_content.css" />
     <link rel="stylesheet" href="../css/footer.css" />
-    </head>
-    <body>
-    <header>
+</head>
+<body>
+<header>
     <div class="wrapper">
         <div class="logo-nama">
             <div class="logo"><img src="../image/logo.png" alt="Logo"></div>
@@ -41,7 +56,7 @@
     </div>
 </header>
 <nav class="main-title">
-<h1>All You Can Manage</h1>
+    <h1>All You Can Manage</h1>
     <div class="nav-links">
         <a href="user_manage.php?page=1" class="nav-item" id="user">Manage User</a>
         <a href="prov_manage.php?page=1" class="nav-item" id="provider">Manage Provider</a>
@@ -49,53 +64,59 @@
     </div>
 </nav>
 
-    <main>
+<main>
     <div class="container">
         <div class="sidebar">
-        <div class="profile-info">
-            <img src="../image/MLBB.jpg" alt="Profile Picture" />
-            <h3>Alfin Nashirul</h3>
-            <p>alfin@gmail.com</p>
-        </div>
-        <nav>
-            <ul>
-            <li><a href="content_venue.php"><i class="far fa-user"></i> Rekomendasi Venue</a></li>
-            <li class="active"><a href="content_event.php"><i class="far fa-file-alt"></i> Rekomendasi Event</a></li>
-            </ul>
-        </nav>
+            <div class="profile-info">
+                <img src="../image/MLBB.jpg" alt="Profile Picture" />
+                <h3>Alfin Nashirul</h3>
+                <p>alfin@gmail.com</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="content_venue.php"><i class="far fa-user"></i> Rekomendasi Venue</a></li>
+                    <li class="active"><a href="content_event.php"><i class="far fa-file-alt"></i> Rekomendasi Event</a></li>
+                </ul>
+            </nav>
         </div>
         <div class="content">
-        <table>
-            <thead>
-            <tr>
-                <th>ID Provider</th>
-                <th>Email</th>
-                <th>List Venue</th>
-                <th>Rekomendasikan</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>{$row['id']}</td>";
-                echo "<td>{$row['gmail']}</td>";
-                echo "<td>{$row['nama_event']}</td>";
-                echo "<td><input type='checkbox' /></td>";
-                echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='4'>No events found</td></tr>";
-            }
-            ?>
-            </tbody>
-        </table>
+            <form method="post" action="content_event.php">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID User</th>
+                            <th>Email</th>
+                            <th>Nama Event</th>
+                            <th>Rekomendasikan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>{$row['id']}</td>";
+                                echo "<td>{$row['gmail']}</td>";
+                                echo "<td>{$row['nama_event']}</td>";
+                                echo "<td><input type='checkbox' name='event[]' value='{$row['id_event']}' ".($row['rekomendasi'] ? 'checked' : '')." /></td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='4'>No events found</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <div class="button-group">
+                    <button type="submit" id="editBtn" class="edit-btn">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
-    </main>
+</main>
 
-    <?php require_once '../php/footer.php'; ?>
+<?php require_once '../php/footer.php'; ?>
 
-    </body>
-    </html>
+</body>
+</html>
+

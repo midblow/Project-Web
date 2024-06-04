@@ -105,12 +105,12 @@ if (!isset($_SESSION['username'])) {
                         <div class="radio-container">
                             <div>
                                 <input type="radio" id="pemerintah" name="jenis_instansi" value="Pemerintah" <?php echo ($venue['jenis_instansi'] == 'Pemerintah') ? 'checked' : ''; ?> disabled required>
-                                <label for="pemerintah">Pemerintah</label>
                             </div>
+                            <label for="pemerintah">Pemerintah</label>
                             <div>
                                 <input type="radio" id="swasta" name="jenis_instansi" value="Swasta" <?php echo ($venue['jenis_instansi'] == 'Swasta') ? 'checked' : ''; ?> disabled required>
-                                <label for="swasta">Swasta</label>
                             </div>
+                            <label for="swasta">Swasta</label>
                         </div>
                         <div class="main-venue-container">
                             <input type="checkbox" id="main_venue" name="main_venue" value="1" disabled>

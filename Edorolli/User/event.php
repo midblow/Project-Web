@@ -75,7 +75,7 @@ if ($result === false) {
                     <img src="<?php echo htmlspecialchars($event['gambar']); ?>" alt="<?php echo htmlspecialchars($event['nama_event']); ?>" />
                 </a>
                 <div class="event-info">
-                <a href="event_detail.php?id_venue=<?php echo $event['id_venue']; ?>&id_event=<?php echo $event['id_event']; ?>"><h2><?php echo htmlspecialchars($event['nama_event']); ?></h2></a>
+                <a href="event_detail.php?id_event=<?php echo $event['id_event']; ?>"><h2><?php echo htmlspecialchars($event['nama_event']); ?></h2></a>
                     <p><?php echo htmlspecialchars($event['deskripsi']); ?></p>
                 </div>
             </div>

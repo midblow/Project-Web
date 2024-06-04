@@ -67,7 +67,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
     <title>Edoroli - Reservasi Venue Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="../css/user_riwayatR.css" />
+    <link rel="stylesheet" href="../css/user_riwayatRU.css" />
     <link rel="stylesheet" href="../css/footer.css" />
 </head>
 <body>
@@ -114,7 +114,28 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
         </div>
     </div>
 </main>
-
+<footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../image/logo.png" alt="Edoroli Logo">
+                <div class="nama_website"><a href="#">Edoroli</a></div>
+            </div>
+            <div class="footer-center">
+                <h3>TENTANG EDOROLI</h3>
+                <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
+            </div>
+            <div class="footer-right">
+                <h3>SOSIAL MEDIA</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
+        </div>
+</footer>
 <script>
 let offset = 0;
 const limit = <?php echo $limit; ?>;

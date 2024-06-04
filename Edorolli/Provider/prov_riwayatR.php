@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['username'])) {
     header("Location: http://localhost/Project-Web/Edorolli/user/login_user.php");
     exit();
 }
@@ -35,11 +35,12 @@ if ($id_provider > 0) {
 // Serve JSON data if requested
 if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
     $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
-    $sql = "SELECT v.nama_venue AS venue_name, u.id AS id_user, u.name AS nama_user, u.gmail AS email_user, b.start_date, b.end_date
+    $sql = "SELECT v.nama_venue AS venue_name, u.id AS id_user, u.name AS nama_user, u.gmail AS email_user, b.start_date, b.end_date, i.id_invoice
             FROM booking b
             INNER JOIN venue v ON b.id_venue = v.id_venue
             INNER JOIN provider p ON v.id_provider = p.id_provider
-            INNER JOIN user u ON b.user_id = u.id
+            INNER JOIN invoice i ON b.id = i.booking_id
+            INNER JOIN user u ON b.user_id = u.id   
             WHERE p.id_provider = ? AND b.status = 'confirmed'
             LIMIT ?, ?";
     if ($stmt = $conn->prepare($sql)) {
@@ -76,14 +77,14 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
             <div class="logo"><img src="../image/logo.png" alt="Logo"></div>
             <div class="nama_website"><a href="#">Edoroli</a></div>
         </div>
-        <div class="menu"><a href="user_manage.php?page=1">Hallo <?php echo $_SESSION['name']; ?><i class="far fa-user"></i></a></div>
+        <div class="menu"><a href="user_manage.php?page=1">Hallo <?php echo $_SESSION['username']; ?><i class="far fa-user"></i></a></div>
     </div>
 </header>
 <section class="main-title">
 <h1>Kelola Akun Anda</h1>
     <nav class="nav-links">
         <a href="provider.php" class="nav-item" id="user">Profile</a>
-        <a href="user_riwayatR.php" class="nav-item active" id="provider">Riwayat Reservasi</a>
+        <a href="booking_confirmation.php" class="nav-item" id="provider">Booking Confirmation</a>
         <a href="provider_Ksandi.php" class="nav-item" id="content">Kelola Akun</a>
 </nav>
 </section>
@@ -93,7 +94,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
         <div class="sidebar">
             <div class="profile-info">
                 <img src="../image/MLBB.jpg" alt="Profile Picture" />
-                <h3><?php echo  $_SESSION['name']; ?></h3>
+                <h3><?php echo  $_SESSION['lembaga']; ?></h3>
                 <p><?php echo $_SESSION['gmail']; ?></p>
             </div>
             <nav>
@@ -111,7 +112,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more') {
                 <!-- Reservation history will be loaded here dynamically -->
             </div>
         </div>
-    </div>
+    </div>zz
 </main>
 
 <script>
@@ -141,7 +142,7 @@ function loadMoreReservations() {
 
                     const cardFooter = document.createElement('div');
                     cardFooter.className = 'card-footer';
-                    cardFooter.innerHTML = `<a href='#' class='btn btn-primary'>See Invoice</a>`;
+                    cardFooter.innerHTML = `<a href='../Provider/invoice.php?id_provider=${id_provider}&id_invoice=${reservation.id_invoice}' class='btn btn-primary'>See Invoice</a>`;
                     card.appendChild(cardFooter);
 
                     container.appendChild(card);

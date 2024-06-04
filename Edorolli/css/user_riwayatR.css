@@ -8,7 +8,6 @@ body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   background-color: white;
 }
 
@@ -61,32 +60,28 @@ header {
   display: flex;
   line-height: 80px;
   position: sticky;
-  position: -webkit-sticky;
   top: 0px;
   background-color: #0c2240;
   z-index: 10;
-  justify-content: space-between; /* Ensure the elements are spread out */
+  justify-content: space-between;
   align-items: center;
 }
 
-section {
-  max-width: 1100px;
-  margin: auto;
-}
-
 .main-title {
-  text-align: left;
-  padding-bottom: 10px;
+  max-width: 1100px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-title h1 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
+  font-size: 35px;
+  color: #0c2240;
+  margin-bottom: 5px;
 }
 
-.main-title nav a {
-  margin-right: 30px;
+.main-title a {
+  margin: 0 10px;
   color: #bf4f26;
   text-decoration: none;
   font-size: 18px solid;
@@ -123,76 +118,82 @@ section {
   left: 0;
   bottom: -4px;
 }
-
-.container {
-  display: flex;
-  margin: 20px auto;
+main {
   max-width: 1100px;
-  gap: 20px;
-}
-
-.sidebar {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 2px 4px 8px rgba(0.1, 0, 0, 0.1);
+  margin: auto;
   padding: 20px;
-  width: 250px;
+  box-sizing: border-box;
 }
 
-.profile-info {
-  text-align: center;
-}
-
-.profile-info img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.profile-info h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.profile-info p {
-  font-size: 14px;
-  color: #666;
-}
-
-.sidebar nav ul {
-  list-style: none; /* Menghilangkan tanda titik pada daftar */
-  padding: 0;
-}
-
-.sidebar nav ul li {
-  margin: 15px 0; /* Menambahkan jarak antara elemen daftar */
-}
-
-.sidebar nav ul li a {
-  color: #0c2240;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.sidebar nav ul li a i {
-  font-size: 18px;
-}
-
-.sidebar nav ul li.active a {
-  color: #a62821;
-}
-
-.sidebar nav ul li.active a i {
-  color: #a62821;
-}
-
-.sidebar nav ul li a:hover {
-  text-decoration: underline;
-  color: #a62821;
-}
+  .container {
+    display: flex;
+    margin: 20px auto;
+    max-width: 1100px;
+    gap: 20px;
+  }
+  
+  .sidebar {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 4px 8px rgba(0.1, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+  }
+  
+  .profile-info {
+    text-align: center;
+  }
+  
+  .profile-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .profile-info p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .sidebar nav ul {
+    list-style: none; /* Menghilangkan tanda titik pada daftar */
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin: 15px 0; /* Menambahkan jarak antara elemen daftar */
+  }
+  
+  .sidebar nav ul li a {
+    color: #0c2240;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .sidebar nav ul li a i {
+    font-size: 18px;
+  }
+  
+  .sidebar nav ul li.active a {
+    color: #a62821;
+  }
+  
+  .sidebar nav ul li.active a i {
+    color: #a62821;
+  }
+  
+  .sidebar nav ul li a:hover {
+    text-decoration: underline;
+    color: #a62821;
+  }
 
 .content {
   flex-grow: 1;
@@ -229,40 +230,6 @@ section {
 .profile-header .tabs li.active {
   color: #0c2240;
   font-weight: bold;
-}
-
-.profile-details {
-  margin-bottom: 20px;
-}
-
-.profile-details h2 {
-  font-size: 20px;
-  color: #0c2240;
-  margin-bottom: 10px;
-}
-
-.profile-details p {
-  font-size: 16px;
-  color: #333;
-}
-
-.profile-details .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-  background-color: #0c2240;
-  color: white;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.profile-details .btn:hover {
-  background-color: #a62821;
-}
-
-.profile-details .cancel-btn {
-  background-color: #ccc;
-  color: #333;
 }
 
 .riwayat-reservasi {
@@ -340,11 +307,91 @@ section {
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #0c2240;
-  color: #fff;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  background-color: #0c2240; /* Warna latar belakang */
+  color: white;
+  padding: 40px 20px; /* Memberikan padding lebih besar untuk area footer */
+  font-family: "Poppins", sans-serif; /* Mengganti font */
 }
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: auto;
+  padding-bottom: 20px; /* Memberikan jarak bawah antara konten footer dan hak cipta */
+  border-bottom: 1px solid #fff; /* Optional: Menambahkan garis pemisah */
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-left img {
+  margin-right: 10px; /* Jarak antara logo dan nama */
+}
+
+.footer-left .nama_website a {
+  font-size: 30px; /* Ukuran font untuk nama website */
+  font-weight: bold;
+}
+
+.footer-center {
+  flex: 2;
+  margin-right: 15px;
+  margin-left: 30px;
+}
+
+.footer-center h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-center p {
+  margin-bottom: 20px; /* Memberikan jarak bawah */
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-right h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-right ul li {
+  margin-bottom: 10px; /* Memberikan jarak antar item */
+}
+
+.footer-right ul li a {
+  color: white; /* Warna link */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.footer-right ul li a i {
+  margin-right: 8px; /* Jarak antara ikon dan teks */
+}
+
+.footer-right ul li a:hover {
+  text-decoration: underline; /* Optional: Menambahkan underline saat hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px; /* Jarak atas antara konten footer dan teks hak cipta */
+  font-size: 14px;
+}
+
+

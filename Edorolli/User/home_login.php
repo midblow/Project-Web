@@ -59,7 +59,7 @@ $nickname = $nicknameArray[0];
       </section>
 
       <section class="popular-venue">
-        <h2>Populer Venue (Best Venue)</h2>
+        <h2>Rekomendasi Venue (Best Venue)</h2>
         <div id="venue-carousel">
           <div class="venue-item">
             <div class="card">

@@ -59,9 +59,6 @@ if ($id_event == 0) {
         exit();
     }
 
-    // Mengambil data venue dari tabel venue
-    $id_venue = $event['id_venue'];
-
     // Mengambil tanggal event dari tabel booking berdasarkan id_venue
     $sql_booking = "SELECT start_date, end_date FROM booking WHERE id_venue = ?";
     $stmt_booking = $conn->prepare($sql_booking);

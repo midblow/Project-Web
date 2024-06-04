@@ -226,4 +226,20 @@ main {
     margin: 0 auto;
     display: block;
   }
+
+  .button-group {  
+    display: block;
+    gap: 10px;
+    text-align: right;
+  }
+  .edit-btn {
+    background-color: #C3232B;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 20px;
+  }
   

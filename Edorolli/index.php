@@ -1,3 +1,31 @@
+<?php
+session_start();
+require_once 'php/functions.php';
+$conn = connectDatabase();
+
+// Constants for pagination
+$items_per_page = 10;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $items_per_page;
+
+// Fetch total number of confirmed events
+$total_sql = "SELECT COUNT(*) as total FROM event WHERE status = 'confirmed' AND rekomendasi = 1";
+$total_result = $conn->query($total_sql);
+$total_row = $total_result->fetch_assoc();
+$total_items = $total_row['total'];
+$total_pages = ceil($total_items / $items_per_page);
+
+// Fetch confirmed events for the current page
+$sql = "SELECT * FROM event  WHERE rekomendasi = 1 AND status = 'confirmed' LIMIT ?, ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ii", $offset, $items_per_page);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result === false) {
+    die("Error fetching events: " . $conn->error);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -220,39 +248,17 @@
     <section class="events">
       <h2>Event</h2>
       <div id="event-carousel" class="owl-carousel owl-theme">
-        <div class="event-item">
-          <div class="event-card">
-            <img src="../Edorolli/image/Dewa 19.jpg" alt="Dewa 19 Concert" />
-            <div class="event-text">Dewa 19 Concert</div>
-          </div>
-        </div>
-        <div class="event-item">
-          <div class="event-card">
-            <img src="../Edorolli/image/MLBB.jpg" alt="MLBB Tournament" />
-            <div class="event-text">MLBB Tournament</div>
-          </div>
-        </div>
-        <div class="event-item">
-          <div class="event-card">
-            <img src="../Edorolli/image/Futsal.jpg" alt="Futsal Championship" />
-            <div class="event-text">Futsal Championship</div>
-          </div>
-        </div>
-        <div class="event-item">
-          <div class="event-card">
-            <img
-              src="../Edorolli/image/Senggigi_Sunset_Jazz.jpg"
-              alt="Senggigi Sunset Jazz"
-            />
-            <div class="event-text">Senggigi Sunset Jazz</div>
-          </div>
-        </div>
-        <div class="event-item">
-          <div class="event-card">
-            <img src="../Edorolli/image/Wedding.jpg" alt="Wedding Ceremony" />
-            <div class="event-text">Wedding Ceremony</div>
-          </div>
-        </div>
+      <?php while ($event = $result->fetch_assoc()): ?>
+            <div class="event-card">
+                <a href="user/event_detail.php?id_event=<?php echo $event['id_event']; ?>">
+                  <img src="../Edorolli/image/<?php echo htmlspecialchars($event['gambar']); ?>" />
+                </a>
+                <div class="event-info">
+                  <a href="user/event_detail.php?id_event=<?php echo $event['id_event']; ?>"><h2><?php echo htmlspecialchars($event['nama_event']); ?></h2></a>
+                    <!-- <p><?php echo htmlspecialchars($event['deskripsi']); ?></p> -->
+                </div>
+            </div>
+        <?php endwhile; ?>
       </div>
     </section>
 
@@ -266,7 +272,7 @@
         </div>
         <div class="footer-center">
             <h3>TENTANG EDOROLI</h3>
-            <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
+            <p>Edoroli adalah portal reservasi venue pertama se-Pulau Lombok, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
         </div>
         <div class="footer-right">
             <h3>SOSIAL MEDIA</h3>
@@ -277,7 +283,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
+        <p>©️ 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
     </div>
 </footer>
 
