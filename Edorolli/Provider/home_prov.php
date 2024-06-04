@@ -12,12 +12,19 @@ $conn = connectDatabase();
 $id_provider = $_SESSION['id_provider'];
 $items_per_page = 8;
 
-// Fetch venues for the current provider
+// Fetch all venues for the current provider
 $sql = "SELECT * FROM venue WHERE id_provider = ? LIMIT $items_per_page";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_provider);
 $stmt->execute();
-$result = $stmt->get_result();
+$venue_result = $stmt->get_result();
+
+$sql = "SELECT * FROM venue WHERE id_provider = ? and main_venue = 1";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_provider);
+$stmt->execute();
+$mains_venue = $stmt->get_result();
+
 ?>
 
 <!DOCTYPE html>
@@ -51,16 +58,35 @@ $result = $stmt->get_result();
         </section>
 
         <section class="recomendation">
-            <div class="image-cardB">
-                <h1 class="title">Your Best Venue</h1>
-                <div class="image-containerB">
-                    <img src="../image/Gelanggang_Pemuda.jpg" alt="Gelanggang Pemuda" />
-                    <div class="overlay">
-                        <h1 class="overlay-title">GELANGGANG PEMUDA</h1>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="image-cardB">
+            <?php
+                if ($mains_venue->num_rows > 0) {
+                    while ($main_venue = $mains_venue->fetch_assoc()) {
+                        echo'<h1 class="title">Your Best Venue</h1>';
+                        echo'<div class="image-containerB">';
+                        echo '  <a href="venue_detail.php?id_venue=' . $main_venue["id_venue"] . '">';
+                        echo'       <img src="'.$main_venue['gambar'].'" />';
+                        echo '  </a>';
+                        echo'   <div class="overlay">';
+                        echo'       <h1 class="overlay-title">'.$main_venue['nama_venue'].'></h1>';
+                        echo'   </div>';
+                        echo'</div>';
+                    }
+                } else {
+                    // Gambar dan nama default
+                    echo '<h1 class="title">Your Best Venue</h1>';
+                    echo '<div class="image-containerB">';
+                    echo '  <a href="#">';
+                    echo '      <img src="../image/map.jpg">';
+                    echo '  </a>';
+                    echo '  <div class="overlay">';
+                    echo '      <h1 class="overlay-title">Default Name</h1>';
+                    echo '  </div>';
+                    echo '</div>';
+                }
+                ?>      
+        </div>
+    </section>
 
         <section class="venue">
             <div class="title">
@@ -68,14 +94,13 @@ $result = $stmt->get_result();
             </div>
             <div class="gallery">
                 <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
+                if ($venue_result->num_rows > 0) {
+                    while ($row = $venue_result->fetch_assoc()) {
                         echo '<div class="card">';
                         echo '    <div class="image-container">';
                         echo '        <a href="venue_detail.php?id_venue=' . $row["id_venue"] . '">';
                         echo '            <img src="' . $row["gambar"] . '" alt="Venue Image">';
                         echo '        </a>';
-                        echo '        <span class="heart-icon"><i class="far fa-heart" onclick="klikLike(this)"></i></span>';
                         echo '    </div>';
                         echo '    <div class="info">';
                         echo '        <p class="name">' . $row["nama_venue"] . '</p>';

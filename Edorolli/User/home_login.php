@@ -1,9 +1,59 @@
 <?php
 session_start();
 if (!isset($_SESSION['name'])) {
-  // Jika sesi nama tidak diatur, redirect ke halaman login
-  header("Location: ../User/login_user.php");
-  exit();
+    // Jika sesi nama tidak diatur, redirect ke halaman login
+    header("Location: ../User/login_user.php");
+    exit();
+}
+
+require_once '../php/functions.php';
+$conn = connectDatabase();
+
+// Set limit for the number of events to display
+$event_limit = 8;
+
+// Fetch confirmed events with a recommendation limit
+$sql = "SELECT * FROM event WHERE rekomendasi = 1 AND status = 'confirmed' LIMIT ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $event_limit);
+$stmt->execute();
+$events_result = $stmt->get_result();
+
+if ($events_result === false) {
+    die("Error fetching events: " . $conn->error);
+}
+
+// Fetch main venues approved by admin
+$json_venues = file_get_contents('../json/main_venues.json');
+$main_venues = json_decode($json_venues, true);
+
+$venues = [];
+if (is_array($main_venues) && !empty($main_venues)) {
+    $placeholders = implode(',', array_fill(0, count($main_venues), '?'));
+    $types = str_repeat('i', count($main_venues)) . 'i';
+    $query = "
+    SELECT *
+    FROM venue
+    WHERE main_venue = 1 AND id_venue IN ($placeholders)
+    LIMIT ?";
+    $stmt = $conn->prepare($query);
+
+    $params = array_merge(array_column($main_venues, 'id_venue'), [$event_limit]);
+
+    // Memastikan jumlah parameter sesuai
+    $refs = [];
+    foreach ($params as $key => $value) {
+        $refs[$key] = &$params[$key];
+    }
+
+    array_unshift($refs, $types); // Menambahkan jenis parameter di awal array referensi
+
+    // Menggunakan call_user_func_array untuk bind_param
+    call_user_func_array([$stmt, 'bind_param'], $refs);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $venues = $result->fetch_all(MYSQLI_ASSOC);
 }
 
 $nicknameArray = explode(' ', $_SESSION['name']);
@@ -12,7 +62,6 @@ $nickname = $nicknameArray[0];
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edoroli - Reservasi Venue Online</title>
@@ -58,112 +107,30 @@ $nickname = $nicknameArray[0];
         </nav>
       </section>
 
+      <?php if (!empty($venues)): ?>
       <section class="popular-venue">
         <h2>Rekomendasi Venue (Best Venue)</h2>
         <div id="venue-carousel">
-          <div class="venue-item">
-            <div class="card">
-              <div class="image-container">
-                <img src="../image/Sangkareang.jpg" alt="Taman Sangkareang" />
-                <span class="heart-icon"
-                  ><i class="far fa-heart" onclick="klikLike(this)"></i
-                ></span>
+            <?php foreach ($venues as $venue): ?>
+              <div class="venue-item">
+                <div class="card">
+                  <div class="image-container">
+                    <a href="venue_book.php?id_venue=<?php echo $venue['id_venue']; ?>">
+                      <img src="../image/<?php echo htmlspecialchars($venue['gambar']); ?>" alt="<?php echo htmlspecialchars($venue['nama_venue']); ?>" />
+                    </a>
+                  </div>
+                  <div class="info">
+                    <p class="name"><?php echo htmlspecialchars($venue['nama_venue']); ?></p>
+                    <span class="plus-icon"><i class="far fa-bookmark" onclick="klikBookmark(this)"></i></span>
+                  </div>
+                  <div class="location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span><?php echo htmlspecialchars($venue['kota']); ?></span>
+                  </div>
+                </div>
               </div>
-              <div class="info">
-                <p class="name">Taman Sangkareang</p>
-                <span class="plus-icon"
-                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
-                ></span>
-              </div>
-              <div class="location">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Mataram</span>
-              </div>
-            </div>
-          </div>
-          <div class="venue-item">
-            <div class="card">
-              <div class="image-container">
-                <img src="../image/Pantai_Senggigi.jpg" alt="Pantai Senggigi" />
-                <span class="heart-icon"
-                  ><i class="far fa-heart" onclick="klikLike(this)"></i
-                ></span>
-              </div>
-              <div class="info">
-                <p class="name">Pantai Senggigi</p>
-                <span class="plus-icon"
-                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
-                ></span>
-              </div>
-              <div class="location">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Senggigi</span>
-              </div>
-            </div>
-          </div>
-          <div class="venue-item">
-            <div class="card">
-              <div class="image-container">
-                <img
-                  src="../image/Narmada_Convention_Hall.jpg"
-                  alt="Narmada Convention Hall"
-                />
-                <span class="heart-icon"
-                  ><i class="far fa-heart" onclick="klikLike(this)"></i
-                ></span>
-              </div>
-              <div class="info">
-                <p class="name">Narmada Convention Hall</p>
-                <span class="plus-icon"
-                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
-                ></span>
-              </div>
-              <div class="location">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Mataram</span>
-              </div>
-            </div>
-          </div>
-          <div class="venue-item">
-            <div class="card">
-              <div class="image-container">
-                <img src="../image/Hotel_Lombok_Raya.jpg" alt="Hotel Lombok Raya" />
-                <span class="heart-icon"
-                  ><i class="far fa-heart" onclick="klikLike(this)"></i
-                ></span>
-              </div>
-              <div class="info">
-                <p class="name">Hotel Lombok Raya</p>
-                <span class="plus-icon"
-                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
-                ></span>
-              </div>
-              <div class="location">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Mataram</span>
-              </div>
-            </div>
-          </div>
-          <div class="venue-item">
-            <div class="card">
-              <div class="image-container">
-                <img src="../image/Grand_Imperial.jpg" alt="Grand Imperial Ballroom" />
-                <span class="heart-icon"
-                  ><i class="far fa-heart" onclick="klikLike(this)"></i
-                ></span>
-              </div>
-              <div class="info">
-                <p class="name">Grand Imperial Ballroom</p>
-                <span class="plus-icon"
-                  ><i class="far fa-bookmark" onclick="klikBookmark(this)"></i
-                ></span>
-              </div>
-              <div class="location">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Mataram</span>
-              </div>
-            </div>
-          </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </div>
       </section>
 
@@ -214,40 +181,20 @@ $nickname = $nicknameArray[0];
           </div>
         </div>
       </section>
-
+      
       <section class="events">
-        <h2>Event (Berita)</h2>
+        <h2>Rekomendasi Event</h2>
         <div id="event-carousel" class="owl-carousel owl-theme">
-          <div class="event-item">
+          <?php while ($event = $events_result->fetch_assoc()): ?>
             <div class="event-card">
-              <img src="../image/Dewa 19.jpg" alt="Dewa 19 Concert" />
-              <div class="event-text">Dewa 19 Concert</div>
+              <a href="event_detail.php?id_event=<?php echo $event['id_event']; ?>">
+                <img src="../image/<?php echo htmlspecialchars($event['gambar']); ?>" />
+              </a>
+              <div class="event-info">
+                <a href="user/event_detail.php?id_event=<?php echo $event['id_event']; ?>"><h2><?php echo htmlspecialchars($event['nama_event']); ?></h2></a>
+              </div>
             </div>
-          </div>
-          <div class="event-item">
-            <div class="event-card">
-              <img src="../image/MLBB.jpg" alt="MLBB Tournament" />
-              <div class="event-text">MLBB Tournament</div>
-            </div>
-          </div>
-          <div class="event-item">
-            <div class="event-card">
-              <img src="../image/Futsal.jpg" alt="Futsal Championship" />
-              <div class="event-text">Futsal Championship</div>
-            </div>
-          </div>
-          <div class="event-item">
-            <div class="event-card">
-              <img src="../image/Senggigi_Sunset_Jazz.jpg" alt="Senggigi Sunset Jazz" />
-              <div class="event-text">Senggigi Sunset Jazz</div>
-            </div>
-          </div>
-          <div class="event-item">
-            <div class="event-card">
-              <img src="../image/Wedding.jpg" alt="Wedding Ceremony" />
-              <div class="event-text">Wedding Ceremony</div>
-            </div>
-          </div>
+          <?php endwhile; ?>
         </div>
       </section>
     </main>

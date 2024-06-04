@@ -59,6 +59,9 @@ if ($id_event == 0) {
         exit();
     }
 
+    // Mengambil data venue dari tabel venue
+    $id_venue = $event['id_venue'];
+
     // Mengambil tanggal event dari tabel booking berdasarkan id_venue
     $sql_booking = "SELECT start_date, end_date FROM booking WHERE id_venue = ?";
     $stmt_booking = $conn->prepare($sql_booking);
@@ -176,10 +179,10 @@ $nickname = $nicknameArray[0];
                         <img src="<?php echo htmlspecialchars($event['gambar']); ?>" id="preview-image-upload" alt="Upload Preview">
                         <p>+ Tambah Foto</p>
                     </label>
-                    <input type="file" name="file" id="file" accept="image/*" onchange="previewImage(event)">
+                    <input type="file" name="file" id="file" accept="image/*" onchange="previewImage(event)" <?php if ($id_event != 0) echo 'disabled'; ?>>
                 </div>
                 <div class="main-event-container">
-                    <input type="checkbox" id="rekomendasi" name="rekomendasi" value="1" <?php echo ($event['rekomendasi'] == 1) ? 'checked' : ''; ?>>
+                    <input type="checkbox" id="rekomendasi" name="rekomendasi" value="1"<?php echo ($event['rekomendasi'] == 1) ? 'checked' : ''; ?> <?php if ($id_event != 0) echo 'disabled'; ?>>
                     <label for="rekomendasi">Ajukan Sebagai Rekomendasi</label>
                 </div>
                 <div class="action-buttons">

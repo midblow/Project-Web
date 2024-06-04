@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['id'])) {
+    header("Location: ../User/login_user.php");
+    exit();
+}
 require_once '../php/functions.php';
 $conn = connectDatabase();
 

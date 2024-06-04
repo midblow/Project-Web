@@ -50,7 +50,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="User.php"><i class="far fa-user"></i> Profile</a></li>
+                        <li><a href="Provider.php"><i class="far fa-user"></i> Profile</a></li>
                         <li><a href="prov_riwayatR.php?id_provider=<?php echo $_SESSION['id_provider']; ?>"><i class="far fa-file-alt"></i> Riwayat Reservasi</a></li>
                         <li class="active"><a href="#"><i class="fas fa-cogs"></i> Kelola Akun</a></li>
                         <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>

@@ -8,7 +8,7 @@ $id_user = isset($_GET['id_user']) ? intval($_GET['id_user']) : 0;
 $id_invoice = isset($_GET['id_invoice']) ? intval($_GET['id_invoice']) : 0;
 
 // Fetch invoice details using id_invoice from URL parameters
-$sql_invoice = "SELECT i.*, b.*, v.nama_venue, v.alamat as venue_address, v.harga, p.gmail as provider_email, p.lembaga, u.name as user_name, u.gmail as user_email, u.nomorhp as user_phone
+$sql_invoice = "SELECT i.*, b.*, v.nama_venue, v.alamat as venue_address, v.harga, v.penanggung_jawab as nama_pj, p.lembaga, u.name as user_name, u.gmail as user_email, u.nomorhp as user_phone
                 FROM invoice i
                 JOIN booking b ON i.booking_id = b.id
                 JOIN venue v ON b.id_venue = v.id_venue
@@ -74,7 +74,7 @@ if (in_array($metode_pembayaran, ['bri', 'bca', 'mandiri', 'bni'])) {
                     </td>
                     <td>
                         <div class="invoice-label">No Invoice:</div> <?php echo sprintf('%06d', $invoice['id_invoice']); ?><br>
-                        <div class="invoice-label">Tanggal:</div> <?php echo date('d F Y', strtotime($invoice['date'])); ?><br>
+                        <div class="invoice-label">Tanggal Diterima:</div> <?php echo date('d F Y', strtotime($invoice['date'])); ?><br>
                         <div class="invoice-label">Venue:</div> <?php echo htmlspecialchars($invoice['nama_venue']); ?>
                     </td>
                 </tr>
@@ -84,16 +84,16 @@ if (in_array($metode_pembayaran, ['bri', 'bca', 'mandiri', 'bni'])) {
                 <tr>
                     <th>No</th>
                     <th>Nama Venue</th>
-                    <th>Email Provider</th>
-                    <th>Corporation</th>
-                    <th>Date Duration</th>
-                    <th>Price each Day (Rp)</th>
+                    <th>Nama PJ</th>
+                    <th>Instansi</th>
+                    <th>Lama Waktu</th>
+                    <th>Harga per Hari (Rp)</th>
                     <th>Jumlah (Rp)</th>
                 </tr>
                 <tr>
                     <td>01</td>
                     <td><?php echo htmlspecialchars($invoice['nama_venue']); ?></td>
-                    <td><?php echo htmlspecialchars($invoice['provider_email']); ?></td>
+                    <td><?php echo htmlspecialchars($invoice['nama_pj']); ?></td>
                     <td><?php echo htmlspecialchars($invoice['lembaga']); ?></td>
                     <td><?php echo $days . " days"; ?></td>
                     <td><?php echo number_format($price_per_day, 0, ',', '.'); ?></td>

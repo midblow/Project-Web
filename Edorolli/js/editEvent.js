@@ -14,10 +14,9 @@ function enableEditing() {
 
     document.querySelector(".edit-button").style.display = "none";
     document.querySelector(".delete-button").style.display = "none";
-    document.querySelector(".submit-button").style.display = "block";
+    document.querySelector(".submit-button1").style.display = "block";
     document.querySelector(".cancel-button").style.display = "block";
 }
-
 function cancelEditing() {
     var elements = document.querySelectorAll(
         '#event-form input, #event-form textarea, #event-form input[type="file"], #event-form input[type="checkbox"]'

@@ -52,6 +52,14 @@ $conn->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/prov_venue.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const message = "<?php echo $message; ?>";
+            if (message) {
+                alert(message);
+            }
+        });
+    </script>
 </head>
 <body>
 <header>
@@ -61,8 +69,7 @@ $conn->close();
             <div class="nama_website"><a href="#">Edoroli</a></div>
         </div>
         <div class="menu">
-            <a href="user_manage.php?page=1">Hallo 
-            <?php echo htmlspecialchars($_SESSION['username']); ?>
+            <a href="user_manage.php?page=1">Hallo <?php echo htmlspecialchars($_SESSION['admin_name']); ?>
             <i class="far fa-user"></i></a>
         </div>
     </div>
@@ -92,29 +99,24 @@ $conn->close();
             </ul>
           </nav>
         </div>
-        <div class="content">
-            <div class="main-venue">
-                <h2>Make as Main Venue</h2>
+    <div class="content">
+        <div class="main-venue">
+            <h2>List Venue of This Provider</h2>
+            <div class="venue-list">
                 <?php foreach ($venues as $venue): ?>
                     <div class="venue-item">
                         <span><?php echo htmlspecialchars($venue['nama_venue']); ?></span>
-                        <?php if ($venue['main_venue']): ?>
-                            <button class="success">Success</button>
-                        <?php else: ?>
-                            <form action="set_main_venue.php" method="POST">
-                                <input type="hidden" name="venue_id" value="<?php echo $venue['id_venue']; ?>">
-                                <input type="hidden" name="provider_id" value="<?php echo $provider_id; ?>">
-                                <input type='checkbox' />
-                                <button type="submit" class="accept-btn">Accept</button>
-                            </form>
-                        <?php endif; ?>
+                        <form action="../php/delete_venue.php" method="POST" onsubmit="return confirm('Are you sure wanna remove this?')">
+                            <input type="hidden" name="venue_id" value="<?php echo $venue['id_venue']; ?>">
+                            <button type="submit" class="delete-btn">Remove Venue</button>
+                        </form>
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
 </main>
-g
+
 <?php require_once '../php/footer.php'; ?>
 </body>
 </html>

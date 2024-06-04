@@ -89,7 +89,7 @@ $result = $stmt->get_result();
     </div>
     <div class="menu">
       <a href="user_manage.php?page=1">Hallo 
-      <?php echo htmlspecialchars($_SESSION['username']); ?>
+      <?php echo htmlspecialchars($_SESSION['admin_name']); ?>
       <i class="far fa-user"></i></a>
     </div>
   </div>

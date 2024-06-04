@@ -55,6 +55,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edoroli - Reservasi Venue Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/venue_prov.css">
     <link rel="stylesheet" href="../css/footer.css" />
 </head>
@@ -86,7 +87,6 @@ $conn->close();
                         echo '        <a href="venue_detail.php?id_venue=' . $row["id_venue"] . '">';
                         echo '            <img src="' . $row["gambar"] . '" alt="Venue Image">';
                         echo '        </a>';
-                        echo '        <span class="heart-icon"><i class="far fa-heart" onclick="klikLike(this)"></i></span>';
                         echo '    </div>';
                         echo '    <div class="info">';
                         echo '        <p class="name">' . $row["nama_venue"] . '</p>';

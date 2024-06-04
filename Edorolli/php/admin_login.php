@@ -8,7 +8,7 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
     
     // Mencari admin berdasarkan email
-    $stmt = $conn->prepare("SELECT id_admin, username, password, email_admin FROM admin WHERE email_admin = ?");
+    $stmt = $conn->prepare("SELECT id_admin, admin_name, password, email_admin FROM admin WHERE email_admin = ?");
     $stmt->bind_param("s", $email_admin);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -25,7 +25,7 @@ if (isset($_POST['login'])) {
         if ($admin['password'] === $password) { // Plain text comparison
             // Password cocok, set sesi dengan data admin
             $_SESSION['id_admin'] = $admin['id_admin'];
-            $_SESSION['username'] = $admin['username'];
+            $_SESSION['admin_name'] = $admin['admin_name'];
             $_SESSION['email_admin'] = $admin['email_admin'];
             
             // Redirect ke halaman admin dashboard

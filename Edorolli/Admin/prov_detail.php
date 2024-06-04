@@ -37,7 +37,7 @@ $user = $result->fetch_assoc();
             <div class="logo"><img src="../image/logo.png" alt="Logo"></div>
             <div class="nama_website"><a href="#">Edoroli</a></div>
         </div>
-        <div class="menu"><a href="user_manage.php?page=1">Hallo <?php echo $_SESSION['username']; ?><i class="far fa-user"></i></a></div>
+        <div class="menu"><a href="user_manage.php?page=1">Hallo <?php echo $_SESSION['admin_name']; ?><i class="far fa-user"></i></a></div>
     </div>
 </header>
 <nav class="main-title">

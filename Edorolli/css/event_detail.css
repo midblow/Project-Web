@@ -292,7 +292,6 @@ textarea[readonly] {
   color: white;
 }
 
-.submit-button1,
-.cancel-button {
+.cancel-button, .submit-button1 {
   display: none;
 }

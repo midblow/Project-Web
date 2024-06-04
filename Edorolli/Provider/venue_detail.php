@@ -113,7 +113,7 @@ if (!isset($_SESSION['username'])) {
                             <label for="swasta">Swasta</label>
                         </div>
                         <div class="main-venue-container">
-                            <input type="checkbox" id="main_venue" name="main_venue" value="1" disabled>
+                            <input type="checkbox" id="main_venue" name="main_venue" value="1" <?php echo ($venue['main_venue'] == '1') ? 'checked' : ''; ?> disabled>
                             <label for="main_venue">Ajukan Sebagai Main Venue</label>
                         </div>
                         <div class="action-buttons">

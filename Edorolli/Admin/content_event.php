@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username'])) {
-    header("Location: http://localhost/Project-Web/Edorolli/login_user.php");
+if (!isset($_SESSION['email_admin'])) {
+    header("Location: http://localhost/Project-Web/Edorolli/Admin/login_admin.php");
     exit();
-}
+  }
+  
 
 include '../php/functions.php';
 $conn = connectDatabase();
@@ -21,12 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ids = implode(',', $eventIds);
         $conn->query("UPDATE event SET rekomendasi = 1 WHERE id_event IN ($ids)");
     }
+    echo "<script>
+    alert('Event recommendations berhasil di-update!');
+    window.location.href = 'content_event.php';
+    </script>";
+    exit();
 }
 
 // Fetch user event data from the database
 $sql = "SELECT user.id, user.gmail, event.nama_event, event.rekomendasi, event.id_event
         FROM event 
-        INNER JOIN user ON event.id_user = user.id";
+        INNER JOIN user ON event.id_user = user.id
+        WHERE event.status = 'confirmed'";
 $result = $conn->query($sql);
 
 if (!$result) {
@@ -52,7 +59,7 @@ if (!$result) {
             <div class="logo"><img src="../image/logo.png" alt="Logo"></div>
             <div class="nama_website"><a href="#">Edoroli</a></div>
         </div>
-        <div class="menu"><a href="user_manage.php?page=1">Hallo <?php echo $_SESSION['username']; ?><i class="far fa-user"></i></a></div>
+        <div class="menu"><a href="user_manage.php?page=1">Hallo <?php echo $_SESSION['admin_name']; ?><i class="far fa-user"></i></a></div>
     </div>
 </header>
 <nav class="main-title">
@@ -69,8 +76,8 @@ if (!$result) {
         <div class="sidebar">
             <div class="profile-info">
                 <img src="../image/MLBB.jpg" alt="Profile Picture" />
-                <h3>Alfin Nashirul</h3>
-                <p>alfin@gmail.com</p>
+                <h3><?php echo $_SESSION['admin_name']; ?></h3>
+                <p><?php echo $_SESSION['email_admin']; ?></p>
             </div>
             <nav>
                 <ul>
