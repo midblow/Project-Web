@@ -172,6 +172,7 @@ main {
   
   .sidebar nav ul li {
     margin: 15px 0;
+    white-space: nowrap; /* Prevent wrapping */
   }
   
   .sidebar nav ul li a {
