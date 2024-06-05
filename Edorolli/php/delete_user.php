@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['username'])) {
   header("Location: http://localhost/Project-Web/Edorolli/Admin/login_admin.php");
   exit();
 }

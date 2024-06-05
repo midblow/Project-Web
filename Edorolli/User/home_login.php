@@ -109,7 +109,7 @@ $nickname = $nicknameArray[0];
 
       <?php if (!empty($venues)): ?>
       <section class="popular-venue">
-        <h2>Rekomendasi Venue (Best Venue)</h2>
+        <h2>Rekomendasi Venue</h2>
         <div id="venue-carousel">
             <?php foreach ($venues as $venue): ?>
               <div class="venue-item">

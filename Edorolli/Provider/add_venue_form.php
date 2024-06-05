@@ -40,7 +40,7 @@ if (!isset($_SESSION['username'])) {
         <section class="venue">
             <div class="venue-container">
                 <div class="venue-form">
-                    <form action="../php/save_venue.php" method="post" id="venue-form" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <form action="../php/add_venue.php" method="post" id="venue-form" enctype="multipart/form-data" onsubmit="return validateForm()">
                         <label for="name_venue">Nama Venue</label>
                         <input type="text" id="name_venue" name="name_venue" required>
                         
@@ -80,6 +80,10 @@ if (!isset($_SESSION['username'])) {
                                 <input type="radio" id="swasta" name="jenis_instansi" value="Swasta" required>
                                 <label for="swasta">Swasta</label>
                             </div>
+                        </div>
+                        <div class="main-venue-container">
+                            <input type="checkbox" id="main_venue" name="main_venue" value="1">
+                            <label for="main_venue">Jadikan Sebagai Main Venue</label>
                         </div>
                         <button type="submit" class="submit-button">Submit</button>
                     </form>

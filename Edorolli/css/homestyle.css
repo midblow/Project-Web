@@ -240,14 +240,6 @@ section {
   margin: auto;
 }
 
-.events h2 {
-  font-weight: 800;
-  font-size: 35px;
-  color: #0c2240 !important;
-  width: 100%;
-  line-height: 50px;
-}
-
 .owl-carousel .event-item {
   position: relative;
   text-align: center;
@@ -263,30 +255,32 @@ section {
 }
 
 .event-card img {
-  width: 100%;
-  height: 200px; /* Fixed height for consistency */
-  object-fit: cover; /* Maintain aspect ratio and cover the area */
+  width:350px;
+  height: 230; /* Fixed height for consistency */
+
   transition: transform 0.3s ease;
 }
 
-.event-card .event-text {
+.event-card .event-info {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   color: #fff;
-  font-size: 16px;
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
+}
+
+.event-info h2{
+  color: #fff;
 }
 
 .event-card:hover img {
   transform: scale(1.05);
 }
 
-.event-card:hover .event-text {
+.event-card:hover .event-info {
   transform: scale(1.05);
 }

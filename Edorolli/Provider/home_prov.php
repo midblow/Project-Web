@@ -61,14 +61,14 @@ $mains_venue = $stmt->get_result();
         <div class="image-cardB">
             <?php
                 if ($mains_venue->num_rows > 0) {
-                    while ($main_venue = $mains_venue->fetch_assoc()) {
-                        echo'<h1 class="title">Your Best Venue</h1>';
+                    if ($main_venue = $mains_venue->fetch_assoc()) {
+                        echo'<h1 class="title">My Main Venue</h1>';
                         echo'<div class="image-containerB">';
                         echo '  <a href="venue_detail.php?id_venue=' . $main_venue["id_venue"] . '">';
                         echo'       <img src="'.$main_venue['gambar'].'" />';
                         echo '  </a>';
                         echo'   <div class="overlay">';
-                        echo'       <h1 class="overlay-title">'.$main_venue['nama_venue'].'></h1>';
+                        echo '<h1 class="overlay-title">' . strtoupper($main_venue['nama_venue']) . '</h1>';
                         echo'   </div>';
                         echo'</div>';
                     }
@@ -90,7 +90,7 @@ $mains_venue = $stmt->get_result();
 
         <section class="venue">
             <div class="title">
-                <h1>List Venue As Provider</h1>
+                <h1>Top Venue As Provider</h1>
             </div>
             <div class="gallery">
                 <?php

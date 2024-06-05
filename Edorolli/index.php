@@ -5,6 +5,7 @@ $conn = connectDatabase();
 
 // Set limit for the number of events to display
 $event_limit = 8;
+$venue_limit = 8; // Tambahkan batasan untuk venue
 
 // Fetch confirmed events with a recommendation limit
 $sql = "SELECT * FROM event WHERE rekomendasi = 1 AND status = 'confirmed' LIMIT ?";
@@ -32,8 +33,8 @@ if (is_array($main_venues) && !empty($main_venues)) {
     LIMIT ?";
     $stmt = $conn->prepare($query);
 
-    $params = array_merge(array_column($main_venues, 'id_venue'), [$limit]);
-
+    $params = array_merge(array_column($main_venues, 'id_venue'), [$venue_limit]);
+    
     // Memastikan jumlah parameter sesuai
     $refs = [];
     foreach ($params as $key => $value) {
@@ -49,7 +50,6 @@ if (is_array($main_venues) && !empty($main_venues)) {
     $result = $stmt->get_result();
     $venues = $result->fetch_all(MYSQLI_ASSOC);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,8 +74,8 @@ if (is_array($main_venues) && !empty($main_venues)) {
         </div>
         <div class="menu">
             <ul>
-                <li><a href="homepage.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="role-selection.html" class="login">Get Started</a></li>
             </ul>
@@ -102,7 +102,7 @@ if (is_array($main_venues) && !empty($main_venues)) {
         </div>
         <?php if (!empty($venues)): ?>
         <div class="populer">
-            <h2>Popular Venue</h2>
+            <h2>Recommendation Venues</h2>
             <div class="gallery">
                 <?php
                 foreach ($venues as $venue) {
@@ -137,7 +137,7 @@ if (is_array($main_venues) && !empty($main_venues)) {
 </div>
 
 <section class="events">
-    <h2>Event</h2>
+    <h2> Recommendation Events</h2>
     <div id="event-carousel" class="owl-carousel owl-theme">
     <?php while ($event = $events_result->fetch_assoc()): ?>
         <div class="event-card">
@@ -152,6 +152,30 @@ if (is_array($main_venues) && !empty($main_venues)) {
     <?php endwhile; ?>
     </div>
 </section>
+<footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <img src="../Edorolli/image/logo.png" alt="Edoroli Logo" />
+            <div class="nama_website">
+                <a>Edoroli</a>
+            </div>
+        </div>
+        <div class="footer-center">
+            <h3>TENTANG EDOROLI</h3>
+            <p>Edoroli adalah portal reservasi venue pertama di Indonesia, yang menyediakan akses informasi yang lengkap dan sistem yang mudah, cepat, dan efisien.</p>
+        </div>
+        <div class="footer-right">
+            <h3>SOSIAL MEDIA</h3>
+            <ul>
+                <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                <li><a href="#"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 Edoroli Co., Ltd. All Rights Reserved.</p>
+    </div>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>

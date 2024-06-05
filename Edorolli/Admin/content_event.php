@@ -93,7 +93,7 @@ if (!$result) {
                         <tr>
                             <th>ID User</th>
                             <th>Email</th>
-                            <th>Nama Event</th>
+                            <th>List Event</th>
                             <th>Rekomendasikan</th>
                         </tr>
                     </thead>

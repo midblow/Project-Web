@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kapasitas = $_POST['kapasitas'];
     $harga = $_POST['harga'];
     $jenis_instansi = $_POST['jenis_instansi'];
+    $main_venue = isset($_POST['main_venue']) ? 1 : 0; // Assuming this is passed as a checkbox
     $gambar = $_FILES['file'];
     $id_provider = $_SESSION['id_provider'];
 
@@ -28,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (file_exists($target_file)) {
-        // If file exists, use the existing file
         $uploadOk = 0;
         $use_existing_file = true;
     } else {
@@ -44,11 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
-var_dump($uploadOk); 
+
     if ($uploadOk == 1) {
         $temp_file = $target_dir . 'temp_' . basename($gambar["name"]);
         if (move_uploaded_file($gambar["tmp_name"], $temp_file)) {
-            
             if (resize_and_crop_image($temp_file, $target_file, 278, 285)) {
                 unlink($temp_file);
 
@@ -56,8 +55,23 @@ var_dump($uploadOk);
                 $stmt->bind_param("sssssiissi", $name_venue, $deskripsi_fasilitas, $alamat, $kota, $penanggung_jawab, $kapasitas, $harga, $jenis_instansi, $target_file, $id_provider);
 
                 if ($stmt->execute()) {
-                    echo "New record created successfully";
-                    
+                    $venue_id = $conn->insert_id; // Get the last inserted ID
+
+                    // Update main_venue status
+                    if ($main_venue == 1) {
+                        // Reset main_venue for all venues from this provider
+                        $query = "UPDATE venue SET main_venue = 0 WHERE id_provider = ?";
+                        $stmt_reset = $conn->prepare($query);
+                        $stmt_reset->bind_param("i", $id_provider);
+                        $stmt_reset->execute();
+
+                        // Set main_venue for the newly inserted venue
+                        $query = "UPDATE venue SET main_venue = 1 WHERE id_venue = ?";
+                        $stmt_update = $conn->prepare($query);
+                        $stmt_update->bind_param("i", $venue_id);
+                        $stmt_update->execute();
+                    }
+
                     // Calculate new total pages for the specific provider
                     $total_items_sql = "SELECT COUNT(*) AS total FROM venue WHERE id_provider = ?";
                     $stmt_total = $conn->prepare($total_items_sql);
@@ -86,7 +100,22 @@ var_dump($uploadOk);
         $stmt->bind_param("sssssiissi", $name_venue, $deskripsi_fasilitas, $alamat, $kota, $penanggung_jawab, $kapasitas, $harga, $jenis_instansi, $target_file, $id_provider);
 
         if ($stmt->execute()) {
-            echo "New record created successfully";
+            $venue_id = $conn->insert_id; // Get the last inserted ID
+
+            // Update main_venue status
+            if ($main_venue == 1) {
+                // Reset main_venue for all venues from this provider
+                $query = "UPDATE venue SET main_venue = 0 WHERE id_provider = ?";
+                $stmt_reset = $conn->prepare($query);
+                $stmt_reset->bind_param("i", $id_provider);
+                $stmt_reset->execute();
+
+                // Set main_venue for the newly inserted venue
+                $query = "UPDATE venue SET main_venue = 1 WHERE id_venue = ?";
+                $stmt_update = $conn->prepare($query);
+                $stmt_update->bind_param("i", $venue_id);
+                $stmt_update->execute();
+            }
 
             // Calculate new total pages for the specific provider
             $total_items_sql = "SELECT COUNT(*) AS total FROM venue WHERE id_provider = ?";

@@ -54,7 +54,7 @@ $user = $result->fetch_assoc();
         <div class="sidebar">
           <div class="profile-info">
             <img src="../image/MLBB.jpg" alt="Profile Picture" />
-            <h3><?php echo htmlspecialchars($user['username']); ?></h3>
+            <h3><?php echo htmlspecialchars($user['lembaga']); ?></h3>
             <p><?php echo htmlspecialchars($user['gmail']); ?></p>
           </div>
           <nav>

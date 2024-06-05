@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: http://localhost/Project-Web/Edorolli/user/login_user.php");
+    header("Location: http://localhost/Project-Web/Edorolli/provider/prov_login.php");
     exit();
 }
 

@@ -88,7 +88,7 @@ $conn->close();
         <div class="sidebar">
           <div class="profile-info">
             <img src="../image/MLBB.jpg" alt="Profile Picture" />
-            <h3><?php echo htmlspecialchars($provider['username']); ?></h3>
+            <h3><?php echo htmlspecialchars($provider['lembaga']); ?></h3>
             <p><?php echo htmlspecialchars($provider['gmail']); ?></p>
           </div>
           <nav>

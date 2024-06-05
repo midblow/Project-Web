@@ -22,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row['gambar'] = str_replace('../uploads/', '../Edorolli/uploads/', $row['gambar']);
         $venues[] = $row;
     }
-
+    $sql = "UPDATE venue SET main_venue = 1 WHERE id_venue IN (" . implode(',', $selected_venues) . ")";
+    $result = $conn->query($sql);
     $json_venues = json_encode($venues);
 
     // Save JSON to file
@@ -111,7 +112,7 @@ function submitFormWithAlert(event) {
                 echo "<td>{$row['id_provider']}</td>";
                 echo "<td>{$row['gmail']}</td>";
                 echo "<td>{$row['nama_venue']}</td>";
-                echo "<td><input type='checkbox' name='venues[{$row['id_venue']}]' /></td>";
+                echo "<td><input type='checkbox' name='venues[{$row['id_venue']}]' ".($row['main_venue'] ? 'checked' : '')." /></td>";
                 echo "</tr>";
                 }
             } else {

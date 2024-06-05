@@ -86,7 +86,7 @@ $nickname = $nicknameArray[0];
               <button class="manage-button" id="changePasswordBtn">
                 Ganti Kata Sandi
               </button>
-              <button class="manage-button" id="deleteAccountBtn">
+              <button class="manage-button" id="deleteAccountBtn" onclick="confirmDelete()">
                 Hapus Akun
               </button>
             </div>
@@ -144,10 +144,19 @@ $nickname = $nicknameArray[0];
         <h2>Apakah anda yakin ingin keluar?</h2>
         <div class="popup-buttons_logout">
           <a id="cancelBtnLO" class="cancel-btnLO">Tidak</a>
-          <a href="../Edorolli/php/logout.php" id="confirmBtnLO" class="confirm-btnLO">Ya</a>
+          <a href="../Edorolli/index.php" id="confirmBtnLO" class="confirm-btnLO">Ya</a>
         </div>
       </div>
     </div>
+
+<script>
+    function confirmDelete() {
+        if (confirm('Apakah Anda yakin ingin menghapus akun ini?')) {
+            // Jika pengguna mengonfirmasi, arahkan ke URL penghapusan akun
+            window.location.href = '../php/delete_userKsandi.php';
+        }
+    }
+</script>
 
     <script src="../js/ChangePass.js"></script>
     <script src="../js/logout.js"></script>

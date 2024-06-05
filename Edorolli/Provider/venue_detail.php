@@ -68,7 +68,7 @@ if (!isset($_SESSION['username'])) {
                     <img src="<?php echo $venue['gambar']; ?>" alt="Venue Image">
                 </div>
                 <div class="venue-form">
-                    <form action="../php/edit_venue.php" method="post" id="venue-form" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <form action="../php/save_venue.php" method="post" id="venue-form" enctype="multipart/form-data" onsubmit="return validateForm()">
                         <input type="hidden" id="venue_id" name="venue_id" value="<?php echo $venue['id_venue']; ?>">
                         <label for="name_venue">Nama Venue</label>
                         <input type="text" id="name_venue" name="name_venue" value="<?php echo $venue['nama_venue']; ?>" required disabled>

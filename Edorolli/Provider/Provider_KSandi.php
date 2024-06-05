@@ -62,7 +62,7 @@ if (!isset($_SESSION['username'])) {
                     <h2>Kelola Akun</h2>
                     <div class="manage-account" id="manageAccountButtons">
                         <button class="manage-button" id="changePasswordBtn">Ganti Kata Sandi</button>
-                        <button class="manage-button" id="deleteAccountBtn">Hapus Akun</button>
+                        <button class="manage-button" id="deleteAccountBtn" onclick= "confirmDelete()">Hapus Akun</button>
                     </div>
                     <div id="changePasswordForm" class="change-password-form" style="display: none">
                         <form id="passwordForm" action="../php/update_provider_pass.php" method="POST">
@@ -103,6 +103,14 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
     </div>
+    <script>
+    function confirmDelete() {
+        if (confirm('Apakah Anda yakin ingin menghapus akun ini?')) {
+            // Jika pengguna mengonfirmasi, arahkan ke URL penghapusan akun
+            window.location.href = '../php/delete_provKsandi.php';
+        }
+    }
+</script>
     <script src="../js/logout.js" ></script>
     <script src="../js/ChangePass.js" ></script>
 </body>
