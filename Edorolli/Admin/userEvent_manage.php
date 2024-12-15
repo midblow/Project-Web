@@ -16,7 +16,7 @@ if ($user_id === null) {
 }
 
 // Ambil data pengguna dari database
-$sql_user = "SELECT name, gmail FROM user WHERE id = ?";
+$sql_user = "SELECT * FROM user WHERE id = ?";
 $stmt_user = $conn->prepare($sql_user);
 $stmt_user->bind_param("i", $user_id);
 $stmt_user->execute();
@@ -35,6 +35,9 @@ if (!isset($_SESSION['name'])) {
 }
 if (!isset($_SESSION['gmail'])) {
   $_SESSION['gmail'] = $user['gmail'];
+}
+if (!isset($_SESSION['id'])) {
+  $_SESSION['id'] = $user['id'];
 }
 
 $events_per_page = 3;
@@ -127,7 +130,7 @@ $result = $stmt->get_result();
           while ($row = $result->fetch_assoc()) {
             echo '<div class="event-card">';
             echo '<div class="event-details">';
-            echo '<h3>' . htmlspecialchars($row['nama_venue']) . '</h3>';
+            echo '<h3><a href="../User/event_detail.php?id_event=' . $row['id_event'] . '">' . htmlspecialchars($row['nama_venue']) . '</a></h3>';
             echo '<p>Event: ' . htmlspecialchars($row['nama_event']) . '</p>';
             echo '<p>Date: ' . htmlspecialchars($row['start_date']) . ' - ' . htmlspecialchars($row['end_date']) . '</p>';
             echo '</div>';
@@ -142,7 +145,6 @@ $result = $stmt->get_result();
               echo '<form action="../php/decline_event.php" method="POST" style="display:inline-block;">';
               echo '<input type="hidden" name="id_event" value="' . $row['id_event'] . '">';
               echo '<button type="submit" class="decline-btn">Delete Event</button>';
-              echo '</form>';
             } else {
               echo '<span class="status-rejected">REJECTED</span>';
             }
